@@ -23,28 +23,28 @@
 
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label for="email-address" class="sr-only">Email address</label>
+                    <label for="username" class="sr-only">Username</label>
 
                     <input
-                        id="email-address"
-                        name="email"
-                        formControlName="email"
-                        type="email"
-                        autocomplete="email"
+                        id="username"
+                        name="username"
+                        formControlName="username"
+                        type="text"
+                        autocomplete="username"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Email address"
+                        placeholder="Username"
                     />
                 </div>
 
-                <div *ngIf=" email.invalid && (email.dirty || email.touched) " class="text-red-500">
+                <div *ngIf=" username.invalid && (username.dirty || username.touched) " class="text-red-500">
 
-                    <div *ngIf="email.errors.required">
-                        Please enter email
+                    <div *ngIf="username.errors.required">
+                        Please enter username
                     </div>
 
-					<div *ngIf="email.errors.email">
-                        Please enter correct email
+					<div *ngIf="username.errors.minlength">
+                        Username must be at least 3 characters long
                     </div>
 
                 </div>
@@ -142,7 +142,7 @@
                         </svg>
                     </span>
 
-                    Sign in
+                    Log in
 
                 </button>
             </div>
