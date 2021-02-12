@@ -44,7 +44,7 @@
                     </div>
 
 					<div *ngIf="username.errors.minlength">
-                        Username must be at least 3 characters long
+                        Username must be at least {{ usernameMinLength }} characters long
                     </div>
 
                 </div>
@@ -70,7 +70,7 @@
                     </div>
 
 					<div *ngIf="password.errors.minlength">
-                        Password must be at least 8 characters long
+                        Password must be at least {{ passwordMinLength }} characters long
                     </div>
 
                 </div>
