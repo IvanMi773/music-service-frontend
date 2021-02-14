@@ -121,7 +121,7 @@
                     </button>
 
                     <!-- Profile dropdown -->
-                    <!-- <div class="ml-3 relative">
+                    <div *ngIf="loggedIn" class="ml-3 relative">
                         <div>
                             <button
                                 class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -157,24 +157,24 @@
                                 >Settings</a
                             >
                             <a
-                                href="#"
+                                routerLink="/signout"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 role="menuitem"
                                 >Sign out</a
                             >
                         </div>
-                    </div> -->
+                    </div>
 
-					<div class="ml-3 relative flex items-stretch">
+					<div *ngIf="!loggedIn" class="ml-3 relative flex items-stretch">
 						<a
-							href="/login"
+							routerLink="/login"
 							class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 							role="menuitem">
 							Log in
 						</a>
 
 						<a
-							href="/signup"
+							routerLink="/signup"
 							class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
 							role="menuitem">
 							Sign up

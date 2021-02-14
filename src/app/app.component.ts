@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from './services/token-storage.service';
+import { UserService } from './services/user.service';
 
 @Component({
     selector: 'app-root',
@@ -6,14 +8,36 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss'],
 })
 
-export class AppComponent {
-    title = 'music-service-frontend';
-	clicked: Boolean = false
+export class AppComponent implements OnInit {
+    title = 'music-service-frontend'
+	private _clicked: Boolean = false
+	private _loggedIn: Boolean = false
 
-	onMenuClick () {
+	constructor(
+		private userService: UserService,
+		private tokenStorage: TokenStorageService
+	) {}
+
+	ngOnInit () {
+		this.showContext()
+	}
+
+	ngDoCheck (): void {
+		this.showContext()
+	}
+
+	public showContext() {
+		this.loggedIn = !!this.tokenStorage.getToken()
+	}
+
+	changeLoggedIn(val: boolean) {
+		this.loggedIn = val;
+	}
+
+	public onMenuClick () {
 		this.clicked = !this.clicked
 
-		let element = document.getElementsByClassName('menu-button')[0];
+		let element = document.getElementsByClassName('menu-button')[0]
 
 		if (this.clicked) {
 			element.classList.remove('transform', 'opacity-0', 'scale-95')
@@ -22,5 +46,18 @@ export class AppComponent {
 			element.classList.add('transform', 'opacity-0', 'scale-95')
 			element.classList.remove('transform', 'opacity-100', 'scale-100')
 		}
+	}
+
+	get clicked () {
+		return this._clicked
+	}
+	get loggedIn () {
+		return this._loggedIn
+	}
+	set clicked (clicked: Boolean) {
+		this._clicked = clicked
+	}
+	set loggedIn (loggedIn: Boolean) {
+		this._loggedIn = loggedIn
 	}
 }

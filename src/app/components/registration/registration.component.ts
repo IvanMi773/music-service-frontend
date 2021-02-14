@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import config from '../../configuration';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
     public registerForm;
+	@Output() onLoggedIn = new EventEmitter<boolean>();
 
     constructor(
 		private formBuilder: FormBuilder,
@@ -64,11 +65,16 @@ export class RegistrationComponent implements OnInit {
                         this.tokenStorage.tokenKey,
                         data.token
                     );
+					this.setOnLoggedIn()
                     this.router.navigateByUrl('/');
                 },
                 (error) => console.log(error)
             );
     }
+
+	setOnLoggedIn(){
+		this.onLoggedIn.emit(true);
+	}
 
     get username() {
         return this.registerForm.get('username');

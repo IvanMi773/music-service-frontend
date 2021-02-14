@@ -13,7 +13,7 @@ export class TokenStorageService {
     }
 
     signOut(): void {
-        window.localStorage.clear();
+        localStorage.removeItem(this.TOKEN_KEY);
     }
 
 	get tokenKey () {

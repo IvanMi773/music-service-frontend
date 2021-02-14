@@ -7,6 +7,8 @@ import config from '../configuration'
 })
 export class UserService {
 
+	private _loggedIn: Boolean = false
+
 	constructor(private http: HttpClient) {}
 
     login (username: String, password: String) {
@@ -31,5 +33,13 @@ export class UserService {
 		headers.set('Content-Type', 'application/json; charset=utf-8');
 
         return this.http.post(config.hostName + 'api/auth/register', body, { headers: headers });
+	}
+
+	get loggedIn (): Boolean {
+		return this.loggedIn
+	}
+
+	set loggedIn (loggedId: Boolean) {
+		this.loggedIn = loggedId
 	}
 }
