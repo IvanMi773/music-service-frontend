@@ -1,0 +1,25 @@
+<div
+    class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+>
+    <div class="max-w-md w-full space-y-8">
+
+        <form
+            class="mt-8 space-y-6"
+            action="#"
+            method="POST"
+            [formGroup]="songForm"
+            (ngSubmit)="onSubmit()"
+        >
+			<!-- <div class="dropzone" appDragAndDrop>
+				<input type="file" name="fileDropRef" id="fileDropRef" #fileDropRef multiple (change)="fileBrowseHandler($event.target.files)">
+				<img src="assets/images/upload.png" class="img" alt="">
+				<h3>Drag & drop file here!</h3>
+				<h3>or</h3>
+				<label for="fileDropRef">Browse files</label>
+			</div> -->
+            <input formControlName="files" (change)="onFileChange($event)" type="file" name="songs" id="songs">
+            <button type="submit">send</button>
+        </form>
+    </div>
+</div>
+

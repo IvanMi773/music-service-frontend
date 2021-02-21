@@ -7,8 +7,6 @@ import config from '../configuration'
 })
 export class UserService {
 
-	private _loggedIn: Boolean = false
-
 	constructor(private http: HttpClient) {}
 
     login (username: String, password: String) {
