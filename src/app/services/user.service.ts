@@ -12,10 +12,7 @@ export class UserService {
     login (username: String, password: String) {
         const body = {username: username, password: password};
 
-		const headers = new HttpHeaders();
-		headers.set('Content-Type', 'application/json; charset=utf-8');
-
-        return this.http.post(config.hostName + 'api/auth/login', body, { headers: headers });
+        return this.http.post(config.hostName + 'api/auth/login', body);
     }
 
 	register (username: String, password: String, firstName: String, lastName: String, email: String) {
@@ -27,10 +24,7 @@ export class UserService {
 			lastName: lastName,
 		};
 
-		const headers = new HttpHeaders();
-		headers.set('Content-Type', 'application/json; charset=utf-8');
-
-        return this.http.post(config.hostName + 'api/auth/register', body, { headers: headers });
+        return this.http.post(config.hostName + 'api/auth/register', body);
 	}
 
 	get loggedIn (): Boolean {

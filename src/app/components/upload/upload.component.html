@@ -2,7 +2,6 @@
     class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
 >
     <div class="max-w-md w-full space-y-8">
-
         <form
             class="mt-8 space-y-6"
             action="#"
@@ -10,16 +9,111 @@
             [formGroup]="songForm"
             (ngSubmit)="onSubmit()"
         >
-			<!-- <div class="dropzone" appDragAndDrop>
-				<input type="file" name="fileDropRef" id="fileDropRef" #fileDropRef multiple (change)="fileBrowseHandler($event.target.files)">
-				<img src="assets/images/upload.png" class="img" alt="">
-				<h3>Drag & drop file here!</h3>
-				<h3>or</h3>
-				<label for="fileDropRef">Browse files</label>
-			</div> -->
-            <input formControlName="files" (change)="onFileChange($event)" type="file" name="songs" id="songs">
-            <button type="submit">send</button>
+            <input type="hidden" name="remember" value="true" />
+
+            <div class="rounded-md shadow-sm -space-y-px">
+                <div>
+                    <label for="title" class="sr-only">Title</label>
+
+                    <input
+                        id="title"
+                        name="title"
+                        formControlName="title"
+                        type="text"
+                        autocomplete="title"
+                        required
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Title"
+                    />
+                </div>
+
+                <div
+                    *ngIf="
+                        title.invalid && (title.dirty || title.touched)
+                    "
+                    class="text-red-500"
+                >
+                    <div *ngIf="title.errors.required">
+                        Please enter title
+                    </div>
+
+                    <div *ngIf="title.errors.minlength">
+                        Title must be at least 2 characters long
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="">
+                        <select (change)="selectValueChangedEvent(genreSelect.value)" #genreSelect>
+                            <option value="0">-- None --</option>
+                            <option value="1">-- Custom --</option>
+                            <option [value]="i.id" *ngFor="let i of genres">{{ i.name }}</option>
+                        </select>
+                    </div>
+
+                    <div *ngIf="customGenre">
+                        <label for="genre" class="sr-only">Genre</label>
+                        <input
+                            id="genre"
+                            name="genre"
+                            formControlName="genre"
+                            type="text"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Genre"
+                        />
+                    </div>
+
+                    <div *ngIf="genre.invalid && customGenre && (genre.dirty || genre.touched)" class="text-red-500">
+                        <div *ngIf="genre.errors.required">
+                            Please enter genre
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <input
+                formControlName="files"
+                (change)="onFileChange($event)"
+                type="file"
+                name="songs"
+                id="songs"
+            />
+            <div *ngIf="files.invalid && (files.dirty || files.touched)" class="text-red-500">
+                <div *ngIf="files.errors.required">
+                    Please upload file
+                </div>
+            </div>
+
+            <div>
+                <button
+                    type="submit"
+                    [disabled]="!songForm.valid"
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    <span
+                        class="absolute left-0 inset-y-0 flex items-center pl-3"
+                        *ngIf="!songForm.valid"
+                    >
+                        <svg
+                            class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                    </span>
+
+                    Upload
+                </button>
+            </div>
         </form>
     </div>
 </div>
-
