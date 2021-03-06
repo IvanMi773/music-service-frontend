@@ -1,8 +1,8 @@
-<div class="fixed">
+<div class="fixed" *ngIf="msaapPlaylist.length > 0">
     <ngx-audio-player
         [playlist]="msaapPlaylist"
         [displayTitle]="msaapDisplayTitle"
-        [autoPlay]="false"
+        [autoPlay]="true"
         muted="muted"
         [displayPlaylist]="msaapDisplayPlayList"
         [pageSizeOptions]="msaapPageSizeOptions"

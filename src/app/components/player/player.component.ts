@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from 'ngx-audio-player';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
     selector: 'app-player',
@@ -17,34 +18,29 @@ export class PlayerComponent implements OnInit {
     msaapDisplayDuration = true;
     msaapDisablePositionSlider = false;
 
+    msaapPlaylist: Track[] = [];
 
-    // Material Style Advance Audio Player Playlist
-    msaapPlaylist: Track[] = [
-        {
-            title: 'Audio One Title',
-            link: 'http://localhost:8080/api/song/cf21bb2b-42cc-4da1-bd5e-f4da655626b5.mpeg',
-            artist: 'Artist',
-            duration: 2
-        },
-        {
-            title: 'Audio Two Title',
-            link: 'http://localhost:8080/api/song/cf21bb2b-42cc-4da1-bd5e-f4da655626b5.mpeg',
-            artist: 'Artist',
-            duration: 4
-        },
-        {
-            title: 'Audio Three Title',
-            link: 'http://localhost:8080/api/song/cf21bb2b-42cc-4da1-bd5e-f4da655626b5.mpeg',
-            artist: 'Artist',
-            duration: 6
-        },
-    ];
+    constructor(
+        private homeService: HomeService
+    ) {}
+
+    ngOnInit(): void {
+        this.homeService.currentTruck.subscribe(value => {
+            if (value !== '') {
+                this.msaapPlaylist = []
+                this.msaapPlaylist[0] = {
+                    title: 'test',
+                    link: 'http://localhost:8080/api/song/' + value,
+                    artist: '',
+                    duration: 2
+                }
+            } else {
+                this.msaapPlaylist = []
+            }
+        })
+    }
 
     public onEnded (event: any) {
         console.log("ended")
     }
-
-    constructor() {}
-
-    ngOnInit(): void {}
 }

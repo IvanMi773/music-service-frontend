@@ -3,20 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './views/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { SignoutComponent } from './components/signout/signout.component';
+import { RegistrationComponent } from './views/registration/registration.component';
+import { SignoutComponent } from './views/signout/signout.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
-import { UploadComponent } from './components/upload/upload.component';
+import { UploadComponent } from './views/upload/upload.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { LibraryComponent } from './components/library/library.component';
-import { StreamComponent } from './components/stream/stream.component';
-import { HomeComponent } from './components/home/home.component';
+import { LibraryComponent } from './views/library/library.component';
+import { StreamComponent } from './views/stream/stream.component';
+import { HomeComponent } from './views/home/home.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PlayerComponent } from './components/player/player.component';
+import { MusicTrackComponent } from './components/music-track/music-track.component';
 // import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { PlayerComponent } from './components/player/player.component';
 		StreamComponent,
 		HomeComponent,
 		PlayerComponent,
+		MusicTrackComponent,
 		// DragAndDropDirective
 	],
     imports: [
