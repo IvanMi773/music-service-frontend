@@ -11,6 +11,12 @@ import { SignoutComponent } from './components/signout/signout.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LibraryComponent } from './components/library/library.component';
+import { StreamComponent } from './components/stream/stream.component';
+import { HomeComponent } from './components/home/home.component';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { PlayerComponent } from './components/player/player.component';
 // import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 @NgModule({
@@ -21,13 +27,19 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 		SignoutComponent,
 		NotFoundPageComponent,
 		UploadComponent,
+		LibraryComponent,
+		StreamComponent,
+		HomeComponent,
+		PlayerComponent,
 		// DragAndDropDirective
 	],
     imports: [
         BrowserModule,
         AppRoutingModule,
+        BrowserAnimationsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgxAudioPlayerModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -1,0 +1,17 @@
+<div class="fixed">
+    <ngx-audio-player
+        [playlist]="msaapPlaylist"
+        [displayTitle]="msaapDisplayTitle"
+        [autoPlay]="false"
+        muted="muted"
+        [displayPlaylist]="msaapDisplayPlayList"
+        [pageSizeOptions]="msaapPageSizeOptions"
+        [displayArtist]="msaapDisplayArtist"
+        [displayDuration]="msaapDisplayDuration"
+        [expanded]="true"
+        (trackEnded)="onEnded($event)"
+        [displayVolumeControls]="msaapDisplayVolumeControls"
+        [displayRepeatControls]="msaapDisplayRepeatControls"
+        [disablePositionSlider]="msaapDisablePositionSlider"
+    ></ngx-audio-player>
+</div>

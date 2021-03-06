@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SongUploadService } from 'src/app/services/song-upload.service';
+import { GenreService } from 'src/app/services/genre.service';
+import { SongService } from 'src/app/services/song.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
     selector: 'app-upload',
@@ -17,7 +19,9 @@ export class UploadComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private songUpload: SongUploadService
+        private songService: SongService,
+        private tokenStorage: TokenStorageService,
+        private genreService: GenreService
     ) {}
 
     ngOnInit(): void {
@@ -27,7 +31,7 @@ export class UploadComponent implements OnInit {
             files: [null, [Validators.required]],
         });
 
-        this.songUpload.getAllGenres().subscribe(data => this._genres = data.concat(), err => console.log(err))
+        this.genreService.getAllGenres().subscribe(data => this._genres = data.concat(), err => console.log(err))
     }
 
     onFileChange(event) {
@@ -50,19 +54,20 @@ export class UploadComponent implements OnInit {
 
 	async onSubmit() {
         //TODO: show exceptions
+        //TODO: check if genre "none" selected
         //TODO: fix error
         if (this.isCustomGenre) {
-            let promice = await this.songUpload.createGenre(this.genre.value)
+            let promice: Object = await this.genreService.createGenre(this.genre.value)
             this.genreId = promice.genreId
         }
 
         const formData: FormData = new FormData()
-        formData.append('playlistId', "1")
+        formData.append('username', this.tokenStorage.getUsername())
         formData.append('title', this.title.value)
         formData.append('file', this.fileToUpload, this.fileToUpload.name)
         formData.append('genre', this.genreId)
 
-        this.songUpload.upload(formData).subscribe(data => console.log(data), err => console.log(err))
+        this.songService.upload(formData).subscribe(data => console.log(data), err => console.log(err))
     }
 
     get title () {

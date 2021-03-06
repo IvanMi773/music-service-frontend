@@ -60,11 +60,11 @@ export class RegistrationComponent implements OnInit {
             .register(this.username.value, this.password.value, this.firstName.value, this.lastName.value, this.email.value)
             .subscribe(
                 (data) => {
-                    localStorage.removeItem(this.tokenStorage.tokenKey);
-                    localStorage.setItem(
-                        this.tokenStorage.tokenKey,
-                        data.token
-                    );
+                    this.tokenStorage.signOut()
+
+					localStorage.setItem(this.tokenStorage.tokenKey, data.token)
+                    localStorage.setItem(this.tokenStorage.usernameKey, this.username.value)
+                    
 					this.setOnLoggedIn()
                     this.router.navigateByUrl('/');
                 },

@@ -5,7 +5,7 @@ import config from '../configuration'
 @Injectable({
     providedIn: 'root',
 })
-export class SongUploadService {
+export class SongService {
 
     constructor(
         private http: HttpClient
@@ -15,18 +15,8 @@ export class SongUploadService {
         return this.http.post(config.hostName + 'api/song', formData)
     }
 
-    public getAllGenres () {
-        return this.http.get(config.hostName + "api/genre")
-    }
-
-    public createGenre (genreName: string) {
-        const body = {
-            name: genreName
-        }
-
-        const headers = new HttpHeaders({'Content-Type': 'application/json'})
-
-        return this.http.post(config.hostName + "api/genre", body, { headers: headers }).toPromise()
+    public getAllSongs () {
+        return this.http.get(config.hostName + "api/song")
     }
 }
 

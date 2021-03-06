@@ -33,8 +33,11 @@ export class LoginComponent implements OnInit {
             .login(this.username.value, this.password.value)
 			.subscribe(
 				data => {
-					localStorage.removeItem(this.tokenStorage.tokenKey)
+                    this.tokenStorage.signOut()
+
 					localStorage.setItem(this.tokenStorage.tokenKey, data.token)
+                    localStorage.setItem(this.tokenStorage.usernameKey, this.username.value)
+
 					this.setOnLoggedIn()
 					this.router.navigateByUrl('/');
 				},
