@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import config from '../../configuration';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Router } from '@angular/router';
+import { AuthResponse } from 'src/app/models/AuthResponse';
 
 @Component({
     selector: 'app-registration',
@@ -56,10 +57,11 @@ export class RegistrationComponent implements OnInit {
     }
 
     public onSubmit() {
+        //TODO: remember me field
         this.userService
             .register(this.username.value, this.password.value, this.firstName.value, this.lastName.value, this.email.value)
             .subscribe(
-                (data) => {
+                (data: AuthResponse) => {
                     this.tokenStorage.signOut()
 
 					localStorage.setItem(this.tokenStorage.tokenKey, data.token)

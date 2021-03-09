@@ -31,7 +31,8 @@ export class UploadComponent implements OnInit {
             files: [null, [Validators.required]],
         });
 
-        this.genreService.getAllGenres().subscribe(data => this._genres = data.concat(), err => console.log(err))
+        //TODO: error handling
+        this.genreService.getAllGenres().subscribe(data => this._genres = data, err => console.log(err))
     }
 
     onFileChange(event) {
@@ -55,9 +56,10 @@ export class UploadComponent implements OnInit {
 	async onSubmit() {
         //TODO: show exceptions
         //TODO: check if genre "none" selected
-        //TODO: fix error
+        //TODO: коли ми вибираємо кастомну категорію і вводимо назву категорії,
+        // а потім вибираємо визначену категорію, то станеться помилка валідації
         if (this.isCustomGenre) {
-            let promice: Object = await this.genreService.createGenre(this.genre.value)
+            let promice: any = await this.genreService.createGenre(this.genre.value)
             this.genreId = promice.genreId
         }
 
