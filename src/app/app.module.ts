@@ -18,7 +18,8 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PlayerComponent } from './components/player/player.component';
 import { MusicTrackComponent } from './components/music-track/music-track.component';
-// import { DragAndDropDirective } from './directives/drag-and-drop.directive';
+import { ProfileComponent } from './views/profile/profile.component';
+import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { MusicTrackComponent } from './components/music-track/music-track.compon
 		HomeComponent,
 		PlayerComponent,
 		MusicTrackComponent,
-		// DragAndDropDirective
+		ProfileComponent,
+		CreatePlaylistComponent,
 	],
     imports: [
         BrowserModule,

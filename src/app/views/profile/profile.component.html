@@ -1,0 +1,128 @@
+<div class="content">
+    <div class="cont">
+        <img
+            src="../../../assets/images/background.png"
+            class="background-image"
+            alt=""
+        />
+        <img
+            src="../../../assets/images/a.jpg"
+            class="rounded-full top"
+            alt=""
+        />
+        <p class="username">{{ username }}</p>
+        <p class="name">Ivan Mihailovskij</p>
+    </div>
+
+    <div class="section">
+        <div class="mainCol">
+            <div class="flex flex-wrap">
+                <div class="w-full">
+                    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                            <a
+                                class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                                (click)="toggleTabs(1)"
+                                [ngClass]="{
+                                    'text-indigo-600 bg-white': openTab !== 1,
+                                    'text-white bg-indigo-600': openTab === 1
+                                }"
+                            >
+                                All
+                            </a>
+                        </li>
+                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                            <a
+                                class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                                (click)="toggleTabs(2)"
+                                (click)="loadSongs()"
+                                [ngClass]="{
+                                    'text-indigo-600 bg-white': openTab !== 2,
+                                    'text-white bg-indigo-600': openTab === 2
+                                }"
+                            >
+                                Tracks
+                            </a>
+                        </li>
+                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                            <a
+                                class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                                (click)="toggleTabs(3)"
+                                [ngClass]="{
+                                    'text-indigo-600 bg-white': openTab !== 3,
+                                    'text-white bg-indigo-600': openTab === 3
+                                }"
+                            >
+                                Playlists
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded">
+                        <div class="px-4 py-5 flex-auto">
+                            <div class="tab-content tab-space">
+                                <div
+                                    [ngClass]="{
+                                        hidden: openTab !== 1,
+                                        block: openTab === 1
+                                    }"
+                                >
+                                    <p>
+                                        Collaboratively administrate empowered
+                                        markets via plug-and-play networks.
+                                        Dynamically procrastinate B2C users
+                                        after installed base benefits.
+                                        <br />
+                                        <br />
+                                        Dramatically visualize customer directed
+                                        convergence without revolutionary ROI.
+                                    </p>
+                                </div>
+
+                                <div
+                                    [ngClass]="{
+                                        hidden: openTab !== 2,
+                                        block: openTab === 2
+                                    }"
+                                >
+                                    <a href="/upload">Upload new track</a>
+                                    <div *ngFor="let song of songs">
+                                        <app-music-track [song]="song"></app-music-track>
+                                    </div>
+                                </div>
+
+                                <div
+                                    [ngClass]="{
+                                        hidden: openTab !== 3,
+                                        block: openTab === 3
+                                    }"
+                                >
+                                    <a href="/playlist">Create new playlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="secondCol">
+            <div class="grid grid-cols-3">
+                <div class="">
+                    <p>Followers</p>
+                    <p>0</p>
+                </div>
+
+                <div class="">
+                    <p>Following</p>
+                    <p>2</p>
+                </div>
+
+                <div class="">
+                    <p>Tracks</p>
+                    <p>0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

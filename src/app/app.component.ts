@@ -48,6 +48,10 @@ export class AppComponent implements OnInit {
 		}
 	}
 
+    get username () {
+        return this.tokenStorage.getUsername()
+    }
+
 	get clicked () {
 		return this._clicked
 	}

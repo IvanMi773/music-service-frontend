@@ -18,6 +18,10 @@ export class SongService {
     public getAllSongs () {
         return this.http.get(config.hostName + "api/song")
     }
+
+    public getSongsByUsername (username: string) {
+        return this.http.get(config.hostName + 'api/song/user/' + username)
+    }
 }
 
 //TODO: display authorization errors
