@@ -3,5 +3,6 @@ export interface Song {
     name: string,
     file: string,
     genre: string,
-    likes: string
+    likes: string,
+    duration: number,
 }

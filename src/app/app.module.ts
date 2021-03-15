@@ -20,6 +20,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { MusicTrackComponent } from './components/music-track/music-track.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
+import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { CreatePlaylistComponent } from './views/create-playlist/create-playlist
 		MusicTrackComponent,
 		ProfileComponent,
 		CreatePlaylistComponent,
+		PlaylistViewComponent,
 	],
     imports: [
         BrowserModule,

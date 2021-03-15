@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -16,7 +17,8 @@ export class CreatePlaylistComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private tokenStorage: TokenStorageService,
-        private playlistService: PlaylistService
+        private playlistService: PlaylistService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -34,6 +36,7 @@ export class CreatePlaylistComponent implements OnInit {
         formData.append('state', '0')
 
         this.playlistService.createPlaylist(formData).subscribe(data => console.log(data))
+        this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername())
     }
 
     onFileChange(event) {

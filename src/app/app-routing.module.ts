@@ -10,6 +10,7 @@ import { StreamComponent } from './views/stream/stream.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
+import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
 
 //TODO: not found page
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
     { path: 'library', component: LibraryComponent },
     { path: 'stream', component: StreamComponent },
     { path: 'profile/:username', component: ProfileComponent },
-    { path: 'playlist', component: CreatePlaylistComponent }
+    { path: 'playlist', component: CreatePlaylistComponent },
+    { path: 'playlist/:id', component: PlaylistViewComponent },
 	// { path: '**', component: NotFoundPageComponent },
 ];
 
