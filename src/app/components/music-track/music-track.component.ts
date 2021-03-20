@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Song } from 'src/app/models/song';
-import { HomeService } from 'src/app/services/home.service';
+import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
     selector: 'app-music-track',
@@ -15,23 +15,31 @@ export class MusicTrackComponent implements OnInit {
     @Output() currentTruckChange = new EventEmitter<string>()
 
     constructor(
-        private homeService: HomeService
+        private playerService: PlayerService
     ) {}
 
-    ngOnInit(): void {}
-
-    public play () {
-        this.homeService.currentTruck.subscribe(value => {
-            if (this.song.file !== value) {
+    ngOnInit(): void {
+        this.playerService.queue.subscribe(value => {
+            if (this.song.file === value[0].file) {
+                this.playing = true
+            } else {
                 this.playing = false
             }
         })
+    }
 
-        this.homeService.currentTruck.next(this.song.file)
-        this.playing = !this.playing
+    public play () {
+        // this.playerService.queue.subscribe(value => {
+            // if (this.song.file !== value) {
+            //     this.playing = false
+            // }
+        // })
 
-        if (!this.playing) {
-            this.homeService.currentTruck.next('')
-        }
+        this.playerService.queue.next(new Array(this.song))
+        // this.playing = !this.playing
+
+        // if (!this.playing) {
+            // this.playerService.queue.next('')
+        // }
     }
 }

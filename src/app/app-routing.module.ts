@@ -11,6 +11,7 @@ import { HomeComponent } from './views/home/home.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
 import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
+import { QueueComponent } from './views/queue/queue.component';
 
 //TODO: not found page
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'profile/:username', component: ProfileComponent },
     { path: 'playlist', component: CreatePlaylistComponent },
     { path: 'playlist/:id', component: PlaylistViewComponent },
+    { path: 'queue', component: QueueComponent },
 	// { path: '**', component: NotFoundPageComponent },
 ];
 

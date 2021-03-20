@@ -86,7 +86,7 @@
                                         block: openTab === 2
                                     }"
                                 >
-                                    <a href="/upload">
+                                    <a routerLink="/upload">
                                         <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Upload new track
                                         </button>
@@ -102,7 +102,7 @@
                                         block: openTab === 3
                                     }"
                                 >
-                                    <a href="/playlist">
+                                    <a routerLink="/playlist">
                                         <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Create new playlist
                                         </button>
@@ -118,7 +118,7 @@
 
                                             <p>{{ playlist.title }}</p>
 
-                                            <a [href]="'/playlist/' + playlist.id">
+                                            <a [routerLink]="'/playlist/' + playlist.id">
                                                 <button>
                                                     Play
                                                 </button>

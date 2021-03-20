@@ -63,18 +63,18 @@
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
                             <a
-                                href="/"
+                                routerLink="/"
                                 class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
 							>
 								Home
 							</a>
                             <a
-                                href="/stream"
+                                routerLink="/stream"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                 >Stream</a
                             >
                             <a
-                                href="/library"
+                                routerLink="/library"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                 >Library</a
                             >
@@ -130,14 +130,14 @@
                             aria-labelledby="user-menu"
                         >
                             <a
-                                [href]="'/profile/' + username"
+                                [routerLink]="'/profile/' + username"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 role="menuitem"
                             >
                                 Your Profile
                             </a>
                             <a
-                                href="#"
+                                routerLink="#"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 role="menuitem"
                             >
@@ -181,22 +181,22 @@
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a
-                    href="#"
+                    routerLink="#"
                     class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
                     >Dashboard</a
                 >
                 <a
-                    href="#"
+                    routerLink="#"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     >Team</a
                 >
                 <a
-                    href="#"
+                    routerLink="#"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     >Projects</a
                 >
                 <a
-                    href="#"
+                    routerLink="#"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     >Calendar</a>
             </div>

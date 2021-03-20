@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from 'ngx-audio-player';
 import { HomeService } from 'src/app/services/home.service';
+import { PlayerService } from 'src/app/services/player.service';
+import { QueueService } from 'src/app/services/queue.service';
 
 @Component({
     selector: 'app-player',
@@ -21,23 +23,23 @@ export class PlayerComponent implements OnInit {
     msaapPlaylist: Track[] = [];
 
     constructor(
-        private homeService: HomeService
+        private playerService: PlayerService,
+        private queueService: QueueService
     ) {}
 
     ngOnInit(): void {
-        this.homeService.currentTruck.subscribe(value => {
-            if (value !== '') {
-                this.msaapPlaylist = []
-                this.msaapPlaylist[0] = {
-                    title: 'test',
-                    link: 'http://localhost:8080/api/song/' + value,
-                    artist: '',
-                    duration: 2
-                }
-            } else {
-                this.msaapPlaylist = []
-            }
+        this.playerService.queue.subscribe(queue => {
+            queue.forEach((value) => {
+                this.msaapPlaylist.push({
+                    title: value.name,
+                    link: 'http://localhost:8080/api/song/' + value.file,
+                    artist: value.username,
+                    duration: 3
+                })
+            })
         })
+
+        this.queueService.subscribe()
     }
 
     public onEnded (event: any) {

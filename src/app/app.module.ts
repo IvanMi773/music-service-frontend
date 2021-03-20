@@ -21,6 +21,7 @@ import { MusicTrackComponent } from './components/music-track/music-track.compon
 import { ProfileComponent } from './views/profile/profile.component';
 import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
 import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
+import { QueueComponent } from './views/queue/queue.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { PlaylistViewComponent } from './views/playlist-view/playlist-view.compo
 		ProfileComponent,
 		CreatePlaylistComponent,
 		PlaylistViewComponent,
+		QueueComponent,
 	],
     imports: [
         BrowserModule,

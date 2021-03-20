@@ -2,5 +2,14 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
+}
+
+.player {
+    width: 90vw;
+    display: inline-block;
+}
+
+.queueButton {
+    display: inline-block;
+    width: 5vw;
 }

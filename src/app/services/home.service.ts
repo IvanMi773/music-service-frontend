@@ -6,15 +6,5 @@ import { Subject } from 'rxjs';
 })
 export class HomeService {
 
-    private _currentTruck: Subject<string> = new Subject<string>()
-
     constructor() {}
-
-    get currentTruck () {
-        return this._currentTruck
-    }
-
-    set currentTruck (currentTruck: Subject<string>) {
-        this._currentTruck = currentTruck
-    }
 }

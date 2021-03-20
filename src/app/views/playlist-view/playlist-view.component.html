@@ -8,15 +8,61 @@
 
                 <p class="mt-4 ml-4">Album • Tool • 2020</p>
                 <p class="ml-4">{{ playlist.songs.length }} compositions • 1 hour 16 minutes</p>
-                <button class="ml-4 mt-9 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Play</button>
+                <button
+					class="
+						ml-4
+						mt-9
+						py-2
+						px-4
+						border
+						border-transparent
+						text-sm
+						font-medium
+						rounded-md
+						text-white
+						bg-indigo-600
+						hover:bg-indigo-700
+						focus:outline-none
+						focus:ring-2
+						focus:ring-offset-2
+						focus:ring-indigo-500
+					"
+
+					(click)="play()"
+				>
+					<span *ngIf="!isPlaying">
+                        Play
+                    </span>
+                    <span *ngIf="isPlaying">
+                        Stop
+                    </span>
+				</button>
             </div>
 
+            <!-- <div class="fixed" *ngIf="isPlaying">
+                <ngx-audio-player
+                    [playlist]="msaapPlaylist"
+                    [displayTitle]="msaapDisplayTitle"
+                    [autoPlay]="true"
+                    muted="muted"
+                    [displayPlaylist]="msaapDisplayPlayList"
+                    [pageSizeOptions]="msaapPageSizeOptions"
+                    [displayArtist]="msaapDisplayArtist"
+                    [displayDuration]="msaapDisplayDuration"
+                    [expanded]="true"
+                    (trackEnded)="onEnded($event)"
+                    [displayVolumeControls]="msaapDisplayVolumeControls"
+                    [displayRepeatControls]="msaapDisplayRepeatControls"
+                    [disablePositionSlider]="msaapDisablePositionSlider"
+                ></ngx-audio-player>
+            </div> -->
         </div>
 
         <div *ngFor="let song of playlist.songs; let i = index">
             <div class="flex justify-between my-4">
                 <div class="flex justify-start">
                     <p class="mr-5 text-gray-600">{{ i + 1 }}</p>
+                    <!-- <img src="../../../assets/images/play1.svg" alt="Play"> -->
                     <p>{{ song.name }}</p>
                 </div>
                 <p>{{ song.duration }}</p>

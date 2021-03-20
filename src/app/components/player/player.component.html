@@ -1,17 +1,24 @@
-<div class="fixed" *ngIf="msaapPlaylist.length > 0">
-    <ngx-audio-player
-        [playlist]="msaapPlaylist"
-        [displayTitle]="msaapDisplayTitle"
-        [autoPlay]="true"
-        muted="muted"
-        [displayPlaylist]="msaapDisplayPlayList"
-        [pageSizeOptions]="msaapPageSizeOptions"
-        [displayArtist]="msaapDisplayArtist"
-        [displayDuration]="msaapDisplayDuration"
-        [expanded]="true"
-        (trackEnded)="onEnded($event)"
-        [displayVolumeControls]="msaapDisplayVolumeControls"
-        [displayRepeatControls]="msaapDisplayRepeatControls"
-        [disablePositionSlider]="msaapDisablePositionSlider"
-    ></ngx-audio-player>
+<div class="fixed flex items-center" *ngIf="msaapPlaylist.length > 0">
+    <div class="player">
+        <ngx-audio-player
+            [playlist]="msaapPlaylist"
+            [displayTitle]="msaapDisplayTitle"
+            [autoPlay]="true"
+            muted="muted"
+            [displayPlaylist]="msaapDisplayPlayList"
+            [pageSizeOptions]="msaapPageSizeOptions"
+            [displayArtist]="msaapDisplayArtist"
+            [displayDuration]="msaapDisplayDuration"
+            [expanded]="true"
+            (trackEnded)="onEnded($event)"
+            [displayVolumeControls]="msaapDisplayVolumeControls"
+            [displayRepeatControls]="msaapDisplayRepeatControls"
+            [disablePositionSlider]="msaapDisablePositionSlider"
+        ></ngx-audio-player>
+    </div>
+    <button class="queueButton">
+        <a routerLink="/queue">
+            <img src="../../../assets/images/queue.png" class="w-9" alt="">
+        </a>
+    </button>
 </div>
