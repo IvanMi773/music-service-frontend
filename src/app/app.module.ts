@@ -22,6 +22,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
 import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
 import { QueueComponent } from './views/queue/queue.component';
+import { PlaylistSongComponent } from './components/playlist-song/playlist-song.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { QueueComponent } from './views/queue/queue.component';
 		CreatePlaylistComponent,
 		PlaylistViewComponent,
 		QueueComponent,
+		PlaylistSongComponent,
 	],
     imports: [
         BrowserModule,

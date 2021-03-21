@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from 'src/app/models/song';
-import { PlayerService } from 'src/app/services/player.service';
 import { QueueService } from 'src/app/services/queue.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class QueueComponent implements OnInit {
     private _queue: Array<Song>
 
     constructor(
-        private playerService: PlayerService,
         private queueService: QueueService
     ) {}
 

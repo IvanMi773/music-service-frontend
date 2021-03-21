@@ -1,7 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Song } from '../models/song';
-import { QueueService } from './queue.service';
 
 @Injectable({
     providedIn: 'root',
@@ -9,7 +8,6 @@ import { QueueService } from './queue.service';
 export class PlayerService {
 
     private _queue: Subject<Array<Song>> = new Subject<Array<Song>>()
-    private currentTrack: Song
 
     constructor() {}
 

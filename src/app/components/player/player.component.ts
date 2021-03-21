@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from 'ngx-audio-player';
-import { HomeService } from 'src/app/services/home.service';
 import { PlayerService } from 'src/app/services/player.service';
 import { QueueService } from 'src/app/services/queue.service';
 
@@ -43,6 +42,6 @@ export class PlayerComponent implements OnInit {
     }
 
     public onEnded (event: any) {
-        console.log("ended")
+        this.queueService.queue.shift()
     }
 }

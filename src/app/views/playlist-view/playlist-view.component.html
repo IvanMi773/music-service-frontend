@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="header" *ngIf="playlist">
+    <div *ngIf="playlist">
         <div class="flex flex-wrap content-start mt-5">
             <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="playlist-image">
 
@@ -38,36 +38,8 @@
                     </span>
 				</button>
             </div>
-
-            <!-- <div class="fixed" *ngIf="isPlaying">
-                <ngx-audio-player
-                    [playlist]="msaapPlaylist"
-                    [displayTitle]="msaapDisplayTitle"
-                    [autoPlay]="true"
-                    muted="muted"
-                    [displayPlaylist]="msaapDisplayPlayList"
-                    [pageSizeOptions]="msaapPageSizeOptions"
-                    [displayArtist]="msaapDisplayArtist"
-                    [displayDuration]="msaapDisplayDuration"
-                    [expanded]="true"
-                    (trackEnded)="onEnded($event)"
-                    [displayVolumeControls]="msaapDisplayVolumeControls"
-                    [displayRepeatControls]="msaapDisplayRepeatControls"
-                    [disablePositionSlider]="msaapDisablePositionSlider"
-                ></ngx-audio-player>
-            </div> -->
         </div>
 
-        <div *ngFor="let song of playlist.songs; let i = index">
-            <div class="flex justify-between my-4">
-                <div class="flex justify-start">
-                    <p class="mr-5 text-gray-600">{{ i + 1 }}</p>
-                    <!-- <img src="../../../assets/images/play1.svg" alt="Play"> -->
-                    <p>{{ song.name }}</p>
-                </div>
-                <p>{{ song.duration }}</p>
-            </div>
-            <hr>
-        </div>
+        <app-playlist-song [playlist]="playlist.songs"></app-playlist-song>
     </div>
 </div>
