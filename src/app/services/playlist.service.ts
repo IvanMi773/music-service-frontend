@@ -19,7 +19,7 @@ export class PlaylistService {
         return this.http.get(config.hostName + 'api/playlist/user/' + username)
     }
 
-    getPlaylistById (playlistId: number) {
+    public getPlaylistById (playlistId: number) {
         return this.http.get(config.hostName + 'api/playlist/' + playlistId)
     }
 }

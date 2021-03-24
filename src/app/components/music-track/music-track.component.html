@@ -8,14 +8,31 @@
         <p class="font-light inline text-sm"> posted a track</p>
     </div>
 
-    <div class="flex items-center">
-        <img src="../../../assets/images/a.jpg" class="h-40 w-40 inline" alt="">
-        <button class="ml-5" (click)="play()">
-            <img src="../../../assets/images/play1.svg" alt="Play" *ngIf="!playing">
-            <img src="../../../assets/images/pause.svg" alt="Pause" *ngIf="playing">
-        </button>
-        <p class="inline ml-5">{{ song.name }}</p>
-        <p class="ml-10">#{{ song.genre }}</p>
+    <div class="grid grid-cols-2 flex items-center">
+        <div>
+            <div class="flex items-center">
+                <img src="../../../assets/images/a.jpg" class="h-40 w-40 inline" alt="">
+                <button class="ml-5" (click)="play()">
+                    <img src="../../../assets/images/play1.svg" alt="Play" *ngIf="!playing">
+                    <img src="../../../assets/images/pause.svg" alt="Pause" *ngIf="playing">
+                </button>
+                <p class="inline ml-5">{{ song.name }}</p>
+            </div>
+
+        </div>
+
+        <div class="text-right">
+            <p>#{{ song.genre }}</p>
+            <p>{{ ((song.duration - (song.duration % 60)) / 60) + ":" + (song.duration % 60) }}</p>
+        </div>
+
+        <div class="flex mt-2">
+            <button>
+                <img src="../../../assets/images/like.png" (click)="like()" *ngIf="!song.meLiked" class="w-7 h-7" alt="">
+                <img src="../../../assets/images/liked.png" (click)="like()" *ngIf="song.meLiked" class="w-7 h-7" alt="">
+            </button>
+            <p class="ml-3">{{ song.likes }}</p>
+        </div>
     </div>
 
 </div>

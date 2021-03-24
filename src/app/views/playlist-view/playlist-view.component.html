@@ -6,8 +6,8 @@
             <div>
                 <p class="text-4xl mt-9 ml-4 capitalize font-bold">{{ playlist.title }}</p>
 
-                <p class="mt-4 ml-4">Album • Tool • 2020</p>
-                <p class="ml-4">{{ playlist.songs.length }} compositions • 1 hour 16 minutes</p>
+                <p class="mt-4 ml-4">Playlist • Tool • 2020</p>
+                <p class="ml-4">{{ playlist.songs.length }} compositions • {{ ((playlistDuration - (playlistDuration % 60)) / 60) + ' minutes ' + (playlistDuration % 60) + ' seconds' }}</p>
                 <button
 					class="
 						ml-4

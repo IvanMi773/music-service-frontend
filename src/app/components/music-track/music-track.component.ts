@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Song } from 'src/app/models/song';
+import { SongLikes } from 'src/app/models/SongLikes';
 import { PlayerService } from 'src/app/services/player.service';
+import { SongService } from 'src/app/services/song.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
     selector: 'app-music-track',
@@ -9,16 +12,17 @@ import { PlayerService } from 'src/app/services/player.service';
 })
 export class MusicTrackComponent implements OnInit {
 
-    public playing = false
+    private _playing: boolean = false
     @Input() song: Song
-    @Input() currentTruck: string | undefined
-    @Output() currentTruckChange = new EventEmitter<string>()
 
     constructor(
-        private playerService: PlayerService
+        private playerService: PlayerService,
+        private songService: SongService,
+        private tokenStorage: TokenStorageService
     ) {}
 
     ngOnInit(): void {
+        //TODO: display duration like this 3:03 (now 3:3)
         this.playerService.queue.subscribe(value => {
             if (this.song.file === value[0].file) {
                 this.playing = true
@@ -26,20 +30,33 @@ export class MusicTrackComponent implements OnInit {
                 this.playing = false
             }
         })
+
+        this.songService.getLikes(this.song.id, this.tokenStorage.getUsername()).subscribe(
+            (data: SongLikes) => {
+                this.song.likes = data.countOfLikes,
+                this.song.meLiked = data.meLiked
+            }
+        )
+    }
+
+    get playing () {
+        return this._playing
+    }
+
+    set playing (playing: boolean) {
+        this._playing = playing
     }
 
     public play () {
-        // this.playerService.queue.subscribe(value => {
-            // if (this.song.file !== value) {
-            //     this.playing = false
-            // }
-        // })
-
         this.playerService.queue.next(new Array(this.song))
-        // this.playing = !this.playing
+    }
 
-        // if (!this.playing) {
-            // this.playerService.queue.next('')
-        // }
+    public like () {
+        this.songService.updateLikes(this.song.id, this.tokenStorage.getUsername()).subscribe(
+            (data: SongLikes) => {
+                this.song.likes = data.countOfLikes
+                this.song.meLiked = data.meLiked
+            }
+        )
     }
 }

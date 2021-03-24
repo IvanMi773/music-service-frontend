@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.songService.getAllSongs().subscribe((data: Array<Song>) => this._songs = data, err => console.log(err))
+        this.songService.getAllSongs().subscribe((data: Array<Song>) => { this._songs = data }, err => console.log(err))
     }
 
     get songs () {

@@ -22,6 +22,14 @@ export class SongService {
     public getSongsByUsername (username: string) {
         return this.http.get(config.hostName + 'api/song/user/' + username)
     }
+
+    public updateLikes (songId: number, username: string) {
+        return this.http.put(config.hostName + 'api/song/updateLikes/' + songId, username)
+    }
+
+    public getLikes (songId: number, username: string) {
+        return this.http.get(config.hostName + 'api/song/likes/' + songId + '/' + username)
+    }
 }
 
 //TODO: display authorization errors

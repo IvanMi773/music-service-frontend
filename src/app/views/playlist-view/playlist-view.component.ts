@@ -15,7 +15,7 @@ export class PlaylistViewComponent implements OnInit {
     private _playlistId: number
     private _playlist: Playlist
     private _isPlaying: boolean = false
-    public currentSong: Song
+    private _playlistDuration: number = 0
 
     constructor(
         private playlistService: PlaylistService,
@@ -30,12 +30,11 @@ export class PlaylistViewComponent implements OnInit {
         this.playlistService.getPlaylistById(this.playlistId).subscribe(
             (data: Playlist) => {
                 this.playlist = data
-                this.playlist.songs.forEach(song => {
-                    song.duration = 5.43
-                });
+                this.playlist.songs.forEach(song => this._playlistDuration += song.duration)
             },
             err => console.log(err)
         )
+
     }
 
     public play () {
@@ -49,6 +48,14 @@ export class PlaylistViewComponent implements OnInit {
 
     set playlistId (playlistId: number) {
         this._playlistId = playlistId
+    }
+
+    get playlistDuration () {
+        return this._playlistDuration
+    }
+
+    set playlistDuration (playlistDuration: number) {
+        this._playlistDuration = playlistDuration
     }
 
     get playlist () {
