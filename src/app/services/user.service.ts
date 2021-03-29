@@ -9,13 +9,13 @@ export class UserService {
 
 	constructor(private http: HttpClient) {}
 
-    login (username: String, password: String) {
+    public login (username: String, password: String) {
         const body = {username: username, password: password};
 
         return this.http.post(config.hostName + 'api/auth/login', body);
     }
 
-	register (username: String, password: String, firstName: String, lastName: String, email: String) {
+	public register (username: String, password: String, firstName: String, lastName: String, email: String) {
 		const body = {
 			username: username,
 			email: email,
@@ -26,6 +26,14 @@ export class UserService {
 
         return this.http.post(config.hostName + 'api/auth/register', body);
 	}
+
+    public getProfileByUsername (username: string) {
+        return this.http.get(config.hostName + 'api/user/' + username)
+    }
+
+    public subscribe (channelId: string) {
+        return this.http.post(config.hostName + 'api/user/change-subscription/' + channelId, '')
+    }
 
 	get loggedIn (): Boolean {
 		return this.loggedIn

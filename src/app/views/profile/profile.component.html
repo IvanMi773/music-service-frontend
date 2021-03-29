@@ -11,7 +11,30 @@
             alt=""
         />
         <p class="username">{{ username }}</p>
-        <p class="name">Ivan Mihailovskij</p>
+        <p class="name">{{ user.firstName + ' ' + user.lastName }}</p>
+        <button
+            class="
+                mt-4
+                py-2
+                px-4
+                border
+                border-transparent
+                text-sm
+                mb-4
+                font-medium
+                rounded-md
+                text-white
+                bg-indigo-600
+                hover:bg-indigo-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-indigo-500
+            "
+            (click)="subscribe()"
+        >
+            Subscribe
+        </button>
     </div>
 
     <div class="section">
@@ -86,7 +109,7 @@
                                         block: openTab === 2
                                     }"
                                 >
-                                    <a routerLink="/upload">
+                                    <a routerLink="/upload" *ngIf="username === currentUsername">
                                         <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Upload new track
                                         </button>
@@ -102,14 +125,14 @@
                                         block: openTab === 3
                                     }"
                                 >
-                                    <a routerLink="/playlist">
-                                        <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <a routerLink="/playlist" *ngIf="username === currentUsername">
+                                        <button class="py-2 px-4 border border-transparent text-sm mb-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             Create new playlist
                                         </button>
                                     </a>
 
 									<div class="grid grid-cols-3">
-										<div *ngFor="let playlist of playlists" class="playlist border-2">
+										<div *ngFor="let playlist of playlists" class="playlist border-2 mr-4">
                                             <img
                                                 [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo"
                                                 alt="Playlist photo"
@@ -136,18 +159,18 @@
         <div class="secondCol">
             <div class="grid grid-cols-3">
                 <div class="">
-                    <p>Followers</p>
-                    <p>0</p>
+                    <p>Subscribers</p>
+                    <p>{{ user.subscribers }}</p>
                 </div>
 
                 <div class="">
-                    <p>Following</p>
-                    <p>2</p>
+                    <p>Subscriptions</p>
+                    <p>{{ user.subscriptions }}</p>
                 </div>
 
                 <div class="">
                     <p>Tracks</p>
-                    <p>0</p>
+                    <p>{{ user.tracks === undefined ? 0 : user.tracks }}</p>
                 </div>
             </div>
         </div>
