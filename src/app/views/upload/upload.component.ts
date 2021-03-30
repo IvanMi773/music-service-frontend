@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GenreService } from 'src/app/services/genre.service';
 import { SongService } from 'src/app/services/song.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -21,7 +22,8 @@ export class UploadComponent implements OnInit {
         private formBuilder: FormBuilder,
         private songService: SongService,
         private tokenStorage: TokenStorageService,
-        private genreService: GenreService
+        private genreService: GenreService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -69,7 +71,10 @@ export class UploadComponent implements OnInit {
         formData.append('file', this.fileToUpload, this.fileToUpload.name)
         formData.append('genre', this.genreId)
 
-        this.songService.upload(formData).subscribe(data => console.log(data), err => console.log(err))
+        this.songService.upload(formData).subscribe(data => {
+            console.log(data)
+            this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername());
+        }, err => console.log(err))
     }
 
     get title () {

@@ -1,1 +1,8 @@
-<p>stream works!</p>
+<div class="content mx-auto">
+    <h1 class="text-gray-500 text-lg mt-5 mb-5">Hear the latest posts from the people you’re following:</h1>
+
+    <div *ngFor="let song of songs">
+        <app-music-track [song]="song"></app-music-track>
+    </div>
+</div>
+

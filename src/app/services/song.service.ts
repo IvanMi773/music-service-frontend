@@ -30,6 +30,10 @@ export class SongService {
     public getLikes (songId: number, username: string) {
         return this.http.get(config.hostName + 'api/song/likes/' + songId + '/' + username)
     }
+
+    public getSubscriptionsSongs () {
+        return this.http.get(config.hostName + 'api/song/s')
+    }
 }
 
 //TODO: display authorization errors
