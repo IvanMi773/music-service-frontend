@@ -27,6 +27,10 @@ export class UserService {
         return this.http.post(config.hostName + 'api/auth/register', body);
 	}
 
+    public getUserSubscriptions (username: string) {
+        return this.http.get(config.hostName + 'api/user/u/' + username)
+    }
+
     public getProfileByUsername (username: string) {
         return this.http.get(config.hostName + 'api/user/' + username)
     }

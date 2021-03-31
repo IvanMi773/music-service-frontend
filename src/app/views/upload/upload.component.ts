@@ -60,6 +60,8 @@ export class UploadComponent implements OnInit {
         //TODO: check if genre "none" selected
         //TODO: коли ми вибираємо кастомну категорію і вводимо назву категорії,
         // а потім вибираємо визначену категорію, то станеться помилка валідації
+        //TODO: song cover
+        
         if (this.isCustomGenre) {
             let promice: any = await this.genreService.createGenre(this.genre.value)
             this.genreId = promice.genreId

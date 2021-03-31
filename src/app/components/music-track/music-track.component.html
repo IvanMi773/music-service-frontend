@@ -1,10 +1,12 @@
 <div>
     <div class="mb-2 mt-5">
-        <img
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-            class="w-8 h-8 inline rounded-full mr-2"
-        >
-        <p class="font-bold inline text-sm">{{ song.username }}</p>
+        <a [routerLink]="'profile/' + song.username">
+            <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                class="w-8 h-8 inline rounded-full mr-2"
+            >
+            <p class="font-bold inline text-sm">{{ song.username }}</p>
+        </a>
         <p class="font-light inline text-sm"> posted a track</p>
     </div>
 

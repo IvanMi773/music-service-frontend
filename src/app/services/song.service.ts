@@ -34,6 +34,10 @@ export class SongService {
     public getSubscriptionsSongs () {
         return this.http.get(config.hostName + 'api/song/s')
     }
+
+    public saveSongToHistory (songId: number) {
+        return this.http.post(config.hostName + 'api/song/h/' + songId, '')
+    }
 }
 
 //TODO: display authorization errors

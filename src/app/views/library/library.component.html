@@ -1,1 +1,50 @@
-<p>library works!</p>
+<div class="md:container mx-auto">
+    <div class="mb-5">
+        <p class="mt-5 mb-4 text-2xl">Recently played</p>
+
+        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+            <div *ngFor="let song of resentlyPlayedSongs">
+                <img src="../../../assets/images/a.jpg" class="h-40 w-40 inline" alt="">
+                <p class="text-lg">{{ song.name }}</p>
+                <p class="text-sm text-gray-400">{{ song.username }}</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="mb-5">
+        <p class="mt-5 mb-4 text-2xl">Liked songs</p>
+
+        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+            <div *ngFor="let song of likedSongs">
+                <img src="../../../assets/images/a.jpg" class="h-40 w-40 inline" alt="">
+                <p class="text-lg">{{ song.name }}</p>
+                <p class="text-sm text-gray-400">{{ song.username }}</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="mb-5">
+        <p class="mt-5 mb-4 text-2xl">Playlists</p>
+
+        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+            <div *ngFor="let playlist of playlists">
+                <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
+                <p class="text-lg">{{ playlist.title }}</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="mb-5">
+        <p class="mt-5 mb-4 text-2xl">Following</p>
+
+        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+            <div *ngFor="let user of subscriptions">
+                <img src="../../../assets/images/a.jpg" class="h-40 w-40 inline" alt="">
+                <p class="text-lg">{{ user.username }}</p>
+            </div>
+        </div>
+    </div>
+</div>
