@@ -11,7 +11,7 @@
             alt=""
         />
         <p class="username">{{ username }}</p>
-        <p class="name">{{ user.firstName + ' ' + user.lastName }}</p>
+        <p class="name">{{ user?.firstName + ' ' + user?.lastName }}</p>
         <button
             class="
                 mt-4
@@ -161,17 +161,17 @@
             <div class="grid grid-cols-3">
                 <div class="">
                     <p>Subscribers</p>
-                    <p>{{ user.subscribers }}</p>
+                    <p>{{ user?.subscribers }}</p>
                 </div>
 
                 <div class="">
                     <p>Subscriptions</p>
-                    <p>{{ user.subscriptions }}</p>
+                    <p>{{ user?.subscriptions }}</p>
                 </div>
 
                 <div class="">
                     <p>Tracks</p>
-                    <p>{{ user.tracks === undefined ? 0 : user.tracks }}</p>
+                    <p>{{ user?.tracks === undefined ? 0 : user?.tracks }}</p>
                 </div>
             </div>
         </div>

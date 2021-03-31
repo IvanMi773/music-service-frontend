@@ -12,8 +12,11 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { CreatePlaylistComponent } from './views/create-playlist/create-playlist.component';
 import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
 import { QueueComponent } from './views/queue/queue.component';
+import { SettingsComponent } from './views/settings/settings.component';
+import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
 
 //TODO: not found page
+//TODO: change http://localhost to config.hostname in img src and player list
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
 	{ path: 'login', component: LoginComponent },
@@ -26,6 +29,8 @@ const routes: Routes = [
     { path: 'playlist', component: CreatePlaylistComponent },
     { path: 'playlist/:id', component: PlaylistViewComponent },
     { path: 'queue', component: QueueComponent },
+    { path: 'settings', component: SettingsComponent },
+    { path: 'edit', component: EditProfileComponent },
 	// { path: '**', component: NotFoundPageComponent },
 ];
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import config from '../configuration'
 
 @Injectable({
@@ -37,6 +37,20 @@ export class UserService {
 
     public subscribe (channelId: string) {
         return this.http.post(config.hostName + 'api/user/change-subscription/' + channelId, '')
+    }
+
+    public updateUser (firstName: String, lastName: string, email: string) {
+        const body = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email
+        }
+
+        return this.http.put(config.hostName + 'api/user/update', body)
+    }
+
+    public delete (username: string) {
+        return this.http.delete(config.hostName + 'api/user/' + username)
     }
 
 	get loggedIn (): Boolean {

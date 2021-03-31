@@ -23,6 +23,8 @@ import { CreatePlaylistComponent } from './views/create-playlist/create-playlist
 import { PlaylistViewComponent } from './views/playlist-view/playlist-view.component';
 import { QueueComponent } from './views/queue/queue.component';
 import { PlaylistSongComponent } from './components/playlist-song/playlist-song.component';
+import { SettingsComponent } from './views/settings/settings.component';
+import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +44,8 @@ import { PlaylistSongComponent } from './components/playlist-song/playlist-song.
 		PlaylistViewComponent,
 		QueueComponent,
 		PlaylistSongComponent,
+		SettingsComponent,
+		EditProfileComponent,
 	],
     imports: [
         BrowserModule,
