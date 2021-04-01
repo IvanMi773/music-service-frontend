@@ -4,6 +4,7 @@ export interface User {
     firstName: string,
     lastName: string,
     subscribers: number,
-    subscriptions: number
-    tracks: number
+    subscriptions: number,
+    tracks: number,
+    avatar: string
 }

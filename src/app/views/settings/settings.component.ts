@@ -12,8 +12,6 @@ import { UserService } from 'src/app/services/user.service';
 export class SettingsComponent implements OnInit {
 
     //TODO: change language
-    //TODO: delete account
-    //TODO: change profile photo
 
     private _user: User
 
@@ -24,6 +22,7 @@ export class SettingsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        //TODO: передати в пропси форми редагування
         this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => this._user = data)
     }
 

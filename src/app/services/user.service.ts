@@ -39,13 +39,7 @@ export class UserService {
         return this.http.post(config.hostName + 'api/user/change-subscription/' + channelId, '')
     }
 
-    public updateUser (firstName: String, lastName: string, email: string) {
-        const body = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email
-        }
-
+    public updateUser (body: FormData) {
         return this.http.put(config.hostName + 'api/user/update', body)
     }
 

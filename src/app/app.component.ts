@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from './models/User';
 import { TokenStorageService } from './services/token-storage.service';
 import { UserService } from './services/user.service';
 
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
     title = 'music-service-frontend'
 	private _clicked: Boolean = false
 	private _loggedIn: Boolean = false
+    private _avatar: string
 
 	constructor(
 		private userService: UserService,
@@ -20,6 +22,8 @@ export class AppComponent implements OnInit {
 
 	ngOnInit () {
 		this.showContext()
+
+        this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => this._avatar = data.avatar)
 	}
 
 	ngDoCheck (): void {
@@ -47,6 +51,10 @@ export class AppComponent implements OnInit {
 			element.classList.remove('transform', 'opacity-100', 'scale-100')
 		}
 	}
+
+    get avatar () {
+        return this._avatar
+    }
 
     get username () {
         return this.tokenStorage.getUsername()
