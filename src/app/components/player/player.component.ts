@@ -29,13 +29,27 @@ export class PlayerComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+
+        if (this.queueService.queue !== null) {
+            this.queueService?.queue.forEach(value => {
+                this.msaapPlaylist.push({
+                    title: value.name,
+                    link: 'http://localhost:8080/api/song/' + value.file,
+                    artist: value.username,
+                    duration: value.duration
+                })
+            });
+        } else {
+            this.queueService.clearLocalstorage()
+        }
+
         this.playerService.queue.subscribe(queue => {
             queue.forEach((value) => {
                 this.msaapPlaylist.push({
                     title: value.name,
                     link: 'http://localhost:8080/api/song/' + value.file,
                     artist: value.username,
-                    duration: 3
+                    duration: value.duration
                 })
             })
         })
@@ -45,6 +59,6 @@ export class PlayerComponent implements OnInit {
 
     public onEnded (event: any) {
         this.songService.saveSongToHistory(this.queueService.queue[0].id).subscribe(data => console.log(data))
-        this.queueService.queue.shift()
+        this.queueService.removeFirstElementFromQueue()
     }
 }

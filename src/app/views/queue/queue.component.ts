@@ -9,17 +9,15 @@ import { QueueService } from 'src/app/services/queue.service';
 })
 export class QueueComponent implements OnInit {
 
-    private _queue: Array<Song>
-
     constructor(
         private queueService: QueueService
     ) {}
 
     ngOnInit(): void {
-        this._queue = this.queueService.queue
+        this.queueService.queue
     }
 
     get queue () {
-        return this._queue
+        return this.queueService.queue
     }
 }

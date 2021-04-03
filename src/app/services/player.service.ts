@@ -11,6 +11,17 @@ export class PlayerService {
 
     constructor() {}
 
+    // public saveToLocalStorage () {
+    //     this.queue.subscribe((songs: Array<Song>) => {
+    //         console.log(songs)
+    //         localStorage.setItem('queue', JSON.stringify(songs))
+    //     })
+    // }
+
+    // public getFromLocalStorage () {
+    //     return JSON.parse(localStorage.getItem('queue'))
+    // }
+
     get queue () {
         return this._queue
     }

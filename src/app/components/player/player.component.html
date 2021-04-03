@@ -1,9 +1,9 @@
-<div class="fixed flex items-center" *ngIf="msaapPlaylist.length > 0">
+<div class="bg-white shadow fixed flex items-center" *ngIf="msaapPlaylist.length > 0">
     <div class="player">
         <ngx-audio-player
             [playlist]="msaapPlaylist"
             [displayTitle]="msaapDisplayTitle"
-            [autoPlay]="true"
+            [autoPlay]="false"
             muted="muted"
             [displayPlaylist]="msaapDisplayPlayList"
             [pageSizeOptions]="msaapPageSizeOptions"
