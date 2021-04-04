@@ -3,9 +3,8 @@ export interface User {
     email: string,
     firstName: string,
     lastName: string,
-    subscribers: number,
-    subscriptions: number,
+    subscribers: Array<User>,
+    subscriptions: Array<User>,
     tracks: number,
     avatar: string
-    meSubscribed: boolean
 }

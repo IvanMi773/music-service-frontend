@@ -46,9 +46,9 @@ export class LibraryComponent implements OnInit {
             this.playlistService.getPlaylistById(likedPlaylistId).subscribe((data: Playlist) => this._likedSongs = data.songs)
         })
 
-        this.userService.getUserSubscriptions(this.tokenStorage.getUsername()).subscribe(
-            (data: UserSubscriptions) => this._subscriptions = data.subscriptions
-        )
+        this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => {
+            this._subscriptions = data.subscriptions
+        })
     }
 
     get resentlyPlayedSongs () {

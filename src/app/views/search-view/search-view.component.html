@@ -41,6 +41,9 @@
                                 <div *ngFor="let song of searchRes?.songs">
                                     <app-music-track [song]="song"></app-music-track>
                                 </div>
+                                <div *ngIf="searchRes?.songs.length <= 0">
+                                    <span class="text-gray-500 text-xl">Nothing to show</span>
+                                </div>
                             </div>
 
                             <div
@@ -51,6 +54,9 @@
                             >
                                 <div *ngFor="let user of searchRes?.users">
                                     <app-user-view [user]="user"></app-user-view>
+                                </div>
+                                <div *ngIf="searchRes?.users.length <= 0">
+                                    <span class="text-gray-500 text-xl">Nothing to show</span>
                                 </div>
                             </div>
                         </div>

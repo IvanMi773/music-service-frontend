@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
     private _songs: Array<Song>
     private _playlists: Array<Playlist>
     private _user: User
+    public meSubscribed: boolean = false
 
     constructor(
         private tokenStorage: TokenStorageService,
@@ -34,7 +35,10 @@ export class ProfileComponent implements OnInit {
     //TODO: якщо користувач переходить з профіля іншого користувача на свій профіль, то дані не оновлюються
 
     ngOnInit(): void {
-        this.userService.getProfileByUsername(this.username).subscribe((data: User) => this.user = data, err => console.log(err))
+        this.userService.getProfileByUsername(this.username).subscribe((data: User) => {
+            this.user = data
+            this.checkForSubscribing()
+        }, err => console.log(err))
     }
 
     toggleTabs($tabNumber: number){
@@ -53,7 +57,19 @@ export class ProfileComponent implements OnInit {
     }
 
     public subscribe () {
-        this.userService.subscribe(this.username).subscribe((data: User) => this.user = data, err => console.log(err))
+        this.userService.subscribe(this.username).subscribe((data: User) => {
+            this.user = data
+            this.checkForSubscribing()
+        }, err => console.log(err))
+    }
+
+    private checkForSubscribing () {
+        this.meSubscribed = false
+        this.user.subscribers.forEach(item => {
+            if (item.username === this.currentUsername) {
+                this.meSubscribed = true
+            }
+        })
     }
 
     get username () {

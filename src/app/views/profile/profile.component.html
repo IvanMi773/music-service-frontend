@@ -34,7 +34,15 @@
             (click)="subscribe()"
             *ngIf="username != currentUsername"
         >
-            Subscribe
+            <span *ngIf="!meSubscribed; else elseBlock">
+                Subscribe
+            </span>
+
+            <ng-template #elseBlock>
+                <span >
+                    Unsubscribe
+                </span>
+            </ng-template>
         </button>
     </div>
 
@@ -161,12 +169,12 @@
             <div class="grid grid-cols-3">
                 <div class="">
                     <p>Subscribers</p>
-                    <p>{{ user?.subscribers }}</p>
+                    <p>{{ user?.subscribers.length }}</p>
                 </div>
 
                 <div class="">
                     <p>Subscriptions</p>
-                    <p>{{ user?.subscriptions }}</p>
+                    <p>{{ user?.subscriptions.length }}</p>
                 </div>
 
                 <div class="">

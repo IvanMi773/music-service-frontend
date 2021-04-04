@@ -61,14 +61,13 @@ export class UploadComponent implements OnInit {
         //TODO: коли ми вибираємо кастомну категорію і вводимо назву категорії,
         // а потім вибираємо визначену категорію, то станеться помилка валідації
         //TODO: song cover
-        
+
         if (this.isCustomGenre) {
             let promice: any = await this.genreService.createGenre(this.genre.value)
             this.genreId = promice.genreId
         }
 
         const formData: FormData = new FormData()
-        formData.append('username', this.tokenStorage.getUsername())
         formData.append('title', this.title.value)
         formData.append('file', this.fileToUpload, this.fileToUpload.name)
         formData.append('genre', this.genreId)
