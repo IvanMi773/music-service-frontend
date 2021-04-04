@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
     title = 'music-service-frontend'
 	private _clicked: Boolean = false
 	private _loggedIn: Boolean = false
-    private _avatar: string
+    private _avatar: string = 'default_user.png'
 
 	constructor(
 		private userService: UserService,

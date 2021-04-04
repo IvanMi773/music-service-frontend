@@ -1,0 +1,62 @@
+<div class="container mx-auto">
+    <div class="mainCol">
+        <div class="flex flex-wrap">
+            <div class="w-full">
+                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                        <a
+                            class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                            (click)="toggleTabs(1)"
+                            [ngClass]="{
+                                'text-indigo-600 bg-white': openTab !== 1,
+                                'text-white bg-indigo-600': openTab === 1
+                            }"
+                        >
+                            Songs
+                        </a>
+                    </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                        <a
+                            class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                            (click)="toggleTabs(2)"
+                            [ngClass]="{
+                                'text-indigo-600 bg-white': openTab !== 2,
+                                'text-white bg-indigo-600': openTab === 2
+                            }"
+                        >
+                            Users
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded">
+                    <div class="px-4 py-5 flex-auto">
+                        <div class="tab-content tab-space">
+                            <div
+                                [ngClass]="{
+                                    hidden: openTab !== 1,
+                                    block: openTab === 1
+                                }"
+                            >
+                                <div *ngFor="let song of searchRes?.songs">
+                                    <app-music-track [song]="song"></app-music-track>
+                                </div>
+                            </div>
+
+                            <div
+                                [ngClass]="{
+                                    hidden: openTab !== 2,
+                                    block: openTab === 2
+                                }"
+                            >
+                                <div *ngFor="let user of searchRes?.users">
+                                    <app-user-view [user]="user"></app-user-view>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

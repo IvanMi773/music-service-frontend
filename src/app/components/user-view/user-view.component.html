@@ -1,0 +1,39 @@
+<div class="mt-5">
+    <div class="grid grid-cols-6 items-center">
+        <div class="flex">
+            <a [routerLink]="'/profile/' + user.username">
+                <img [src]="'http://localhost:8080/api/user/avatar/' + user.avatar" class="h-40 rounded-full w-40 inline" alt="">
+            </a>
+        </div>
+
+        <div class="col-span-4 ml-5">
+            <a [routerLink]="'/profile/' + user.username">
+                <p class="text-xl text-bold">{{ user.username }}</p>
+            </a>
+            <div class="text-gray-400 mt-2">
+                <p class="inline">{{ user.firstName }} </p>
+                <p class="inline">{{ user.lastName }}</p>
+            </div>
+
+            <div class="w-20">
+                <div class="grid grid-cols-2">
+                    <div class="">
+                        <img src="../../../assets/images/peoples.png" class="w-5 inline-block" alt="">
+                        <p class="inline ml-1">{{ user.subscribers }}</p>
+                    </div>
+
+                    <div class="">
+                        <img src="../../../assets/images/music.png" class="w-4 inline-block" alt="">
+                        <p class="inline ml-1">{{ user.subscribers }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <button>Subscribe</button>
+        </div>
+    </div>
+
+</div>

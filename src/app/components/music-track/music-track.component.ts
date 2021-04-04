@@ -16,7 +16,7 @@ export class MusicTrackComponent implements OnInit {
 
     private _playing: boolean = false
     @Input() song: Song
-    private _avatar: string
+    private _avatar: string = 'default_user.png'
 
     constructor(
         private playerService: PlayerService,
@@ -42,7 +42,7 @@ export class MusicTrackComponent implements OnInit {
             }
         )
 
-        this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => this._avatar = data.avatar)
+        this.userService.getProfileByUsername(this.song.username).subscribe((data: User) => this._avatar = data.avatar)
     }
 
     get playing () {

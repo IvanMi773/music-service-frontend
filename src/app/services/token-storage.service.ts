@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class TokenStorageService {
 	private TOKEN_KEY = 'login_token'
     private USERNAME_KEY = 'username'
+    private QUEUE_KEY = 'queue'
+
     constructor() {}
 
     public getToken(): string {
@@ -18,8 +20,9 @@ export class TokenStorageService {
     }
 
     signOut(): void {
-        localStorage.removeItem(this.TOKEN_KEY);
-        localStorage.removeItem(this.USERNAME_KEY)
+        // localStorage.removeItem(this.TOKEN_KEY);
+        // localStorage.removeItem(this.USERNAME_KEY)
+        localStorage.clear()
     }
 
 	get tokenKey () {

@@ -7,4 +7,5 @@ export interface User {
     subscriptions: number,
     tracks: number,
     avatar: string
+    meSubscribed: boolean
 }

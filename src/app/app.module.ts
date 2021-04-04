@@ -25,6 +25,9 @@ import { QueueComponent } from './views/queue/queue.component';
 import { PlaylistSongComponent } from './components/playlist-song/playlist-song.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchViewComponent } from './views/search-view/search-view.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +49,9 @@ import { EditProfileComponent } from './views/edit-profile/edit-profile.componen
 		PlaylistSongComponent,
 		SettingsComponent,
 		EditProfileComponent,
+		SearchComponent,
+		SearchViewComponent,
+		UserViewComponent,
 	],
     imports: [
         BrowserModule,
