@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Song } from 'src/app/models/song';
 import { SongService } from 'src/app/services/song.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { Playlist } from 'src/app/models/playlist'
+import { Playlist } from 'src/app/models/Playlist'
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';

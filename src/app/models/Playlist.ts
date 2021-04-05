@@ -1,4 +1,5 @@
 import { Song } from "./song";
+import { User } from "./User";
 
 export interface Playlist {
     id: number,
@@ -6,4 +7,5 @@ export interface Playlist {
     photo: string,
     duration: number,
     songs: Array<Song>
+    user: User
 }

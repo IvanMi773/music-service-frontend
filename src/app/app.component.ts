@@ -60,6 +60,10 @@ export class AppComponent implements OnInit {
         return this.tokenStorage.getUsername()
     }
 
+    get role () {
+        return this.tokenStorage.getRole()
+    }
+
 	get clicked () {
 		return this._clicked
 	}

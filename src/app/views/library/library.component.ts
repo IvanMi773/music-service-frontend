@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Playlist } from 'src/app/models/playlist';
+import { Playlist } from 'src/app/models/Playlist';
 import { Song } from 'src/app/models/song';
 import { User } from 'src/app/models/User';
 import { UserSubscriptions } from 'src/app/models/UserSubscriptions';

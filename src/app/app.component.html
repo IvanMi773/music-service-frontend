@@ -139,6 +139,14 @@
                                 Your Profile
                             </a>
                             <a
+                                routerLink="/admin"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem"
+                                *ngIf="role === 'ADMIN'"
+                            >
+                                Admin page
+                            </a>
+                            <a
                                 routerLink="/settings"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 role="menuitem"

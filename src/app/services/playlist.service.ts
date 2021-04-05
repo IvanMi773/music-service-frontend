@@ -22,4 +22,8 @@ export class PlaylistService {
     public getPlaylistById (playlistId: number) {
         return this.http.get(config.hostName + 'api/playlist/' + playlistId)
     }
+
+    public getAllPlaylists () {
+        return this.http.get(config.hostName + 'api/playlist')
+    }
 }

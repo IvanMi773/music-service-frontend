@@ -30,6 +30,10 @@ import { SearchViewComponent } from './views/search-view/search-view.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
+import { TableComponent } from './components/table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
     declarations: [
@@ -56,6 +60,7 @@ import { WelcomePageComponent } from './views/welcome-page/welcome-page.componen
 		UserViewComponent,
 		AdminComponent,
 		WelcomePageComponent,
+        TableComponent,
 	],
     imports: [
         BrowserModule,
@@ -64,6 +69,9 @@ import { WelcomePageComponent } from './views/welcome-page/welcome-page.componen
         ReactiveFormsModule,
         HttpClientModule,
         NgxAudioPlayerModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

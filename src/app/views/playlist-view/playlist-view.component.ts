@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Playlist } from 'src/app/models/playlist';
+import { Playlist } from 'src/app/models/Playlist';
 import { Song } from 'src/app/models/song';
 import { PlayerService } from 'src/app/services/player.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
