@@ -28,6 +28,8 @@ import { EditProfileComponent } from './views/edit-profile/edit-profile.componen
 import { SearchComponent } from './components/search/search.component';
 import { SearchViewComponent } from './views/search-view/search-view.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
+import { AdminComponent } from './views/admin/admin.component';
+import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +54,8 @@ import { UserViewComponent } from './components/user-view/user-view.component';
 		SearchComponent,
 		SearchViewComponent,
 		UserViewComponent,
+		AdminComponent,
+		WelcomePageComponent,
 	],
     imports: [
         BrowserModule,

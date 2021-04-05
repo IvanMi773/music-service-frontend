@@ -59,16 +59,15 @@ export class RegistrationComponent implements OnInit {
     public onSubmit() {
         //TODO: remember me field
         this.userService
-            .register(this.username.value, this.password.value, this.firstName.value, this.lastName.value, this.email.value)
+            .register(this.username.value, this.password.value, this.firstName.value, this.lastName.value, this.email.value, 1)
             .subscribe(
                 (data: AuthResponse) => {
                     this.tokenStorage.signOut()
 
-					localStorage.setItem(this.tokenStorage.tokenKey, data.token)
-                    localStorage.setItem(this.tokenStorage.usernameKey, this.username.value)
-                    
+                    this.tokenStorage.register(this.tokenStorage.tokenKey, data.token)
+
 					this.setOnLoggedIn()
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/home');
                 },
                 (error) => console.log(error)
             );

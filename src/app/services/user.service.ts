@@ -15,13 +15,14 @@ export class UserService {
         return this.http.post(config.hostName + 'api/auth/login', body);
     }
 
-	public register (username: String, password: String, firstName: String, lastName: String, email: String) {
+	public register (username: String, password: String, firstName: String, lastName: String, email: String, role: number) {
 		const body = {
 			username: username,
 			email: email,
 			password: password,
 			firstName: firstName,
 			lastName: lastName,
+            role: role
 		};
 
         return this.http.post(config.hostName + 'api/auth/register', body);

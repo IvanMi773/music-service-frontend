@@ -15,25 +15,162 @@ import { QueueComponent } from './views/queue/queue.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { EditProfileComponent } from './views/edit-profile/edit-profile.component';
 import { SearchViewComponent } from './views/search-view/search-view.component';
+import { AdminComponent } from './views/admin/admin.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { GateGuard } from './guards/gate.guard';
+import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
 
-//TODO: not found page
+//TODO: check for correct username in profile
 //TODO: change http://localhost to config.hostname in img src and player list
+
+const ADMIN_ROLE = 'ADMIN'
+const USER_ROLE = 'USER'
+
 const routes: Routes = [
-	{ path: '', component: HomeComponent },
-	{ path: 'login', component: LoginComponent },
-	{ path: 'signup', component: RegistrationComponent },
-	{ path: 'signout', component: SignoutComponent },
-	{ path: 'upload', component: UploadComponent },
-    { path: 'library', component: LibraryComponent },
-    { path: 'stream', component: StreamComponent },
-    { path: 'profile/:username', component: ProfileComponent },
-    { path: 'playlist', component: CreatePlaylistComponent },
-    { path: 'playlist/:id', component: PlaylistViewComponent },
-    { path: 'queue', component: QueueComponent },
-    { path: 'settings', component: SettingsComponent },
-    { path: 'edit', component: EditProfileComponent },
-    { path: 'search/:searchQuery', component: SearchViewComponent },
-	// { path: '**', component: NotFoundPageComponent },
+    {
+        path: '',
+        component: WelcomePageComponent,
+        canActivate: [GateGuard],
+    },
+
+    {
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [GateGuard],
+    },
+
+    {
+        path: 'signup',
+        component: RegistrationComponent,
+        canActivate: [GateGuard],
+    },
+
+    {
+        path: 'signout',
+        component: SignoutComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'upload',
+        component: UploadComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'library',
+        component: LibraryComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'stream',
+        component: StreamComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'profile/:username',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'playlist',
+        component: CreatePlaylistComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'playlist/:id',
+        component: PlaylistViewComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'queue',
+        component: QueueComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'settings',
+        component: SettingsComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'edit',
+        component: EditProfileComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'search/:searchQuery',
+        component: SearchViewComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [USER_ROLE, ADMIN_ROLE]
+        }
+    },
+
+    {
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [ ADMIN_ROLE ]
+        }
+    },
+
+    {
+        path: '**',
+        component: NotFoundPageComponent,
+        canActivate: [AuthGuard],
+        data: {
+            roles: [ ADMIN_ROLE, USER_ROLE ]
+        }
+    },
 ];
 
 @NgModule({
@@ -41,5 +178,4 @@ const routes: Routes = [
     imports: [CommonModule, RouterModule.forRoot(routes)],
     exports: [RouterModule],
 })
-
 export class AppRoutingModule {}

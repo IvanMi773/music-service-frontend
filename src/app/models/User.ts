@@ -7,4 +7,5 @@ export interface User {
     subscriptions: Array<User>,
     tracks: number,
     avatar: string
+    role: string
 }

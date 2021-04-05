@@ -36,11 +36,10 @@ export class LoginComponent implements OnInit {
 				(data: AuthResponse) => {
                     this.tokenStorage.signOut()
 
-					localStorage.setItem(this.tokenStorage.tokenKey, data.token)
-                    localStorage.setItem(this.tokenStorage.usernameKey, this.username.value)
+					this.tokenStorage.register(this.tokenStorage.tokenKey, data.token)
 
 					this.setOnLoggedIn()
-					this.router.navigateByUrl('/');
+					this.router.navigateByUrl('/home');
 				},
 				error => console.log(error)
 			)

@@ -15,9 +15,10 @@ export class SignoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-	  this.tokenStorage.signOut()
-	  alert("Logout Successfully!")
-	  this.router.navigateByUrl('/')
+      if (confirm('Are you shure you want to logout?')) {
+          this.tokenStorage.signOut()
+          this.router.navigateByUrl('/')
+      }
   }
 
 }
