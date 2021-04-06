@@ -1,5 +1,7 @@
+import { User } from "./User";
+
 export interface SongLikes {
     id: number,
-    countOfLikes: number,
+    likes: Array<User>,
     meLiked: boolean
 }

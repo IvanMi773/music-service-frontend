@@ -17,6 +17,7 @@ export class MusicTrackComponent implements OnInit {
     private _playing: boolean = false
     @Input() song: Song
     private _avatar: string = 'default_user.png'
+    private _meLiked: boolean = false
 
     constructor(
         private playerService: PlayerService,
@@ -35,14 +36,8 @@ export class MusicTrackComponent implements OnInit {
             }
         })
 
-        this.songService.getLikes(this.song.id, this.tokenStorage.getUsername()).subscribe(
-            (data: SongLikes) => {
-                this.song.likes = data.countOfLikes,
-                this.song.meLiked = data.meLiked
-            }
-        )
-
         this.userService.getProfileByUsername(this.song.username).subscribe((data: User) => this._avatar = data.avatar)
+        this.updateMeLiked()
     }
 
     get playing () {
@@ -57,6 +52,10 @@ export class MusicTrackComponent implements OnInit {
         this._playing = playing
     }
 
+    get meLiked () {
+        return this._meLiked
+    }
+
     public play () {
         this.playerService.queue.next(new Array(this.song))
     }
@@ -64,9 +63,13 @@ export class MusicTrackComponent implements OnInit {
     public like () {
         this.songService.updateLikes(this.song.id, this.tokenStorage.getUsername()).subscribe(
             (data: SongLikes) => {
-                this.song.likes = data.countOfLikes
-                this.song.meLiked = data.meLiked
+                this.song.likes = data.likes
+                this.updateMeLiked()
             }
         )
+    }
+
+    private updateMeLiked () {
+        this._meLiked = this.song.likes.filter(u => u.username === this.tokenStorage.getUsername()).length > 0
     }
 }

@@ -30,10 +30,10 @@
 
         <div class="flex mt-2">
             <button>
-                <img src="../../../assets/images/like.png" (click)="like()" *ngIf="!song.meLiked" class="w-7 h-7" alt="">
-                <img src="../../../assets/images/liked.png" (click)="like()" *ngIf="song.meLiked" class="w-7 h-7" alt="">
+                <img src="../../../assets/images/like.png" (click)="like()" *ngIf="!meLiked" class="w-7 h-7" alt="">
+                <img src="../../../assets/images/liked.png" (click)="like()" *ngIf="meLiked" class="w-7 h-7" alt="">
             </button>
-            <p class="ml-3">{{ song.likes }}</p>
+            <p class="ml-3">{{ song.likes.length }}</p>
         </div>
     </div>
 

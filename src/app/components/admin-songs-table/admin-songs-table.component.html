@@ -1,0 +1,66 @@
+<div class="border-1 border-gray-400 w-max">
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> № </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{ song.id }} </p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{song.username}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{song.name}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="file">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> File </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{song.file}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="likes">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Likes </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{song.likes.length}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="genre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Genre </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{song.genre}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+            <td mat-cell *matCellDef="let song">
+                <p>{{song.duration}}</p>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="w-max">
+        <mat-paginator
+            #paginator
+            [length]="dataSource?.data.length"
+            [pageIndex]="0"
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 25, 50, 100]"
+        >
+        </mat-paginator>
+    </div>
+</div>

@@ -30,10 +30,15 @@ import { SearchViewComponent } from './views/search-view/search-view.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
-import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AdminUsersTableComponent } from './components/admin-users-table/admin-users-table.component';
+import { AdminPlaylistsTableComponent } from './components/admin-playlists-table/admin-playlists-table.component';
+import { AdminGenresTableComponent } from './components/admin-genres-table/admin-genres-table.component';
+import { AdminSongsTableComponent } from './components/admin-songs-table/admin-songs-table.component';
 
 @NgModule({
     declarations: [
@@ -60,7 +65,10 @@ import { MatSortModule } from '@angular/material/sort';
 		UserViewComponent,
 		AdminComponent,
 		WelcomePageComponent,
-        TableComponent,
+        AdminUsersTableComponent,
+        AdminPlaylistsTableComponent,
+        AdminGenresTableComponent,
+        AdminSongsTableComponent,
 	],
     imports: [
         BrowserModule,
@@ -72,6 +80,8 @@ import { MatSortModule } from '@angular/material/sort';
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
+        MatFormFieldModule,
+        MatInputModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

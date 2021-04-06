@@ -20,42 +20,6 @@ export class AdminComponent implements OnInit {
     private _songs: Array<Song>;
     private _genres: Array<Genre>;
     private _playlists: Array<Playlist>;
-    public userDisplayedColumns: string[] = [
-        'position',
-        'username',
-        'email',
-        'firstName',
-        'lastName',
-        'subscribers',
-        'subscriptions',
-        'tracks',
-        'avatar',
-        'role'
-    ]
-
-    public songDisplayedColumns: string[] = [
-        'position',
-        'username',
-        'name',
-        'file',
-        'likes',
-        'genre',
-        'duration'
-    ]
-
-    public playlistDisplayedColumns: string[] = [
-        'position',
-        'title',
-        'photo',
-        'duration',
-        'songs',
-        'user'
-    ]
-
-    public genreDisplayedColumns: string[] = [
-        'position',
-        'name'
-    ]
 
     constructor(
         private userService: UserService,
@@ -65,6 +29,7 @@ export class AdminComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        //TODO: pagination, sorting, move tables to other components
         this.userService.getAllUsers().subscribe((data: Array<User>) => {
             this.users = data
         })

@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface Song {
     id: number,
     username: string,
@@ -5,6 +7,6 @@ export interface Song {
     file: string,
     genre: string,
     meLiked: boolean,
-    likes: number,
+    likes: Array<User>,
     duration: number,
 }
