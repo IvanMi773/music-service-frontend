@@ -45,8 +45,8 @@
                 <div class="grid grid-cols-2 gap-2">
                     <div class="">
                         <select (change)="selectValueChangedEvent(genreSelect.value)" #genreSelect>
-                            <option value="0">-- None --</option>
-                            <option value="1">-- Custom --</option>
+                            <option value="-1">-- None --</option>
+                            <option value="-2">-- Custom --</option>
                             <option [value]="i.id" *ngFor="let i of genres">{{ i.name }}</option>
                         </select>
                     </div>
@@ -73,16 +73,35 @@
 
             </div>
 
-            <input
-                formControlName="files"
-                (change)="onFileChange($event)"
-                type="file"
-                name="songs"
-                id="songs"
-            />
-            <div *ngIf="files.invalid && (files.dirty || files.touched)" class="text-red-500">
-                <div *ngIf="files.errors.required">
-                    Please upload file
+            <div>
+                <label for="songs" class="mr-4">Song:</label>
+                <input
+                    formControlName="files"
+                    (change)="onSongFileChange($event)"
+                    type="file"
+                    name="songs"
+                    id="songs"
+                />
+                <div *ngIf="files.invalid && (files.dirty || files.touched)" class="text-red-500">
+                    <div *ngIf="files.errors.required">
+                        Please upload song file
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="cover" class="mr-4">Cover:</label>
+                <input
+                    formControlName="cover"
+                    (change)="onCoverFileChange($event)"
+                    type="file"
+                    name="cover"
+                    id="cover"
+                />
+                <div *ngIf="cover.invalid && (cover.dirty || cover.touched)" class="text-red-500">
+                    <div *ngIf="cover.errors.required">
+                        Please upload cover
+                    </div>
                 </div>
             </div>
 

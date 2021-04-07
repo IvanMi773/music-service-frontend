@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+} from '@angular/core';
 import { Track } from 'ngx-audio-player';
 import { PlayerService } from 'src/app/services/player.service';
 import { QueueService } from 'src/app/services/queue.service';
@@ -13,7 +16,7 @@ export class PlayerComponent implements OnInit {
 
     msaapDisplayTitle = false;
     msaapDisplayPlayList = false;
-    msaapPageSizeOptions = [2,4,6];
+    msaapPageSizeOptions = [2, 4, 6];
     msaapDisplayVolumeControls = true;
     msaapDisplayRepeatControls = true;
     msaapDisplayArtist = false;
@@ -29,36 +32,45 @@ export class PlayerComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-
         if (this.queueService.queue !== null) {
-            this.queueService?.queue.forEach(value => {
+            this.queueService?.queue.forEach((value) => {
                 this.msaapPlaylist.push({
                     title: value.name,
                     link: 'http://localhost:8080/api/song/' + value.file,
                     artist: value.username,
-                    duration: value.duration
-                })
+                    duration: value.duration,
+                });
             });
         } else {
-            this.queueService.clearLocalstorage()
+            this.queueService.clearLocalstorage();
         }
 
-        this.playerService.queue.subscribe(queue => {
+        this.playerService.clearQueue.subscribe((clearQueue) => {
+            if (clearQueue) {
+                this.msaapPlaylist = [];
+                clearQueue = !clearQueue;
+                this.queueService.clearLocalstorage()
+            }
+        });
+        this.queueService.subscribe();
+
+        this.playerService.queue.subscribe((queue) => {
             queue.forEach((value) => {
                 this.msaapPlaylist.push({
                     title: value.name,
                     link: 'http://localhost:8080/api/song/' + value.file,
                     artist: value.username,
-                    duration: value.duration
-                })
-            })
-        })
+                    duration: value.duration,
+                });
+            });
+        });
 
-        this.queueService.subscribe()
     }
 
-    public onEnded (event: any) {
-        this.songService.saveSongToHistory(this.queueService.queue[0].id).subscribe(data => console.log(data))
-        this.queueService.removeFirstElementFromQueue()
+    public onEnded(event: any) {
+        this.songService
+            .saveSongToHistory(this.queueService.queue[0].id)
+            .subscribe((data) => console.log(data));
+        this.queueService.removeFirstElementFromQueue();
     }
 }

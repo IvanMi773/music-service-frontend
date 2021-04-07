@@ -32,6 +32,7 @@ export class QueueService {
 
     public clearLocalstorage () {
         localStorage.setItem('queue', '[]')
+        this._queue = []
     }
 
     get queue () {

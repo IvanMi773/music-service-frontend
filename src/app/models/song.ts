@@ -9,4 +9,5 @@ export interface Song {
     meLiked: boolean,
     likes: Array<User>,
     duration: number,
+    cover: string
 }

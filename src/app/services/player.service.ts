@@ -8,19 +8,9 @@ import { Song } from '../models/song';
 export class PlayerService {
 
     private _queue: Subject<Array<Song>> = new Subject<Array<Song>>()
+    private _clearQueue: Subject<boolean> = new Subject<boolean>();
 
     constructor() {}
-
-    // public saveToLocalStorage () {
-    //     this.queue.subscribe((songs: Array<Song>) => {
-    //         console.log(songs)
-    //         localStorage.setItem('queue', JSON.stringify(songs))
-    //     })
-    // }
-
-    // public getFromLocalStorage () {
-    //     return JSON.parse(localStorage.getItem('queue'))
-    // }
 
     get queue () {
         return this._queue
@@ -28,5 +18,12 @@ export class PlayerService {
 
     set queue (queue: Subject<Array<Song>>) {
         this._queue = queue
+    }
+
+    public get clearQueue(): Subject<boolean> {
+        return this._clearQueue;
+    }
+    public set clearQueue(value: Subject<boolean>) {
+        this._clearQueue = value;
     }
 }

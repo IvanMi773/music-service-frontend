@@ -13,7 +13,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class UploadComponent implements OnInit {
 
     public songForm
-    private fileToUpload: File
+    private songFileToUpload: File
+    private coverFileToUpload: File
     private isCustomGenre: boolean = false
     private _genres: any
     private genreId: string
@@ -31,23 +32,29 @@ export class UploadComponent implements OnInit {
             title: ['', [ Validators.required, Validators.minLength(2) ]],
             genre: ['', this.customGenre ? [ Validators.required ] : null],
             files: [null, [Validators.required]],
+            cover: [null, [Validators.required]],
         });
 
         //TODO: error handling
         this.genreService.getAllGenres().subscribe(data => this._genres = data, err => console.log(err))
     }
 
-    onFileChange(event) {
-        this.fileToUpload = event.target.files[0]
+    onSongFileChange(event) {
+        this.songFileToUpload = event.target.files[0]
+    }
+
+    onCoverFileChange(event) {
+        this.coverFileToUpload = event.target.files[0]
     }
 
     selectValueChangedEvent (value: string) {
-        if (value === "1") {
+        if (value === "-2") {
             this.isCustomGenre = true
             this.songForm = this.formBuilder.group({
                 title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
                 genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
                 files: ['', [Validators.required]],
+                cover: ['', [Validators.required]],
             });
         } else {
             this.isCustomGenre = false
@@ -69,7 +76,8 @@ export class UploadComponent implements OnInit {
 
         const formData: FormData = new FormData()
         formData.append('title', this.title.value)
-        formData.append('file', this.fileToUpload, this.fileToUpload.name)
+        formData.append('file', this.songFileToUpload, this.songFileToUpload.name)
+        formData.append('cover', this.coverFileToUpload, this.coverFileToUpload.name)
         formData.append('genre', this.genreId)
 
         this.songService.upload(formData).subscribe(data => {
@@ -88,6 +96,10 @@ export class UploadComponent implements OnInit {
 
     get files () {
         return this.songForm.get('files')
+    }
+
+    get cover () {
+        return this.songForm.get('cover')
     }
 
     get customGenre () {

@@ -13,10 +13,12 @@
     <div class="grid grid-cols-2 flex items-center">
         <div>
             <div class="flex items-center">
-                <img src="../../../assets/images/a.jpg" class="h-40 w-40 inline" alt="">
+                <img [src]="'http://localhost:8080/api/song/cover/' + song.cover" class="h-40 w-40 inline" alt="">
                 <button class="ml-5" (click)="play()">
-                    <img src="../../../assets/images/play1.svg" alt="Play" *ngIf="!playing">
-                    <img src="../../../assets/images/pause.svg" alt="Pause" *ngIf="playing">
+                    <img
+                        src="../../../assets/images/play1.svg"
+                        alt="Play"
+                        *ngIf="check()">
                 </button>
                 <p class="inline ml-5">{{ song.name }}</p>
             </div>
@@ -26,6 +28,76 @@
         <div class="text-right">
             <p>#{{ song.genre }}</p>
             <p>{{ ((song.duration - (song.duration % 60)) / 60) + ":" + (song.duration % 60) }}</p>
+            <button class="
+                    mt-6
+                    mr-3
+                    py-2
+                    px-4
+                    border
+                    border-transparent
+                    text-sm
+                    mb-4
+                    font-medium
+                    rounded-md
+                    text-white
+                    bg-indigo-400
+                    hover:bg-indigo-500
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-indigo-500
+                "
+                (click)="deleteSong()"
+            >
+                Add to playlist
+            </button>
+            <button class="
+                    mt-6
+                    mr-3
+                    py-2
+                    px-4
+                    border
+                    border-transparent
+                    text-sm
+                    mb-4
+                    font-medium
+                    rounded-md
+                    text-white
+                    bg-indigo-400
+                    hover:bg-indigo-500
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-indigo-500
+                "
+                (click)="addToQueue()"
+                *ngIf="check()"
+            >
+                Add to queue
+            </button>
+            <button class="
+                    mt-6
+                    py-2
+                    px-4
+                    border
+                    border-transparent
+                    text-sm
+                    mb-4
+                    font-medium
+                    rounded-md
+                    text-white
+                    bg-red-800
+                    hover:bg-red-900
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-indigo-500
+                "
+                (click)="deleteSong()"
+                *ngIf="song.username === currentUsername"
+            >
+                Delete
+            </button>
         </div>
 
         <div class="flex mt-2">

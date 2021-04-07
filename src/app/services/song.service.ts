@@ -38,6 +38,10 @@ export class SongService {
     public saveSongToHistory (songId: number) {
         return this.http.post(config.hostName + 'api/song/h/' + songId, '')
     }
+
+    public deleteSong (songId: number) {
+        return this.http.delete(config.hostName + 'api/song/' + songId)
+    }
 }
 
 //TODO: display authorization errors
