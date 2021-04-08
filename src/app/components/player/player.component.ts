@@ -3,9 +3,12 @@ import {
     OnInit,
 } from '@angular/core';
 import { Track } from 'ngx-audio-player';
+import { Playlist } from 'src/app/models/Playlist';
 import { PlayerService } from 'src/app/services/player.service';
+import { PlaylistService } from 'src/app/services/playlist.service';
 import { QueueService } from 'src/app/services/queue.service';
 import { SongService } from 'src/app/services/song.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
     selector: 'app-player',
@@ -28,7 +31,9 @@ export class PlayerComponent implements OnInit {
     constructor(
         private playerService: PlayerService,
         private queueService: QueueService,
-        private songService: SongService
+        private songService: SongService,
+        private tokenStorage: TokenStorageService,
+        private playlistService: PlaylistService
     ) {}
 
     ngOnInit(): void {
@@ -68,9 +73,13 @@ export class PlayerComponent implements OnInit {
     }
 
     public onEnded(event: any) {
-        this.songService
-            .saveSongToHistory(this.queueService.queue[0].id)
-            .subscribe((data) => console.log(data));
-        this.queueService.removeFirstElementFromQueue();
+        this.playlistService.getPlaylistsByUsername(this.tokenStorage.getUsername()).subscribe((data: Array<Playlist>) => {
+            this.songService
+                .saveSongToPlaylist(this.queueService?.queue[0].id, data.find(i => i.title === 'History').id)
+                .subscribe((data) => {
+                    console.log(data)
+                    this.queueService.removeFirstElementFromQueue();
+                });
+        })
     }
 }

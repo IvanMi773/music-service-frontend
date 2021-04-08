@@ -14,6 +14,7 @@ import { AuthResponse } from 'src/app/models/AuthResponse';
 export class LoginComponent implements OnInit {
     public loginForm
 	@Output() onLoggedIn = new EventEmitter<boolean>();
+    private _serverErrorResponse: any;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
 					this.setOnLoggedIn()
 					this.router.navigateByUrl('/home');
 				},
-				error => console.log(error)
+				error => this._serverErrorResponse = error.status
 			)
     }
 
@@ -60,5 +61,11 @@ export class LoginComponent implements OnInit {
     }
     get passwordMinLength() {
         return config.validators.passwordMinLength
+    }
+    public get serverErrorResponse(): any {
+        return this._serverErrorResponse;
+    }
+    public set serverErrorResponse(value: any) {
+        this._serverErrorResponse = value;
     }
 }

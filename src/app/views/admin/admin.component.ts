@@ -29,7 +29,6 @@ export class AdminComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        //TODO: pagination, sorting, move tables to other components
         this.userService.getAllUsers().subscribe((data: Array<User>) => {
             this.users = data
         })

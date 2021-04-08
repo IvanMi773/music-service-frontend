@@ -26,4 +26,8 @@ export class PlaylistService {
     public getAllPlaylists () {
         return this.http.get(config.hostName + 'api/playlist')
     }
+
+    public deleteById (id: number) {
+        return this.http.delete(config.hostName + 'api/playlist/' + id)
+    }
 }

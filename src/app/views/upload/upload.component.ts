@@ -18,6 +18,7 @@ export class UploadComponent implements OnInit {
     private isCustomGenre: boolean = false
     private _genres: any
     private genreId: string
+    private _serverSongErrorResponse: any;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -83,7 +84,7 @@ export class UploadComponent implements OnInit {
         this.songService.upload(formData).subscribe(data => {
             console.log(data)
             this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername());
-        }, err => console.log(err))
+        }, err => this.serverSongErrorResponse = err)
     }
 
     get title () {
@@ -108,5 +109,11 @@ export class UploadComponent implements OnInit {
 
     get genres () {
         return this._genres
+    }
+    public get serverSongErrorResponse(): any {
+        return this._serverSongErrorResponse;
+    }
+    public set serverSongErrorResponse(value: any) {
+        this._serverSongErrorResponse = value;
     }
 }

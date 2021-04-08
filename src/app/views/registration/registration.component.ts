@@ -12,8 +12,10 @@ import { AuthResponse } from 'src/app/models/AuthResponse';
     styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+
     public registerForm;
 	@Output() onLoggedIn = new EventEmitter<boolean>();
+    private _serverErrorResponse: any;
 
     constructor(
 		private formBuilder: FormBuilder,
@@ -69,7 +71,7 @@ export class RegistrationComponent implements OnInit {
 					this.setOnLoggedIn()
                     this.router.navigateByUrl('/home');
                 },
-                (error) => console.log(error)
+                (error) => this.serverErrorResponse = error
             );
     }
 
@@ -103,5 +105,11 @@ export class RegistrationComponent implements OnInit {
     }
     get lastNameMinLength() {
         return config.validators.lastNameMinLength;
+    }
+    public get serverErrorResponse(): any {
+        return this._serverErrorResponse;
+    }
+    public set serverErrorResponse(value: any) {
+        this._serverErrorResponse = value;
     }
 }

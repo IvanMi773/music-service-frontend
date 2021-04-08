@@ -8,4 +8,6 @@ export interface Playlist {
     duration: number,
     songs: Array<Song>
     user: User
+    username: string
+    state: string
 }

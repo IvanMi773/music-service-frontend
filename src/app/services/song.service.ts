@@ -35,8 +35,8 @@ export class SongService {
         return this.http.get(config.hostName + 'api/song/s')
     }
 
-    public saveSongToHistory (songId: number) {
-        return this.http.post(config.hostName + 'api/song/h/' + songId, '')
+    public saveSongToPlaylist (songId: number, playlistId: number) {
+        return this.http.post(config.hostName + 'api/song/' + songId + '/p/' + playlistId, '')
     }
 
     public deleteSong (songId: number) {
@@ -44,10 +44,7 @@ export class SongService {
     }
 }
 
-//TODO: display authorization errors
-//TODO: wrong file validation errors
 //TODO: form for upload songs [ drag & drop ]
-//TODO: multiple files upload functional
 //TODO: create button component
 //TODO: loader for uploading songs
 //TODO:
