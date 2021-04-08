@@ -15,6 +15,7 @@ import { LibraryComponent } from './views/library/library.component';
 import { StreamComponent } from './views/stream/stream.component';
 import { HomeComponent } from './views/home/home.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PlayerComponent } from './components/player/player.component';
 import { MusicTrackComponent } from './components/music-track/music-track.component';
@@ -39,6 +40,13 @@ import { AdminUsersTableComponent } from './components/admin-users-table/admin-u
 import { AdminPlaylistsTableComponent } from './components/admin-playlists-table/admin-playlists-table.component';
 import { AdminGenresTableComponent } from './components/admin-genres-table/admin-genres-table.component';
 import { AdminSongsTableComponent } from './components/admin-songs-table/admin-songs-table.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -69,6 +77,7 @@ import { AdminSongsTableComponent } from './components/admin-songs-table/admin-s
         AdminPlaylistsTableComponent,
         AdminGenresTableComponent,
         AdminSongsTableComponent,
+        NavbarComponent,
 	],
     imports: [
         BrowserModule,
@@ -82,6 +91,13 @@ import { AdminSongsTableComponent } from './components/admin-songs-table/admin-s
         MatSortModule,
         MatFormFieldModule,
         MatInputModule,
+        MatTabsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
