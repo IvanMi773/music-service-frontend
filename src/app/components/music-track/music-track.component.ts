@@ -49,7 +49,7 @@ export class MusicTrackComponent implements OnInit {
     }
 
     public check (): boolean {
-        return !this.queueService.queue.some(item => item.file === this.song.file)
+        return !this.queueService?.queue?.some(item => item.file === this.song.file)
     }
 
     get avatar () {

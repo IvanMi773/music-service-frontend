@@ -18,6 +18,8 @@ export class SignoutComponent implements OnInit {
       if (confirm('Are you shure you want to logout?')) {
           this.tokenStorage.signOut()
           this.router.navigateByUrl('/')
+      } else {
+          this.router.navigateByUrl('/home')
       }
   }
 

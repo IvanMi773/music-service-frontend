@@ -6,7 +6,7 @@
             <div>
                 <p class="text-4xl mt-9 ml-4 capitalize font-bold">{{ playlist.title }}</p>
 
-                <p class="mt-4 ml-4">Playlist • Tool • 2020</p>
+                <p class="mt-4 ml-4">Playlist • {{ playlist.username }}</p>
                 <p class="ml-4">{{ playlist.songs.length }} compositions • {{ ((playlistDuration - (playlistDuration % 60)) / 60) + ' minutes ' + (playlistDuration % 60) + ' seconds' }}</p>
                 <button
 					class="
@@ -27,7 +27,7 @@
 						focus:ring-offset-2
 						focus:ring-indigo-500
 					"
-
+                    *ngIf="playlist.songs.length > 0"
 					(click)="play()"
 				>
 					<span *ngIf="!isPlaying">

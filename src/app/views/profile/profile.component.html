@@ -1,130 +1,128 @@
-<div class="content">
-    <div class="cont">
-        <img
-            src="../../../assets/images/background.png"
-            class="background-image"
-            alt=""
-        />
-        <img
-            [src]="'http://localhost:8080/api/user/avatar/' + user?.avatar"
-            class="rounded-full top w-52"
-            alt=""
-        />
-        <p class="username">{{ username }}</p>
-        <p class="name">{{ user?.firstName + ' ' + user?.lastName }}</p>
-        <button
-            class="
-                mt-4
-                py-2
-                px-4
-                border
-                border-transparent
-                text-sm
-                mb-4
-                font-medium
-                rounded-md
-                text-white
-                bg-indigo-600
-                hover:bg-indigo-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-indigo-500
-            "
-            (click)="subscribe()"
-            *ngIf="username != currentUsername"
-        >
-            <span *ngIf="!meSubscribed; else elseBlock">
-                Subscribe
-            </span>
-
-            <ng-template #elseBlock>
-                <span >
-                    Unsubscribe
+<div>
+    <div class="content" *ngIf="!err">
+        <div class="cont">
+            <img
+                src="../../../assets/images/background.png"
+                class="background-image"
+                alt=""
+            />
+            <img
+                [src]="'http://localhost:8080/api/user/avatar/' + user?.avatar"
+                class="rounded-full top w-52"
+                alt=""
+            />
+            <p class="username">{{ username }}</p>
+            <p class="name">{{ user?.firstName + ' ' + user?.lastName }}</p>
+            <button
+                class="
+                    mt-4
+                    py-2
+                    px-4
+                    border
+                    border-transparent
+                    text-sm
+                    mb-4
+                    font-medium
+                    rounded-md
+                    text-white
+                    bg-indigo-600
+                    hover:bg-indigo-700
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-indigo-500
+                "
+                (click)="subscribe()"
+                *ngIf="username != currentUsername"
+            >
+                <span *ngIf="!meSubscribed; else elseBlock">
+                    Subscribe
                 </span>
-            </ng-template>
-        </button>
-    </div>
 
-    <div class="section">
-        <div class="mainCol">
-            <div class="flex flex-wrap">
-                <div class="w-full">
-                    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
-                            <a
-                                class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
-                                (click)="toggleTabs(1)"
-                                (click)="loadSongs()"
-                                [ngClass]="{
-                                    'text-indigo-600 bg-white': openTab !== 1,
-                                    'text-white bg-indigo-600': openTab === 1
-                                }"
-                            >
-                                Tracks
-                            </a>
-                        </li>
-                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
-                            <a
-                                class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
-                                (click)="toggleTabs(2)"
-                                (click)="loadPlaylists()"
-                                [ngClass]="{
-                                    'text-indigo-600 bg-white': openTab !== 2,
-                                    'text-white bg-indigo-600': openTab === 2
-                                }"
-                            >
-                                Playlists
-                            </a>
-                        </li>
-                    </ul>
-                    <hr>
-                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded">
-                        <div class="px-4 py-5 flex-auto">
-                            <div class="tab-content tab-space">
-                                <div
+                <ng-template #elseBlock>
+                    <span >
+                        Unsubscribe
+                    </span>
+                </ng-template>
+            </button>
+        </div>
+
+        <div class="section">
+            <div class="mainCol">
+                <div class="flex flex-wrap">
+                    <div class="w-full">
+                        <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                                <a
+                                    class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                                    (click)="toggleTabs(1)"
+                                    (click)="loadSongs()"
                                     [ngClass]="{
-                                        hidden: openTab !== 1,
-                                        block: openTab === 1
+                                        'text-indigo-600 bg-white': openTab !== 1,
+                                        'text-white bg-indigo-600': openTab === 1
                                     }"
                                 >
-                                    <a routerLink="/upload" *ngIf="username === currentUsername">
-                                        <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Upload new track
-                                        </button>
-                                    </a>
-                                    <div *ngFor="let song of songs">
-                                        <app-music-track [song]="song"></app-music-track>
+                                    Tracks
+                                </a>
+                            </li>
+                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                                <a
+                                    class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                                    (click)="toggleTabs(2)"
+                                    (click)="loadPlaylists()"
+                                    [ngClass]="{
+                                        'text-indigo-600 bg-white': openTab !== 2,
+                                        'text-white bg-indigo-600': openTab === 2
+                                    }"
+                                >
+                                    Playlists
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded">
+                            <div class="px-4 py-5 flex-auto">
+                                <div class="tab-content tab-space">
+                                    <div
+                                        [ngClass]="{
+                                            hidden: openTab !== 1,
+                                            block: openTab === 1
+                                        }"
+                                    >
+                                        <a routerLink="/upload" *ngIf="username === currentUsername">
+                                            <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                Upload new track
+                                            </button>
+                                        </a>
+                                        <div *ngFor="let song of songs">
+                                            <app-music-track [song]="song"></app-music-track>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div
-                                    [ngClass]="{
-                                        hidden: openTab !== 2,
-                                        block: openTab === 2
-                                    }"
-                                >
-                                    <a routerLink="/playlist" *ngIf="username === currentUsername">
-                                        <button class="py-2 px-4 border border-transparent text-sm mb-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Create new playlist
-                                        </button>
-                                    </a>
+                                    <div
+                                        [ngClass]="{
+                                            hidden: openTab !== 2,
+                                            block: openTab === 2
+                                        }"
+                                    >
+                                        <a routerLink="/playlist" *ngIf="username === currentUsername">
+                                            <button class="py-2 px-4 border border-transparent text-sm mb-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                Create new playlist
+                                            </button>
+                                        </a>
 
-									<div class="grid grid-cols-3">
-										<div *ngFor="let playlist of playlists" class="playlist border-2 mr-4 mt-4">
-                                            <img
-                                                [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo"
-                                                alt="Playlist photo"
-                                                class="playlist-image"
-                                            >
+                                        <div class="grid grid-cols-5">
+                                            <div *ngFor="let playlist of playlists" class="border-2 mr-4 mt-4">
+                                                <a [routerLink]="'/playlist/' + playlist.id">
+                                                    <img
+                                                        [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo"
+                                                        alt="Playlist photo"
+                                                        class="w-56"
+                                                    >
 
-                                            <p>{{ playlist.title }}</p>
-
-                                            <a [routerLink]="'/playlist/' + playlist.id">
-                                                <button>
-                                                    Play
-                                                </button>
-                                            </a>
+                                                    <p class="text-2xl mt-3">{{ playlist.title }}</p>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -133,25 +131,36 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="secondCol">
-            <div class="grid grid-cols-3">
-                <div class="">
-                    <p>Subscribers</p>
-                    <p>{{ user?.subscribers.length }}</p>
-                </div>
+            <div class="secondCol">
+                <div class="grid grid-cols-3">
+                    <div class="">
+                        <p class="text-md text-gray-600 text-center">Subscribers</p>
+                        <p class="text-3xl text-gray-600 text-center">{{ user?.subscribers.length }}</p>
+                    </div>
 
-                <div class="">
-                    <p>Subscriptions</p>
-                    <p>{{ user?.subscriptions.length }}</p>
-                </div>
+                    <div class="">
+                        <p class="text-md text-gray-600 text-center">Subscriptions</p>
+                        <p class="text-3xl text-gray-600 text-center">{{ user?.subscriptions.length }}</p>
+                    </div>
 
-                <div class="">
-                    <p>Tracks</p>
-                    <p>{{ user?.tracks === undefined ? 0 : user?.tracks }}</p>
+                    <div class="">
+                        <p class="text-md text-gray-600 text-center">Tracks</p>
+                        <p class="text-3xl text-gray-600 text-center">{{ user?.tracks === undefined ? 0 : user?.tracks }}</p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div *ngIf="err">
+        <div class="text-center mx-auto mt-5">
+            <p class="text-3xl">Something went wrong or we cannot find user</p>
+            <p class="text-xl text-gray-600 hover:text-gray-500">
+                <a [routerLink]="'/profile/' + currentUsername" (click)="backToProfile()">
+                    Back to your profile
+                </a>
+            </p>
         </div>
     </div>
 </div>

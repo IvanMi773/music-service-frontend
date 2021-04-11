@@ -8,6 +8,9 @@
                 <p class="text-lg">{{ song.name }}</p>
                 <p class="text-sm text-gray-400">{{ song.username }}</p>
             </div>
+            <div *ngIf="resentlyPlayedSongs.length <= 0">
+                <p class="text-lg text-gray-500">Nothing to show</p>
+            </div>
         </div>
     </div>
 
@@ -21,6 +24,9 @@
                 <p class="text-lg">{{ song.name }}</p>
                 <p class="text-sm text-gray-400">{{ song.username }}</p>
             </div>
+            <div *ngIf="likedSongs.length <= 0">
+                <p class="text-lg text-gray-500">Nothing to show</p>
+            </div>
         </div>
     </div>
 
@@ -30,8 +36,13 @@
 
         <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let playlist of playlists">
-                <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
-                <p class="text-lg">{{ playlist.title }}</p>
+                <a [routerLink]="'/playlist/' + playlist.id">
+                    <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
+                    <p class="text-lg">{{ playlist.title }}</p>
+                </a>
+            </div>
+            <div *ngIf="playlists.length <= 0">
+                <p class="text-lg text-gray-500">Nothing to show</p>
             </div>
         </div>
     </div>
@@ -44,6 +55,9 @@
             <div *ngFor="let user of subscriptions">
                 <img [src]="'http://localhost:8080/api/user/avatar/' + user.avatar" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ user.username }}</p>
+            </div>
+            <div *ngIf="subscriptions.length <= 0">
+                <p class="text-lg text-gray-500">Nothing to show</p>
             </div>
         </div>
     </div>

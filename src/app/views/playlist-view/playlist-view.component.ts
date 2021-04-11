@@ -26,14 +26,12 @@ export class PlaylistViewComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        //TODO: get from backend user and year of playlist
         this.playlistId = this.route.snapshot.params['id']
 
         this.playlistService.getPlaylistById(this.playlistId).subscribe(
             (data: Playlist) => {
                 this.playlist = data
                 this.playlist.songs.forEach(song => this._playlistDuration += song.duration)
-                console.log(this.playlist.state)
             },
             err => console.log(err)
         )

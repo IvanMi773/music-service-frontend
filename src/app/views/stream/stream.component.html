@@ -4,5 +4,8 @@
     <div *ngFor="let song of songs">
         <app-music-track [song]="song"></app-music-track>
     </div>
+    <div *ngIf="songs.length <= 0">
+        <p class="text-lg text-gray-400">Nothing to show</p>
+    </div>
 </div>
 

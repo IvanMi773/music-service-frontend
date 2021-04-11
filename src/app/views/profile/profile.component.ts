@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
     private _playlists: Array<Playlist>
     private _user: User
     public meSubscribed: boolean = false
+    private _err: any;
 
     constructor(
         private tokenStorage: TokenStorageService,
@@ -35,18 +36,26 @@ export class ProfileComponent implements OnInit {
     //TODO: якщо користувач переходить з профіля іншого користувача на свій профіль, то дані не оновлюються
 
     ngOnInit(): void {
-        this.userService.getProfileByUsername(this.username).subscribe((data: User) => {
-            this.user = data
-            this.checkForSubscribing()
-        }, err => console.log(err))
-        this.songService.getSongsByUsername(this.username).subscribe((data: Array<Song>) => this._songs = data, err => console.log(err))
+        this.getProfile()
+
+        this.songService.getSongsByUsername(this.username).subscribe((data: Array<Song>) =>
+            this._songs = data,
+            err => console.log(err)
+        )
     }
 
     toggleTabs($tabNumber: number){
         this.openTab = $tabNumber;
     }
 
-    public loadSongs () {
+    private getProfile () {
+        this.userService.getProfileByUsername(this.username).subscribe((data: User) => {
+            this.user = data
+            this.checkForSubscribing()
+        }, err => {
+            console.log(err);
+            this.err = err;
+        })
     }
 
     public loadPlaylists () {
@@ -70,6 +79,11 @@ export class ProfileComponent implements OnInit {
                 this.meSubscribed = true
             }
         })
+    }
+
+    public backToProfile () {
+        this.getProfile()
+        this.err = null
     }
 
     get username () {
@@ -102,5 +116,11 @@ export class ProfileComponent implements OnInit {
 
     get playlists () {
         return this._playlists
+    }
+    public get err(): any {
+        return this._err;
+    }
+    public set err(value: any) {
+        this._err = value;
     }
 }
