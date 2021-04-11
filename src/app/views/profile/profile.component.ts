@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
             this.user = data
             this.checkForSubscribing()
         }, err => console.log(err))
+        this.songService.getSongsByUsername(this.username).subscribe((data: Array<Song>) => this._songs = data, err => console.log(err))
     }
 
     toggleTabs($tabNumber: number){
@@ -46,7 +47,6 @@ export class ProfileComponent implements OnInit {
     }
 
     public loadSongs () {
-        this.songService.getSongsByUsername(this.username).subscribe((data: Array<Song>) => this._songs = data, err => console.log(err))
     }
 
     public loadPlaylists () {

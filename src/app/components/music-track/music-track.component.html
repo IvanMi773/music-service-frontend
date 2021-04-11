@@ -1,120 +1,151 @@
 <div>
+    <div class="grid mb-2 mt-5 grid-cols-2">
+        <div class="">
+            <a [routerLink]="'/profile/' + song.username">
+                <img
+                    [src]="'http://localhost:8080/api/user/avatar/' + avatar"
+                    class="w-8 h-8 inline rounded-full mr-2"
+                />
+                <p class="font-bold inline text-sm">{{ song.username }}</p>
+            </a>
+            <p class="font-light inline text-sm"> posted a track</p>
+        </div>
+
+        <div class="flex justify-end">
+            <app-song-menu
+                [displayAddToQueue]="check()"
+                [displayDelete]="song.username === currentUsername"
+                [playlists]="playlists"
+                (onNeedToDelete)="deleteSong()"
+                (onNeedToAddToQuery)="addToQueue()"
+                (playlistId)="addToPlaylist($event)"
+            ></app-song-menu>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 ">
+        <div class="flex flex-wrap content-start">
+            <!-- <div class="flex items-center"> -->
+                <img
+                    [src]="'http://localhost:8080/api/song/cover/' + song.cover"
+                    class="h-40 w-40 inline"
+                    alt=""
+                />
+                <button class="ml-5" (click)="play()">
+                    <img
+                        src="../../../assets/images/play1.svg"
+                        alt="Play"
+                        *ngIf="check()"
+                    />
+                </button>
+                <p class="inline ml-5 mr-5">{{ song.name }}</p>
+                <p>#{{ song.genre }}</p>
+            <!-- </div> -->
+        </div>
+
+        <div class="text-right">
+            <p>
+                {{
+                    (song.duration - (song.duration % 60)) / 60 +
+                        ":" +
+                        (song.duration % 60)
+                }}
+            </p>
+        </div>
+
+        <div class="flex mt-2">
+            <button>
+                <img
+                    src="../../../assets/images/like.png"
+                    (click)="like()"
+                    *ngIf="!meLiked"
+                    class="w-7 h-7"
+                    alt=""
+                />
+                <img
+                    src="../../../assets/images/liked.png"
+                    (click)="like()"
+                    *ngIf="meLiked"
+                    class="w-7 h-7"
+                    alt=""
+                />
+            </button>
+            <p class="ml-3">{{ song.likes.length }}</p>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div>
     <div class="mb-2 mt-5">
         <a [routerLink]="'/profile/' + song.username">
             <img
                 [src]="'http://localhost:8080/api/user/avatar/' + avatar"
                 class="w-8 h-8 inline rounded-full mr-2"
-            >
+            />
             <p class="font-bold inline text-sm">{{ song.username }}</p>
         </a>
         <p class="font-light inline text-sm"> posted a track</p>
     </div>
 
-    <div class="grid grid-cols-2 flex items-center">
-        <div>
-            <div class="flex items-center">
-                <img [src]="'http://localhost:8080/api/song/cover/' + song.cover" class="h-40 w-40 inline" alt="">
+    <div class="grid grid-cols-2 ">
+        <div class="flex flex-wrap content-start">
+                <img
+                    [src]="'http://localhost:8080/api/song/cover/' + song.cover"
+                    class="h-40 w-40 inline"
+                    alt=""
+                />
                 <button class="ml-5" (click)="play()">
                     <img
                         src="../../../assets/images/play1.svg"
                         alt="Play"
-                        *ngIf="check()">
+                        *ngIf="check()"
+                    />
                 </button>
-                <p class="inline ml-5">{{ song.name }}</p>
-            </div>
-
+                <p class="inline ml-5 mr-5">{{ song.name }}</p>
+                <p>#{{ song.genre }}</p>
         </div>
 
         <div class="text-right">
-            <p>#{{ song.genre }}</p>
-            <p>{{ ((song.duration - (song.duration % 60)) / 60) + ":" + (song.duration % 60) }}</p>
-
-            <select name="playlist" (change)="playlistSelectChanged(playlistSelect.value)" #playlistSelect>
-                <option value="0">Select playlist</option>
-                <option [value]="i.id" *ngFor="let i of playlists">{{ i.title }}</option>
-            </select>
-
-            <button class="
-                    mt-6
-                    mr-3
-                    ml-2
-                    py-2
-                    px-4
-                    border
-                    border-transparent
-                    text-sm
-                    mb-4
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-indigo-400
-                    hover:bg-indigo-500
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-offset-2
-                    focus:ring-indigo-500
-                "
-                (click)="addToPlaylist()"
-            >
-                Add to playlist
-            </button>
-
-            <button class="
-                    mt-6
-                    mr-3
-                    py-2
-                    px-4
-                    border
-                    border-transparent
-                    text-sm
-                    mb-4
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-indigo-400
-                    hover:bg-indigo-500
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-offset-2
-                    focus:ring-indigo-500
-                "
-                (click)="addToQueue()"
-                *ngIf="check()"
-            >
-                Add to queue
-            </button>
-            <button class="
-                    mt-6
-                    py-2
-                    px-4
-                    border
-                    border-transparent
-                    text-sm
-                    mb-4
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-red-800
-                    hover:bg-red-900
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-offset-2
-                    focus:ring-indigo-500
-                "
-                (click)="deleteSong()"
-                *ngIf="song.username === currentUsername"
-            >
-                Delete
-            </button>
+            <p>
+                {{
+                    (song.duration - (song.duration % 60)) / 60 +
+                        ":" +
+                        (song.duration % 60)
+                }}
+            </p>
         </div>
 
         <div class="flex mt-2">
             <button>
-                <img src="../../../assets/images/like.png" (click)="like()" *ngIf="!meLiked" class="w-7 h-7" alt="">
-                <img src="../../../assets/images/liked.png" (click)="like()" *ngIf="meLiked" class="w-7 h-7" alt="">
+                <img
+                    src="../../../assets/images/like.png"
+                    (click)="like()"
+                    *ngIf="!meLiked"
+                    class="w-7 h-7"
+                    alt=""
+                />
+                <img
+                    src="../../../assets/images/liked.png"
+                    (click)="like()"
+                    *ngIf="meLiked"
+                    class="w-7 h-7"
+                    alt=""
+                />
             </button>
             <p class="ml-3">{{ song.likes.length }}</p>
+
+            <app-song-menu
+                [displayAddToQueue]="check()"
+                [displayDelete]="song.username === currentUsername"
+                [playlists]="playlists"
+                (onNeedToDelete)="deleteSong()"
+                (onNeedToAddToQuery)="addToQueue()"
+                (playlistId)="addToPlaylist($event)"
+            ></app-song-menu>
         </div>
     </div>
-
-</div>
+</div> -->

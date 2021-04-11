@@ -11,9 +11,8 @@ import { UserService } from './services/user.service';
 
 export class AppComponent implements OnInit {
     title = 'music-service-frontend'
-	private _clicked: Boolean = false
 	private _loggedIn: Boolean = false
-    private _avatar: string = 'default_user.png'
+    private _user: User;
 
 	constructor(
 		private userService: UserService,
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit {
 	ngOnInit () {
 		this.showContext()
 
-        this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => this._avatar = data.avatar)
+        this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => this.user = data)
 	}
 
 	ngDoCheck (): void {
@@ -38,42 +37,16 @@ export class AppComponent implements OnInit {
 		this.loggedIn = val;
 	}
 
-	public onMenuClick () {
-		this.clicked = !this.clicked
-
-		let element = document.getElementsByClassName('menu-button')[0]
-
-		if (this.clicked) {
-			element.classList.remove('transform', 'opacity-0', 'scale-95')
-			element.classList.add('transform', 'opacity-100', 'scale-100')
-		} else {
-			element.classList.add('transform', 'opacity-0', 'scale-95')
-			element.classList.remove('transform', 'opacity-100', 'scale-100')
-		}
-	}
-
-    get avatar () {
-        return this._avatar
-    }
-
-    get username () {
-        return this.tokenStorage.getUsername()
-    }
-
-    get role () {
-        return this.tokenStorage.getRole()
-    }
-
-	get clicked () {
-		return this._clicked
-	}
 	get loggedIn () {
 		return this._loggedIn
-	}
-	set clicked (clicked: Boolean) {
-		this._clicked = clicked
 	}
 	set loggedIn (loggedIn: Boolean) {
 		this._loggedIn = loggedIn
 	}
+    public get user(): User {
+        return this._user;
+    }
+    public set user(value: User) {
+        this._user = value;
+    }
 }

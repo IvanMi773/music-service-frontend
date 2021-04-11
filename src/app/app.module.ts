@@ -41,12 +41,16 @@ import { AdminPlaylistsTableComponent } from './components/admin-playlists-table
 import { AdminGenresTableComponent } from './components/admin-genres-table/admin-genres-table.component';
 import { AdminSongsTableComponent } from './components/admin-songs-table/admin-songs-table.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SongMenuComponent } from './components/song-menu/song-menu.component';
+import { PlaylistChooseDialogComponent } from './components/playlist-choose-dialog/playlist-choose-dialog.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 
 @NgModule({
     declarations: [
@@ -78,6 +82,9 @@ import { MatListModule } from '@angular/material/list';
         AdminGenresTableComponent,
         AdminSongsTableComponent,
         NavbarComponent,
+        SongMenuComponent,
+        PlaylistChooseDialogComponent,
+        ProfileMenuComponent,
 	],
     imports: [
         BrowserModule,
@@ -93,6 +100,7 @@ import { MatListModule } from '@angular/material/list';
         MatInputModule,
         MatTabsModule,
         LayoutModule,
+        MatDialogModule,
         MatToolbarModule,
         MatButtonModule,
         MatSidenavModule,

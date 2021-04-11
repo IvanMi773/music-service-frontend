@@ -68,7 +68,6 @@ export class UploadComponent implements OnInit {
         //TODO: check if genre "none" selected
         //TODO: коли ми вибираємо кастомну категорію і вводимо назву категорії,
         // а потім вибираємо визначену категорію, то станеться помилка валідації
-        //TODO: song cover
 
         if (this.isCustomGenre) {
             let promice: any = await this.genreService.createGenre(this.genre.value)
@@ -84,7 +83,10 @@ export class UploadComponent implements OnInit {
         this.songService.upload(formData).subscribe(data => {
             console.log(data)
             this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername());
-        }, err => this.serverSongErrorResponse = err)
+        }, err => {
+            console.log(err)
+            this.serverSongErrorResponse = err
+        })
     }
 
     get title () {

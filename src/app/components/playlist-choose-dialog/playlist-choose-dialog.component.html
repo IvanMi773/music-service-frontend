@@ -1,0 +1,14 @@
+<div *ngFor="let playlist of data.playlists">
+    <div
+        class="hover:bg-gray-200 cursor-pointer p-3"
+        [ngClass]="{'bg-indigo-100': playlist.id === playlistId}"
+    >
+        <p (click)="select($event, playlist.id)">
+            {{ playlist.title }}
+        </p>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="playlistId" cdkFocusInitial>Ok</button>
+</div>

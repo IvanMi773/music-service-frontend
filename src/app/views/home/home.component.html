@@ -1,5 +1,8 @@
-<div class="content mx-auto">
+<div class="content mx-40">
     <div *ngFor="let song of songs">
-        <app-music-track [song]="song"></app-music-track>
+        <app-music-track
+            [song]="song"
+            (onDeletedSong)="onDeletedSong()"
+        ></app-music-track>
     </div>
 </div>

@@ -1,0 +1,67 @@
+<div class="relative inline-block text-left">
+    <div>
+        <button
+            type="button"
+            class="
+                inline-flex
+                justify-center
+                w-full
+                rounded-full
+                hover:bg-gray-100
+                rounded-md
+                px-4
+                py-2
+                bg-white
+                text-sm
+                font-medium
+                text-gray-700
+                focus:outline-none"
+            id="options-menu"
+            aria-expanded="true"
+            aria-haspopup="true"
+            (click)="menuVisible()"
+        >
+            <img
+                src="../../../assets/images/more.png"
+                class="w-7"
+                alt=""
+            />
+        </button>
+    </div>
+
+    <div
+        class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="options-menu"
+        *ngIf="isVisible"
+    >
+        <div class="py-1" role="none">
+            <span
+                class="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                role="menuitem"
+                (click)="addToQueue()"
+                *ngIf="displayAddToQueue"
+            >
+                Add to queue
+            </span>
+
+            <span
+                class="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                role="menuitem"
+                (click)="openDialog()"
+            >
+                Add to playlist
+            </span>
+
+            <span
+                class="block cursor-pointer px-4 py-2 text-sm text-red-700 hover:bg-gray-100 hover:text-red-800"
+                role="menuitem"
+                (click)="deleteSong()"
+                *ngIf="displayDelete"
+            >
+                Delete
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Playlist } from 'src/app/models/Playlist';
 import { Song } from 'src/app/models/song';
 import { SongLikes } from 'src/app/models/SongLikes';
@@ -20,6 +18,7 @@ import { UserService } from 'src/app/services/user.service';
 export class MusicTrackComponent implements OnInit {
 
     @Input() song: Song
+    @Output() onDeletedSong = new EventEmitter<boolean>()
     private _avatar: string = 'default_user.png'
     private _meLiked: boolean = false
     private _playlists: Array<Playlist> = new Array<Playlist>();
@@ -33,7 +32,6 @@ export class MusicTrackComponent implements OnInit {
         private userService: UserService,
         private queueService: QueueService,
         private playlistService: PlaylistService,
-        private formBuilder: FormBuilder,
     ) {}
 
     ngOnInit(): void {
@@ -77,7 +75,9 @@ export class MusicTrackComponent implements OnInit {
     }
 
     public deleteSong () {
-        this.songService.deleteSong(this.song.id).subscribe(data => console.log(data))
+        if (confirm('Are you shure you want to delete song?')) {
+            this.songService.deleteSong(this.song.id).subscribe(data => this.onDeletedSong.emit(true))
+        }
     }
 
     public play () {
@@ -94,8 +94,8 @@ export class MusicTrackComponent implements OnInit {
         )
     }
 
-    public addToPlaylist () {
-        this.songService.saveSongToPlaylist(this.song.id, this.currentPlaylistToSaveId).subscribe(data => {
+    public addToPlaylist (playlistId: any) {
+        this.songService.saveSongToPlaylist(this.song.id, playlistId).subscribe(data => {
             console.log(data)
         })
     }

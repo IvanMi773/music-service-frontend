@@ -17,6 +17,14 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.updateSongList()
+    }
+
+    public onDeletedSong () {
+        this.updateSongList()
+    }
+
+    private updateSongList () {
         this.songService.getAllSongs().subscribe((data: Array<Song>) => { this._songs = data }, err => console.log(err))
     }
 

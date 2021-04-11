@@ -1,0 +1,63 @@
+<div class="relative inline-block text-left z-index">
+    <div>
+        <button
+            class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            id="user-menu"
+            aria-haspopup="true"
+        >
+            <span class="sr-only">Open user menu</span>
+            <img
+                class="h-8 w-8 rounded-full"
+                (click)="onMenuClick()"
+                [src]="'http://localhost:8080/api/user/avatar/' + user?.avatar"
+                alt=""
+            />
+        </button>
+    </div>
+
+    <div
+        class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="options-menu"
+        *ngIf="isVisible"
+    >
+        <div class="py-1" role="none">
+            <a
+                [routerLink]="'/profile/' + user.username"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                role="menuitem"
+                (click)="onMenuClick()"
+            >
+                Your profile
+            </a>
+
+            <a
+                routerLink="/admin"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                role="menuitem"
+                *ngIf="user.role === 'ADMIN'"
+                (click)="onMenuClick()"
+            >
+                Admin page
+            </a>
+
+            <a
+                routerLink="/settings"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                role="menuitem"
+                (click)="onMenuClick()"
+            >
+                Settings
+            </a>
+            <a
+                routerLink="/signout"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                role="menuitem"
+                (click)="onMenuClick()"
+            >
+                Sign out
+            </a>
+        </div>
+    </div>
+</div>

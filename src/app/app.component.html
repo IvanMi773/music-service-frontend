@@ -61,9 +61,9 @@
                         />
                     </div>
                     <div class="hidden sm:block sm:ml-6">
-                        <div class="flex space-x-4">
+                        <div *ngIf="loggedIn" class="flex space-x-4">
                             <a
-                                routerLink="/"
+                                routerLink="/home"
                                 class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
 							>
 								Home
@@ -109,58 +109,9 @@
 
                     <!-- Profile dropdown -->
                     <div *ngIf="loggedIn" class="ml-3 relative">
-                        <div>
-                            <button
-                                class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                id="user-menu"
-                                aria-haspopup="true"
-                            >
-                                <span class="sr-only">Open user menu</span>
-                                <img
-                                    class="h-8 w-8 rounded-full"
-                                    (click)="onMenuClick()"
-                                    [src]="'http://localhost:8080/api/user/avatar/' + avatar"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
-
-                        <div
-                            class="menu-button transform opacity-0 scale-95 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-                            role="menu"
-                            aria-orientation="vertical"
-                            aria-labelledby="user-menu"
-                        >
-                            <a
-                                [routerLink]="'/profile/' + username"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem"
-                            >
-                                Your Profile
-                            </a>
-                            <a
-                                routerLink="/admin"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem"
-                                *ngIf="role === 'ADMIN'"
-                            >
-                                Admin page
-                            </a>
-                            <a
-                                routerLink="/settings"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem"
-                            >
-                                Settings
-                            </a>
-                            <a
-                                routerLink="/signout"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem"
-                            >
-                                Sign out
-                            </a>
-                        </div>
+                        <app-profile-menu
+                            [user]="user"
+                        ></app-profile-menu>
                     </div>
 
 					<div *ngIf="!loggedIn" class="ml-3 relative flex items-stretch">
