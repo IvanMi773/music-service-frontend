@@ -44,9 +44,11 @@ export class PlaylistViewComponent implements OnInit {
     }
 
     public deletePlaylist () {
-        this.playlistService.deleteById(this.playlist.id).subscribe(
-            data => this.router.navigateByUrl('/profile/' + this.playlist.username)
-        )
+        if (confirm('Are you shure you want to delete playlist?')) {
+            this.playlistService.deleteById(this.playlist.id).subscribe(
+                data => this.router.navigateByUrl('/profile/' + this.playlist.username)
+            )
+        }
     }
 
     get playlistId () {

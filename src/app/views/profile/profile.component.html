@@ -48,7 +48,7 @@
         </div>
 
         <div class="section">
-            <div class="mainCol">
+            <div class="mainCol mt-3">
                 <div class="flex flex-wrap">
                     <div class="w-full">
                         <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
@@ -90,9 +90,7 @@
                                         }"
                                     >
                                         <a routerLink="/upload" *ngIf="username === currentUsername">
-                                            <button class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                Upload new track
-                                            </button>
+                                            <app-button text="Upload new track"></app-button>
                                         </a>
                                         <div *ngFor="let song of songs">
                                             <app-music-track [song]="song"></app-music-track>
@@ -106,9 +104,7 @@
                                         }"
                                     >
                                         <a routerLink="/playlist" *ngIf="username === currentUsername">
-                                            <button class="py-2 px-4 border border-transparent text-sm mb-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                Create new playlist
-                                            </button>
+                                            <app-button text="Create new playlist"></app-button>
                                         </a>
 
                                         <div class="grid grid-cols-5">
@@ -132,7 +128,7 @@
                 </div>
             </div>
 
-            <div class="secondCol">
+            <div class="secondCol mt-3">
                 <div class="grid grid-cols-3">
                     <div class="">
                         <p class="text-md text-gray-600 text-center">Subscribers</p>

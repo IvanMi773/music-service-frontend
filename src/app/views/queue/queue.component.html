@@ -1,34 +1,16 @@
 <div class="container">
     <p class="capitalize font-bold text-4xl mt-9">playing queue</p>
-    <button class="
-            mt-6
-            py-2
-            px-4
-            border
-            border-transparent
-            text-sm
-            mb-4
-            font-medium
-            rounded-md
-            text-white
-            bg-red-800
-            hover:bg-red-900
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-indigo-500
-        "
-        (click)="clearQueue()"
-    >
-        Clear queue
-    </button>
+    <div (click)="clearQueue()">
+        <app-red-button text="Clear queue"></app-red-button>
+    </div>
+
     <div *ngIf="queue.length > 0">
         <app-playlist-song [playlist]="queue"></app-playlist-song>
     </div>
     <div *ngIf="queue.length <= 0">
         <p class="text-gray-500 mt-5">
             You don't have a play queue. Click
-            <a routerLink="/" class="text-blue-600 hover:text-blue-400">here</a>
+            <a routerLink="/home" class="text-blue-600 hover:text-blue-400">here</a>
             to start listening
         </p>
     </div>

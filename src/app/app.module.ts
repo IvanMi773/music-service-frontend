@@ -49,8 +49,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
+import { ButtonComponent } from './components/buttons/button/button.component';
+import { RedButtonComponent } from './components/buttons/red-button/red-button.component';
 
 @NgModule({
     declarations: [
@@ -85,6 +87,8 @@ import { ProfileMenuComponent } from './components/profile-menu/profile-menu.com
         SongMenuComponent,
         PlaylistChooseDialogComponent,
         ProfileMenuComponent,
+        ButtonComponent,
+        RedButtonComponent,
 	],
     imports: [
         BrowserModule,

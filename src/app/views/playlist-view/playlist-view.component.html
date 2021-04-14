@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mx-auto">
     <div *ngIf="playlist">
         <div class="flex flex-wrap content-start mt-5">
             <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="playlist-image">
@@ -7,61 +7,26 @@
                 <p class="text-4xl mt-9 ml-4 capitalize font-bold">{{ playlist.title }}</p>
 
                 <p class="mt-4 ml-4">Playlist • {{ playlist.username }}</p>
-                <p class="ml-4">{{ playlist.songs.length }} compositions • {{ ((playlistDuration - (playlistDuration % 60)) / 60) + ' minutes ' + (playlistDuration % 60) + ' seconds' }}</p>
-                <button
-					class="
-						ml-4
-						mt-9
-						py-2
-						px-4
-						border
-						border-transparent
-						text-sm
-						font-medium
-						rounded-md
-						text-white
-						bg-indigo-600
-						hover:bg-indigo-700
-						focus:outline-none
-						focus:ring-2
-						focus:ring-offset-2
-						focus:ring-indigo-500
-					"
-                    *ngIf="playlist.songs.length > 0"
-					(click)="play()"
-				>
-					<span *ngIf="!isPlaying">
-                        Play
-                    </span>
-                    <span *ngIf="isPlaying">
-                        Stop
-                    </span>
-				</button>
+                <p class="ml-4">
+                    {{ playlist.songs.length }} compositions •
+                    {{ ((playlistDuration - (playlistDuration % 60)) / 60) + ' minutes ' + (playlistDuration % 60) + ' seconds' }}
+                </p>
 
-                <button
-					class="
-						ml-4
-						mt-9
-						py-2
-						px-4
-						border
-						border-transparent
-						text-sm
-						font-medium
-						rounded-md
-						text-white
-						bg-red-700
-						hover:bg-red-800
-						focus:outline-none
-						focus:ring-2
-						focus:ring-offset-2
-						focus:ring-red-500
-					"
+                <div
+                    class="inline-block"
+                    *ngIf="playlist.songs.length > 0"
+                    (click)="play()"
+                >
+                    <app-button *ngIf="!isPlaying" text="Play"></app-button>
+                </div>
+
+                <div
+                    class="inline-block"
                     *ngIf="playlist.username === currentUsername && playlist.state !== 'TECHNICAL'"
-					(click)="deletePlaylist()"
-				>
-                    Delete playlist
-				</button>
+                    (click)="deletePlaylist()"
+                >
+                    <app-red-button text="Delete playlist"></app-red-button>
+                </div>
             </div>
         </div>
 
