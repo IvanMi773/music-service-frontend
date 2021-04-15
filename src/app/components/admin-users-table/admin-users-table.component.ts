@@ -19,7 +19,6 @@ export class AdminUsersTableComponent implements AfterViewInit, OnInit {
     @ViewChild(MatTable) table: MatTable<User>;
     dataSource: AdminUsersTableDataSource;
 
-    /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
     displayedColumns = [
         'position',
         'username',
@@ -33,9 +32,7 @@ export class AdminUsersTableComponent implements AfterViewInit, OnInit {
         'role'
     ];
 
-    constructor (
-        private userService: UserService
-    ) {}
+    constructor (private userService: UserService) {}
 
     ngOnInit() {
         this.dataSource = new AdminUsersTableDataSource(this.userService);
@@ -46,4 +43,17 @@ export class AdminUsersTableComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
         this.table.dataSource = this.dataSource;
     }
+
+    // public deleteUser (user: User) {
+    //     if (confirm('Do you realy want to delete user?')) {
+    //         this.userService.delete(user.username).subscribe(data => {
+
+    //             this.userService.getAllUsers().subscribe((data: Array<User>) => {
+    //                 this.dataSource.data = data
+    //                 this.table.renderRows()
+    //                 window.location.reload()
+    //             })
+    //         })
+    //     }
+    // }
 }

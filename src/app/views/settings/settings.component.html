@@ -33,7 +33,7 @@
         </a>
     </div>
 
-    <div>
+    <!-- <div>
         <p class="text-2xl mt-5">Change language</p>
         <label class="block mt-1">
             <span class="text-gray-700">Language</span>
@@ -47,10 +47,12 @@
         <a routerLink="/edit">
             <app-button text="Change"></app-button>
         </a>
-    </div>
+    </div> -->
 
     <div>
         <p class="text-2xl mt-5">Delete account</p>
-        <app-red-button text="Delete Profile"></app-red-button>
+        <div (click)="deleteAccount()">
+            <app-red-button text="Delete Profile"></app-red-button>
+        </div>
     </div>
 </div>

@@ -40,4 +40,17 @@ export class AdminPlaylistsTableComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
         this.table.dataSource = this.dataSource;
     }
+
+    // public deletePlaylist (playlist: Playlist) {
+    //     if (confirm('Do you realy want to delete playlist?')) {
+    //         this.playlistService.deleteById(playlist.id).subscribe(data => {
+
+    //             this.userService.getAllUsers().subscribe((data: Array<User>) => {
+    //                 this.dataSource.data = data
+    //                 this.table.renderRows()
+    //                 window.location.reload()
+    //             })
+    //         })
+    //     }
+    // }
 }

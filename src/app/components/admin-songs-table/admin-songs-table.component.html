@@ -45,7 +45,13 @@
         <ng-container matColumnDef="duration">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
             <td mat-cell *matCellDef="let song">
-                <p>{{song.duration}}</p>
+                <p>
+                    {{
+                        (song.duration - (song.duration % 60)) / 60 +
+                            ":" +
+                            (song.duration % 60)
+                    }}
+                </p>
             </td>
         </ng-container>
 

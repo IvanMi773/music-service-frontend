@@ -33,4 +33,17 @@ export class AdminGenresTableComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
         this.table.dataSource = this.dataSource;
     }
+
+    // public deleteGenre (genre: Genre) {
+    //     if (confirm('Do you realy want to delete this genre?')) {
+    //         this.genreService.delete().subscribe(data => {
+
+    //             this.userService.getAllUsers().subscribe((data: Array<User>) => {
+    //                 this.dataSource.data = data
+    //                 this.table.renderRows()
+    //                 window.location.reload()
+    //             })
+    //         })
+    //     }
+    // }
 }
