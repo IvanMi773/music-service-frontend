@@ -27,6 +27,18 @@
                             Users
                         </a>
                     </li>
+                    <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+                        <a
+                            class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
+                            (click)="toggleTabs(3)"
+                            [ngClass]="{
+                                'text-indigo-600 bg-white': openTab !== 3,
+                                'text-white bg-indigo-600': openTab === 3
+                            }"
+                        >
+                            Songs by Genre
+                        </a>
+                    </li>
                 </ul>
                 <hr>
                 <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded">
@@ -56,6 +68,20 @@
                                     <app-user-view [user]="user"></app-user-view>
                                 </div>
                                 <div *ngIf="searchRes?.users.length <= 0">
+                                    <span class="text-gray-500 text-xl">Nothing to show</span>
+                                </div>
+                            </div>
+
+                            <div
+                                [ngClass]="{
+                                    hidden: openTab !== 3,
+                                    block: openTab === 3
+                                }"
+                            >
+                                <div *ngFor="let song of searchRes?.genres">
+                                    <app-music-track [song]="song"></app-music-track>
+                                </div>
+                                <div *ngIf="searchRes?.songs.length <= 0">
                                     <span class="text-gray-500 text-xl">Nothing to show</span>
                                 </div>
                             </div>
