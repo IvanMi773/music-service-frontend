@@ -14,7 +14,8 @@ export class SearchComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private router: Router
+        private router: Router,
+        private searchService: SearchService
     ) {}
 
     ngOnInit(): void {
@@ -24,6 +25,7 @@ export class SearchComponent implements OnInit {
     }
 
     public search () {
-        this.router.navigateByUrl('/search/' + this.searchForm.get('searchQuery').value)
+        this.searchService.searchQuery = this.searchForm.get('searchQuery').value
+        this.router.navigateByUrl('/search/song-title/' + this.searchForm.get('searchQuery').value)
     }
 }

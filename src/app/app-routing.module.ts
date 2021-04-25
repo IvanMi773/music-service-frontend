@@ -20,6 +20,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { GateGuard } from './guards/gate.guard';
 import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
+import { SearchSongTitleComponent } from './components/search-song-title/search-song-title.component';
+import { SearchSongGenreComponent } from './components/search-song-genre/search-song-genre.component';
+import { SearchUserNameComponent } from './components/search-user-name/search-user-name.component';
 
 //TODO: check for correct username in profile
 //TODO: change http://localhost to config.hostname in img src and player list
@@ -146,12 +149,26 @@ const routes: Routes = [
     },
 
     {
-        path: 'search/:searchQuery',
+        path: 'search',
         component: SearchViewComponent,
         canActivate: [AuthGuard],
         data: {
             roles: [USER_ROLE, ADMIN_ROLE]
-        }
+        },
+        children: [
+            {
+                path: 'song-title/:searchQuery',
+                component: SearchSongTitleComponent
+            },
+            {
+                path: 'song-genre/:searchQuery',
+                component: SearchSongGenreComponent
+            },
+            {
+                path: 'user-name/:searchQuery',
+                component: SearchUserNameComponent
+            },
+        ]
     },
 
     {

@@ -1,0 +1,6 @@
+<div *ngFor="let song of searchRes">
+    <app-music-track [song]="song"></app-music-track>
+</div>
+<div *ngIf="searchRes.length <= 0">
+    <span class="text-gray-500 text-xl">Nothing to show</span>
+</div>

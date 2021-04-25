@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Search } from 'src/app/models/Search';
+import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -11,19 +10,14 @@ import { SearchService } from 'src/app/services/search.service';
 export class SearchViewComponent implements OnInit {
 
     private _openTab: number = 1
-    private _searchRes: Search
     private _searchQuery: string
 
     constructor(
-        private searchService: SearchService,
-        private route: ActivatedRoute
+        public router: Router,
+        public searchService: SearchService
     ) {}
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.searchQuery = params['searchQuery']
-            this.searchService.search(this.searchQuery).subscribe((data: Search) => this.searchRes = data)
-        })
     }
 
     toggleTabs($tabNumber: number){
@@ -37,15 +31,6 @@ export class SearchViewComponent implements OnInit {
     set openTab (openTab: number) {
         this._openTab = openTab
     }
-
-    get searchRes () {
-        return this._searchRes
-    }
-
-    set searchRes (search: Search) {
-        this._searchRes = search
-    }
-
     get searchQuery () {
         return this._searchQuery
     }

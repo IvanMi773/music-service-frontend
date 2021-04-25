@@ -53,6 +53,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 import { ButtonComponent } from './components/buttons/button/button.component';
 import { RedButtonComponent } from './components/buttons/red-button/red-button.component';
+import { SearchSongTitleComponent } from './components/search-song-title/search-song-title.component';
+import { SearchSongGenreComponent } from './components/search-song-genre/search-song-genre.component';
+import { SearchUserNameComponent } from './components/search-user-name/search-user-name.component';
 
 @NgModule({
     declarations: [
@@ -89,6 +92,9 @@ import { RedButtonComponent } from './components/buttons/red-button/red-button.c
         ProfileMenuComponent,
         ButtonComponent,
         RedButtonComponent,
+        SearchSongTitleComponent,
+        SearchSongGenreComponent,
+        SearchUserNameComponent,
 	],
     imports: [
         BrowserModule,

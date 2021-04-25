@@ -7,9 +7,10 @@
                         <a
                             class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
                             (click)="toggleTabs(1)"
+                            [routerLink]="'/search/song-title/' + searchService.searchQuery"
                             [ngClass]="{
-                                'text-indigo-600 bg-white': openTab !== 1,
-                                'text-white bg-indigo-600': openTab === 1
+                                'text-indigo-600 bg-white': router.url !== '/search/song-title/' + searchService.searchQuery,
+                                'text-white bg-indigo-600': router.url === '/search/song-title/' + searchService.searchQuery
                             }"
                         >
                             Songs
@@ -19,9 +20,10 @@
                         <a
                             class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
                             (click)="toggleTabs(2)"
+                            [routerLink]="'/search/user-name/' + searchService.searchQuery"
                             [ngClass]="{
-                                'text-indigo-600 bg-white': openTab !== 2,
-                                'text-white bg-indigo-600': openTab === 2
+                                'text-indigo-600 bg-white': router.url !== '/search/user-name/' + searchService.searchQuery,
+                                'text-white bg-indigo-600': router.url === '/search/user-name/' + searchService.searchQuery
                             }"
                         >
                             Users
@@ -31,9 +33,10 @@
                         <a
                             class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
                             (click)="toggleTabs(3)"
+                            [routerLink]="'/search/song-genre/' + searchService.searchQuery"
                             [ngClass]="{
-                                'text-indigo-600 bg-white': openTab !== 3,
-                                'text-white bg-indigo-600': openTab === 3
+                                'text-indigo-600 bg-white': router.url !== '/search/song-genre/' + searchService.searchQuery,
+                                'text-white bg-indigo-600': router.url === '/search/song-genre/' + searchService.searchQuery
                             }"
                         >
                             Songs by Genre
@@ -44,47 +47,7 @@
                 <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded">
                     <div class="px-4 py-5 flex-auto">
                         <div class="tab-content tab-space">
-                            <div
-                                [ngClass]="{
-                                    hidden: openTab !== 1,
-                                    block: openTab === 1
-                                }"
-                            >
-                                <div *ngFor="let song of searchRes?.songs">
-                                    <app-music-track [song]="song"></app-music-track>
-                                </div>
-                                <div *ngIf="searchRes?.songs.length <= 0">
-                                    <span class="text-gray-500 text-xl">Nothing to show</span>
-                                </div>
-                            </div>
-
-                            <div
-                                [ngClass]="{
-                                    hidden: openTab !== 2,
-                                    block: openTab === 2
-                                }"
-                            >
-                                <div *ngFor="let user of searchRes?.users">
-                                    <app-user-view [user]="user"></app-user-view>
-                                </div>
-                                <div *ngIf="searchRes?.users.length <= 0">
-                                    <span class="text-gray-500 text-xl">Nothing to show</span>
-                                </div>
-                            </div>
-
-                            <div
-                                [ngClass]="{
-                                    hidden: openTab !== 3,
-                                    block: openTab === 3
-                                }"
-                            >
-                                <div *ngFor="let song of searchRes?.genres">
-                                    <app-music-track [song]="song"></app-music-track>
-                                </div>
-                                <div *ngIf="searchRes?.songs.length <= 0">
-                                    <span class="text-gray-500 text-xl">Nothing to show</span>
-                                </div>
-                            </div>
+                            <router-outlet></router-outlet>
                         </div>
                     </div>
                 </div>
