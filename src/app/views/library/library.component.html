@@ -2,7 +2,7 @@
     <div class="mb-5">
         <p class="mt-5 mb-4 text-2xl">Recently played</p>
 
-        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+        <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let song of resentlyPlayedSongs">
                 <img [src]="'http://localhost:8080/api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ song.name }}</p>
@@ -18,7 +18,7 @@
     <div class="mb-5">
         <p class="mt-5 mb-4 text-2xl">Liked songs</p>
 
-        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+        <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let song of likedSongs">
                 <img [src]="'http://localhost:8080/api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ song.name }}</p>
@@ -34,7 +34,7 @@
     <div class="mb-5">
         <p class="mt-5 mb-4 text-2xl">Playlists</p>
 
-        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+        <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let playlist of playlists">
                 <a [routerLink]="'/playlist/' + playlist.id">
                     <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
@@ -51,7 +51,7 @@
     <div class="mb-5">
         <p class="mt-5 mb-4 text-2xl">Following</p>
 
-        <div class="grid xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-4">
+        <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let user of subscriptions">
                 <img [src]="'http://localhost:8080/api/user/avatar/' + user.avatar" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ user.username }}</p>
