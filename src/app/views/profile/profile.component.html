@@ -36,12 +36,12 @@
                 *ngIf="username != currentUsername"
             >
                 <span *ngIf="!meSubscribed; else elseBlock">
-                    Subscribe
+                    Підписатися
                 </span>
 
                 <ng-template #elseBlock>
-                    <span >
-                        Unsubscribe
+                    <span>
+                        Відписатися
                     </span>
                 </ng-template>
             </button>
@@ -62,7 +62,7 @@
                                         'text-white bg-indigo-600': openTab === 1
                                     }"
                                 >
-                                    Tracks
+                                    Пісні
                                 </a>
                             </li>
                             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
@@ -75,7 +75,7 @@
                                         'text-white bg-indigo-600': openTab === 2
                                     }"
                                 >
-                                    Playlists
+                                    Плейлисти
                                 </a>
                             </li>
                         </ul>
@@ -90,7 +90,7 @@
                                         }"
                                     >
                                         <a routerLink="/upload" *ngIf="username === currentUsername">
-                                            <app-button text="Upload new track"></app-button>
+                                            <app-button text="Завантажити нову пісню"></app-button>
                                         </a>
                                         <div *ngFor="let song of songs">
                                             <app-music-track [song]="song"></app-music-track>
@@ -104,11 +104,11 @@
                                         }"
                                     >
                                         <a routerLink="/playlist" *ngIf="username === currentUsername">
-                                            <app-button text="Create new playlist"></app-button>
+                                            <app-button text="Створити новий плейлист"></app-button>
                                         </a>
 
                                         <div class="grid grid-cols-5">
-                                            <div *ngFor="let playlist of playlists" class="border-2 mr-4 mt-4">
+                                            <div *ngFor="let playlist of playlists" class="border-2 p-3 mr-4 mt-4">
                                                 <a [routerLink]="'/playlist/' + playlist.id">
                                                     <img
                                                         [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo"
@@ -131,17 +131,17 @@
             <div class="secondCol mt-3">
                 <div class="grid grid-cols-3">
                     <div class="">
-                        <p class="text-md text-gray-600 text-center">Subscribers</p>
+                        <p class="text-md text-gray-600 text-center">Підписники</p>
                         <p class="text-3xl text-gray-600 text-center">{{ user?.subscribers.length }}</p>
                     </div>
 
                     <div class="">
-                        <p class="text-md text-gray-600 text-center">Subscriptions</p>
+                        <p class="text-md text-gray-600 text-center">Підписки</p>
                         <p class="text-3xl text-gray-600 text-center">{{ user?.subscriptions.length }}</p>
                     </div>
 
                     <div class="">
-                        <p class="text-md text-gray-600 text-center">Tracks</p>
+                        <p class="text-md text-gray-600 text-center">Пісні</p>
                         <p class="text-3xl text-gray-600 text-center">{{ user?.tracks === undefined ? 0 : user?.tracks }}</p>
                     </div>
                 </div>
@@ -151,10 +151,10 @@
 
     <div *ngIf="err">
         <div class="text-center mx-auto mt-5">
-            <p class="text-3xl">Something went wrong or we cannot find user</p>
+            <p class="text-3xl">Щось сталося або ми не змогли знайти користувача</p>
             <p class="text-xl text-gray-600 hover:text-gray-500">
                 <a [routerLink]="'/profile/' + currentUsername" (click)="backToProfile()">
-                    Back to your profile
+                    Повернутися до вашого профіля
                 </a>
             </p>
         </div>

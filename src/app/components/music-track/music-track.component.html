@@ -8,7 +8,7 @@
                 />
                 <p class="font-bold inline text-sm">{{ song.username }}</p>
             </a>
-            <p class="font-light inline text-sm"> posted a track</p>
+            <p class="font-light inline text-sm"> опублікував нову пісню</p>
         </div>
 
         <div class="flex justify-end">
@@ -28,7 +28,7 @@
         <!-- <div class="flex flex-wrap content-start"> -->
             <div class="flex items-center">
                 <img
-                    [src]="'http://localhost:8080/api/song/cover/' + song.cover"
+                    [src]="config.hostName + 'api/song/cover/' + song.cover"
                     class="h-40 w-40 inline"
                     alt=""
                 />
@@ -40,7 +40,9 @@
                     />
                 </button>
                 <p class="inline ml-5 mr-5">{{ song.name }}</p>
-                <p>#{{ song.genre }}</p>
+                <a [routerLink]="'/search/song-genre/' + song.genre">
+                    <p>#{{ song.genre }}</p>
+                </a>
             </div>
         <!-- </div> -->
 
@@ -72,81 +74,6 @@
                 />
             </button>
             <p class="ml-3">{{ song.likes.length }}</p>
-
-
         </div>
     </div>
 </div>
-
-
-
-<!-- <div>
-    <div class="mb-2 mt-5">
-        <a [routerLink]="'/profile/' + song.username">
-            <img
-                [src]="'http://localhost:8080/api/user/avatar/' + avatar"
-                class="w-8 h-8 inline rounded-full mr-2"
-            />
-            <p class="font-bold inline text-sm">{{ song.username }}</p>
-        </a>
-        <p class="font-light inline text-sm"> posted a track</p>
-    </div>
-
-    <div class="grid grid-cols-2 ">
-        <div class="flex flex-wrap content-start">
-                <img
-                    [src]="'http://localhost:8080/api/song/cover/' + song.cover"
-                    class="h-40 w-40 inline"
-                    alt=""
-                />
-                <button class="ml-5" (click)="play()">
-                    <img
-                        src="../../../assets/images/play1.svg"
-                        alt="Play"
-                        *ngIf="check()"
-                    />
-                </button>
-                <p class="inline ml-5 mr-5">{{ song.name }}</p>
-                <p>#{{ song.genre }}</p>
-        </div>
-
-        <div class="text-right">
-            <p>
-                {{
-                    (song.duration - (song.duration % 60)) / 60 +
-                        ":" +
-                        (song.duration % 60)
-                }}
-            </p>
-        </div>
-
-        <div class="flex mt-2">
-            <button>
-                <img
-                    src="../../../assets/images/like.png"
-                    (click)="like()"
-                    *ngIf="!meLiked"
-                    class="w-7 h-7"
-                    alt=""
-                />
-                <img
-                    src="../../../assets/images/liked.png"
-                    (click)="like()"
-                    *ngIf="meLiked"
-                    class="w-7 h-7"
-                    alt=""
-                />
-            </button>
-            <p class="ml-3">{{ song.likes.length }}</p>
-
-            <app-song-menu
-                [displayAddToQueue]="check()"
-                [displayDelete]="song.username === currentUsername"
-                [playlists]="playlists"
-                (onNeedToDelete)="deleteSong()"
-                (onNeedToAddToQuery)="addToQueue()"
-                (playlistId)="addToPlaylist($event)"
-            ></app-song-menu>
-        </div>
-    </div>
-</div> -->

@@ -1,7 +1,7 @@
 <div class="container mx-auto">
-    <p class="capitalize font-bold text-4xl mt-9">playing queue</p>
+    <p class="capitalize font-bold text-4xl mt-9">Черга</p>
     <div (click)="clearQueue()">
-        <app-red-button text="Clear queue"></app-red-button>
+        <app-red-button text="Очистити чергу"></app-red-button>
     </div>
 
     <div *ngIf="queue.length > 0">
@@ -9,9 +9,9 @@
     </div>
     <div *ngIf="queue.length <= 0">
         <p class="text-gray-500 mt-5">
-            You don't have a play queue. Click
-            <a routerLink="/home" class="text-blue-600 hover:text-blue-400">here</a>
-            to start listening
+            Ваша музична черга пуста. Натисніть
+            <a routerLink="/home" class="text-blue-600 hover:text-blue-400">тут</a>
+            щоб знайти нові пісні
         </p>
     </div>
 </div>

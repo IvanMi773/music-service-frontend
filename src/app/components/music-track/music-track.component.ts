@@ -9,6 +9,7 @@ import { QueueService } from 'src/app/services/queue.service';
 import { SongService } from 'src/app/services/song.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import config from '../../configuration'
 
 @Component({
     selector: 'app-music-track',
@@ -58,6 +59,10 @@ export class MusicTrackComponent implements OnInit {
 
     get meLiked () {
         return this._meLiked
+    }
+
+    get config () {
+        return this.config
     }
 
     get currentUsername () {

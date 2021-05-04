@@ -9,7 +9,7 @@
                 alt="Workflow"
             />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Create new account
+                Створити новий акаунт
             </h2>
         </div>
         <form
@@ -21,8 +21,8 @@
         >
 
             <div *ngIf="serverErrorResponse" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Authentication error </strong><br>
-                <span class="block sm:inline">Username or email is already exists.</span>
+                <strong class="font-bold">Помилка авторизації </strong><br>
+                <span class="block sm:inline">Ім'я користувача або електронна адреса уже існує.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                     <svg
                         (click)="serverErrorResponse = null"
@@ -41,7 +41,7 @@
 
             <div class="rounded-md shadow-sm 10-space-y-px">
                 <div>
-                    <label for="firstName" class="sr-only">First name</label>
+                    <label for="firstName" class="sr-only">Ім'я</label>
 
                     <input
                         id="firstName"
@@ -51,24 +51,24 @@
                         autocomplete="firstName"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="First Name"
+                        placeholder="Ім'я"
                     />
                 </div>
 
                 <div *ngIf=" firstName.invalid && (firstName.dirty || firstName.touched) " class="text-red-500">
 
                     <div *ngIf="firstName.errors.required">
-                        Please enter first name
+                        Введіть ім'я
                     </div>
 
 					<div *ngIf="firstName.errors.minlength">
-                        First name must be at least {{ firstNameMinLength }} characters long
+                        Ім'я має бути щонайменше {{ firstNameMinLength }} символи
                     </div>
 
                 </div>
 
 				<div>
-                    <label for="lastName" class="sr-only">Last name</label>
+                    <label for="lastName" class="sr-only">Прізвище</label>
 
                     <input
                         id="lastName"
@@ -78,24 +78,24 @@
                         autocomplete="lastName"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Last name"
+                        placeholder="Прізвище"
                     />
                 </div>
 
                 <div *ngIf=" lastName.invalid && (lastName.dirty || lastName.touched) " class="text-red-500">
 
                     <div *ngIf="lastName.errors.required">
-                        Please enter Last name
+                        Введіть прізвище
                     </div>
 
 					<div *ngIf="lastName.errors.minlength">
-                        Last name must be at least {{ lastNameMinLength }} characters long
+                        Прізвище має бути щонайменше {{ lastNameMinLength }} символи
                     </div>
 
                 </div>
 
 				<div>
-                    <label for="username" class="sr-only">Username</label>
+                    <label for="username" class="sr-only">Ім'я користувача</label>
 
                     <input
                         id="username"
@@ -105,24 +105,24 @@
                         autocomplete="username"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Username"
+                        placeholder="Ім'я користувача"
                     />
                 </div>
 
                 <div *ngIf=" username.invalid && (username.dirty || username.touched) " class="text-red-500">
 
                     <div *ngIf="username.errors.required">
-                        Please enter username
+                        Введіть ім'я користувача
                     </div>
 
 					<div *ngIf="username.errors.minlength">
-                        Username must be at least {{ usernameMinLength }} characters long
+                        Ім'я користувача має бути щонайменше{{ usernameMinLength }} символи
                     </div>
 
                 </div>
 
 				<div>
-                    <label for="email" class="sr-only">Email</label>
+                    <label for="email" class="sr-only">Електронна адреса</label>
 
                     <input
                         id="email"
@@ -132,24 +132,24 @@
                         autocomplete="email"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Email"
+                        placeholder="Електронна адреса"
                     />
                 </div>
 
                 <div *ngIf=" email.invalid && (email.dirty || email.touched) " class="text-red-500">
 
                     <div *ngIf="email.errors.required">
-                        Please enter email
+                        Введіть електронну адресу
                     </div>
 
 					<div *ngIf="email.errors.email">
-                        Please enter correct email address
+                        Введіть коректну електронну адресу
                     </div>
 
                 </div>
 
                 <div>
-                    <label for="password" class="sr-only">Password</label>
+                    <label for="password" class="sr-only">Пароль</label>
                     <input
                         id="password"
                         name="password"
@@ -158,18 +158,18 @@
                         autocomplete="current-password"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Password"
+                        placeholder="Пароль"
                     />
                 </div>
 
 				<div *ngIf=" password.invalid && (password.dirty || password.touched) " class="text-red-500">
 
                     <div *ngIf="password.errors.required">
-                        Please enter password
+                        Введіть пароль
                     </div>
 
 					<div *ngIf="password.errors.minlength">
-                        Password must be at least {{ passwordMinLength }} characters long
+                        Пароль має бути щонайменше {{ passwordMinLength }} символів
                     </div>
 
                 </div>
@@ -178,9 +178,9 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <span class="ml-2 block text-sm text-gray-900">
-                        Already have an account?
+                        Уже маєте акаунт?
                         <a class="font-medium text-indigo-600 hover:text-indigo-500" routerLink="/login">
-                            Login
+                            Увійти
                         </a>
                     </span>
                 </div>
@@ -226,7 +226,7 @@
                         </svg>
                     </span>
 
-                    Sign up
+                    Зареєструватися
 
                 </button>
             </div>

@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
+import config from '../../configuration'
 
 @Component({
     selector: 'app-profile-menu',
@@ -27,5 +28,9 @@ export class ProfileMenuComponent implements OnInit {
 
     public onMenuClick () {
         this.isVisible = !this.isVisible
+    }
+
+    get config () {
+        return config
     }
 }

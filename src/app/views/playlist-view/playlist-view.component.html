@@ -6,9 +6,9 @@
             <div>
                 <p class="text-4xl mt-9 ml-4 capitalize font-bold">{{ playlist.title }}</p>
 
-                <p class="mt-4 ml-4">Playlist • {{ playlist.username }}</p>
+                <p class="mt-4 ml-4">Плейлист • {{ playlist.username }}</p>
                 <p class="ml-4">
-                    {{ playlist.songs.length }} compositions •
+                    {{ playlist.songs.length }} композицій •
                     {{ ((playlistDuration - (playlistDuration % 60)) / 60) + ' minutes ' + (playlistDuration % 60) + ' seconds' }}
                 </p>
 
@@ -17,7 +17,7 @@
                     *ngIf="playlist.songs.length > 0"
                     (click)="play()"
                 >
-                    <app-button *ngIf="!isPlaying" text="Play"></app-button>
+                    <app-button *ngIf="!isPlaying" text="Грати"></app-button>
                 </div>
 
                 <div
@@ -25,7 +25,7 @@
                     *ngIf="playlist.username === currentUsername && playlist.state !== 'TECHNICAL'"
                     (click)="deletePlaylist()"
                 >
-                    <app-red-button text="Delete playlist"></app-red-button>
+                    <app-red-button text="Видалити плейлист"></app-red-button>
                 </div>
             </div>
         </div>

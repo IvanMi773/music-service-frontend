@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Playlist } from 'src/app/models/Playlist';
 import { Song } from 'src/app/models/song';
 import { User } from 'src/app/models/User';
-import { UserSubscriptions } from 'src/app/models/UserSubscriptions';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';

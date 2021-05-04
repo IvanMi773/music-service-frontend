@@ -9,7 +9,7 @@
                 alt="Workflow"
             />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Log in to your account
+                Увійти до вашого акаунту
             </h2>
         </div>
         <form
@@ -20,8 +20,8 @@
             (ngSubmit)="onSubmit()"
         >
             <div *ngIf="serverErrorResponse" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Authentication error </strong><br>
-                <span class="block sm:inline">Incorrect username or password provided.</span>
+                <strong class="font-bold">Помилка авторизації </strong><br>
+                <span class="block sm:inline">Ви ввели невірне ім'я користувача або пароль.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                     <svg
                         (click)="serverErrorResponse = null"
@@ -40,7 +40,7 @@
 
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label for="username" class="sr-only">Username</label>
+                    <label for="username" class="sr-only">Ім'я користувача</label>
 
                     <input
                         id="username"
@@ -50,24 +50,24 @@
                         autocomplete="username"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Username"
+                        placeholder="Ім'я користувача"
                     />
                 </div>
 
                 <div *ngIf=" username.invalid && (username.dirty || username.touched) " class="text-red-500">
 
                     <div *ngIf="username.errors.required">
-                        Please enter username
+                        Введіть ім'я користувача
                     </div>
 
 					<div *ngIf="username.errors.minlength">
-                        Username must be at least {{ usernameMinLength }} characters long
+                        Ім'я користувача має бути щонайменше {{ usernameMinLength }} символи
                     </div>
 
                 </div>
 
                 <div>
-                    <label for="password" class="sr-only">Password</label>
+                    <label for="password" class="sr-only">Пароль</label>
                     <input
                         id="password"
                         name="password"
@@ -76,18 +76,18 @@
                         autocomplete="current-password"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Password"
+                        placeholder="Пароль"
                     />
                 </div>
 
 				<div *ngIf=" password.invalid && (password.dirty || password.touched) " class="text-red-500">
 
                     <div *ngIf="password.errors.required">
-                        Please enter password
+                        Введіть пароль
                     </div>
 
 					<div *ngIf="password.errors.minlength">
-                        Password must be at least {{ passwordMinLength }} characters long
+                        Пароль має бути щонайменше {{ passwordMinLength }} символів
                     </div>
 
                 </div>
@@ -96,9 +96,9 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <span class="ml-2 block text-sm text-gray-900">
-                        Don't have an account?
+                        Не маєте акаунту?
                         <a class="font-medium text-indigo-600 hover:text-indigo-500" routerLink="/signup">
-                            Create
+                            Створити
                         </a>
                     </span>
                 </div>
@@ -144,7 +144,7 @@
                         </svg>
                     </span>
 
-                    Log in
+                    Увійти
 
                 </button>
             </div>

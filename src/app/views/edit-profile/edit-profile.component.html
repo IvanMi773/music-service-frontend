@@ -9,7 +9,7 @@
                 alt="Workflow"
             />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Edit Profile
+                Редагувати профіль
             </h2>
         </div>
         <form
@@ -23,7 +23,7 @@
 
             <div class="rounded-md shadow-sm 10-space-y-px">
                 <div>
-                    <label for="firstName" class="sr-only">First name</label>
+                    <label for="firstName" class="sr-only">Ім'я</label>
 
                     <input
                         id="firstName"
@@ -33,7 +33,7 @@
                         autocomplete="firstName"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="First Name"
+                        placeholder="Ім'я"
                         [value]="user?.firstName"
                     />
                 </div>
@@ -41,17 +41,17 @@
                 <div *ngIf=" firstName.invalid && (firstName.dirty || firstName.touched) " class="text-red-500">
 
                     <div *ngIf="firstName.errors.required">
-                        Please enter first name
+                        Введіть імя
                     </div>
 
 					<div *ngIf="firstName.errors.minlength">
-                        First name must be at least {{ firstNameMinLength }} characters long
+                        Ім'я має бути щонайменше {{ firstNameMinLength }} символи
                     </div>
 
                 </div>
 
 				<div>
-                    <label for="lastName" class="sr-only">Last name</label>
+                    <label for="lastName" class="sr-only">Прізвище</label>
 
                     <input
                         id="lastName"
@@ -61,7 +61,7 @@
                         autocomplete="lastName"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Last name"
+                        placeholder="Прізвище"
                         [value]="user?.lastName"
                     />
                 </div>
@@ -69,17 +69,17 @@
                 <div *ngIf=" lastName.invalid && (lastName.dirty || lastName.touched) " class="text-red-500">
 
                     <div *ngIf="lastName.errors.required">
-                        Please enter Last name
+                        Введіть прізвище
                     </div>
 
 					<div *ngIf="lastName.errors.minlength">
-                        Last name must be at least {{ lastNameMinLength }} characters long
+                        Прізвище має бути щонайменше {{ lastNameMinLength }} символи
                     </div>
 
                 </div>
 
 				<div>
-                    <label for="email" class="sr-only">Email</label>
+                    <label for="email" class="sr-only">Електронна адреса</label>
 
                     <input
                         id="email"
@@ -97,18 +97,18 @@
                 <div *ngIf=" email.invalid && (email.dirty || email.touched) " class="text-red-500">
 
                     <div *ngIf="email.errors.required">
-                        Please enter email
+                        Введіть електронну адресу
                     </div>
 
 					<div *ngIf="email.errors.email">
-                        Please enter correct email address
+                        Введіть коректну електронну адресу
                     </div>
 
                 </div>
             </div>
 
             <div>
-                <label for="photo">Avatar: </label>
+                <label for="photo">Фотографія профіля: </label>
                 <input
                     formControlName="photo"
                     (change)="onFileChange($event)"
@@ -158,7 +158,7 @@
                         </svg>
                     </span>
 
-                    Update Profile
+                    Оновити профіль
 
                 </button>
             </div>

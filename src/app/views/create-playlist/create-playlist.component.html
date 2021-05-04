@@ -9,7 +9,7 @@
                 alt="Workflow"
             />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Create new playlist
+                Створити новий плейлист
             </h2>
         </div>
 
@@ -24,7 +24,7 @@
 
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label for="title" class="sr-only">Playlist Title</label>
+                    <label for="title" class="sr-only">Заголовок</label>
 
                     <input
                         id="title"
@@ -42,16 +42,16 @@
                     *ngIf="title.invalid && (title.dirty || title.touched)"
                     class="text-red-500"
                 >
-                    <div *ngIf="title.errors.required">Please enter title</div>
+                    <div *ngIf="title.errors.required">Введіть заголовок</div>
 
                     <div *ngIf="title.errors.minlength">
-                        Title must be at least 2 characters long
+                        Заголовок має бути щонайменше 2 символи в довжину
                     </div>
                 </div>
             </div>
 
             <div class="rounded-md shadow-sm -space-y-px">
-                <label for="cover">Cover: </label>
+                <label for="cover">Обгортка: </label>
 
                 <input
                     formControlName="files"
@@ -64,7 +64,7 @@
                     *ngIf="files.invalid && (files.dirty || files.touched)"
                     class="text-red-500"
                 >
-                    <div *ngIf="files.errors.required">Please upload file</div>
+                    <div *ngIf="files.errors.required">Виберіть файл</div>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@
                         </svg>
                     </span>
 
-                    Create New Playlist
+                    Створити новий плейлист
                 </button>
             </div>
         </form>

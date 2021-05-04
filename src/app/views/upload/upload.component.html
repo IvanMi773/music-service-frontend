@@ -9,7 +9,7 @@
                 alt="Workflow"
             />
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Upload new song
+                Завантажити нову пісню
             </h2>
         </div>
         <form
@@ -21,8 +21,8 @@
         >
 
             <div *ngIf="serverSongErrorResponse" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Uploading song error</strong><br>
-                <span class="block sm:inline">Provided files is too big. Max size is 10Mb.</span>
+                <strong class="font-bold">Помилка завантаження файлу</strong><br>
+                <span class="block sm:inline">Вибраний файл занадто великий. Максимальна довжина 10 Мб.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                     <svg
                         (click)="serverSongErrorResponse = null"
@@ -41,7 +41,7 @@
 
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label for="title" class="sr-only">Title</label>
+                    <label for="title" class="sr-only">Заголовок</label>
 
                     <input
                         id="title"
@@ -51,7 +51,7 @@
                         autocomplete="title"
                         required
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Title"
+                        placeholder="Заголовок"
                     />
                 </div>
 
@@ -62,25 +62,25 @@
                     class="text-red-500"
                 >
                     <div *ngIf="title.errors.required">
-                        Please enter title
+                        Введіть заголовок
                     </div>
 
                     <div *ngIf="title.errors.minlength">
-                        Title must be at least 2 characters long
+                        Довжина заголовку має бути щонайменше 2 символи
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
                     <div class="">
                         <select (change)="selectValueChangedEvent(genreSelect.value)" #genreSelect>
-                            <option value="-1">-- None --</option>
-                            <option value="-2">-- Custom --</option>
+                            <option value="-1">-- Виберіть --</option>
+                            <option value="-2">-- Кастомний --</option>
                             <option [value]="i.id" *ngFor="let i of genres">{{ i.name }}</option>
                         </select>
                     </div>
 
                     <div *ngIf="customGenre">
-                        <label for="genre" class="sr-only">Genre</label>
+                        <label for="genre" class="sr-only">Жанр</label>
                         <input
                             id="genre"
                             name="genre"
@@ -88,13 +88,13 @@
                             type="text"
                             required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Genre"
+                            placeholder="Жанр"
                         />
                     </div>
 
                     <div *ngIf="genre.invalid && customGenre && (genre.dirty || genre.touched)" class="text-red-500">
                         <div *ngIf="genre.errors.required">
-                            Please enter genre
+                            Введіть жанр
                         </div>
                     </div>
                 </div>
@@ -102,33 +102,35 @@
             </div>
 
             <div>
-                <label for="songs" class="mr-4">Song:</label>
+                <label for="songs" class="mr-4">Музичний файл:</label>
                 <input
                     formControlName="files"
                     (change)="onSongFileChange($event)"
                     type="file"
                     name="songs"
                     id="songs"
+                    accept=".mp3"
                 />
                 <div *ngIf="files.invalid && (files.dirty || files.touched)" class="text-red-500">
                     <div *ngIf="files.errors.required">
-                        Please upload song file
+                        Виберіть музичний файл
                     </div>
                 </div>
             </div>
 
             <div>
-                <label for="cover" class="mr-4">Cover:</label>
+                <label for="cover" class="mr-4">Зображення:</label>
                 <input
                     formControlName="cover"
                     (change)="onCoverFileChange($event)"
                     type="file"
                     name="cover"
                     id="cover"
+                    accept=".jpg, .jpeg, .png"
                 />
                 <div *ngIf="cover.invalid && (cover.dirty || cover.touched)" class="text-red-500">
                     <div *ngIf="cover.errors.required">
-                        Please upload cover
+                        Виберіть зображення
                     </div>
                 </div>
             </div>
@@ -158,7 +160,7 @@
                         </svg>
                     </span>
 
-                    Upload
+                    Завантажити
                 </button>
             </div>
         </form>

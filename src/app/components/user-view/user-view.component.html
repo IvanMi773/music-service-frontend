@@ -2,7 +2,7 @@
     <div class="grid grid-cols-6 items-center">
         <div class="flex">
             <a [routerLink]="'/profile/' + user.username">
-                <img [src]="'http://localhost:8080/api/user/avatar/' + user.avatar" class="h-36 rounded-full w-36 inline" alt="">
+                <img [src]="config.hostName + 'api/user/avatar/' + user.avatar" class="h-36 rounded-full w-36 inline" alt="">
             </a>
         </div>
 
@@ -55,12 +55,12 @@
                 *ngIf="user.username !== currentUsername"
             >
                 <span *ngIf="!meSubscribed; else elseBlock">
-                    Subscribe
+                    Підписатися
                 </span>
 
                 <ng-template #elseBlock>
                     <span >
-                        Unsubscribe
+                        Відписатися
                     </span>
                 </ng-template>
             </button>

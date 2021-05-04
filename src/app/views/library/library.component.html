@@ -1,64 +1,64 @@
 <div class="md:container mx-auto">
     <div class="mb-5">
-        <p class="mt-5 mb-4 text-2xl">Recently played</p>
+        <p class="mt-5 mb-4 text-2xl">Недавно відтворено</p>
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let song of resentlyPlayedSongs">
-                <img [src]="'http://localhost:8080/api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
+                <img [src]="config.hostName + 'api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ song.name }}</p>
                 <p class="text-sm text-gray-400">{{ song.username }}</p>
             </div>
-            <div *ngIf="resentlyPlayedSongs.length <= 0">
-                <p class="text-lg text-gray-500">Nothing to show</p>
-            </div>
+        </div>
+        <div *ngIf="resentlyPlayedSongs.length <= 0">
+            <p class="text-lg text-gray-500">Немає даних для відображення</p>
         </div>
     </div>
 
     <hr>
     <div class="mb-5">
-        <p class="mt-5 mb-4 text-2xl">Liked songs</p>
+        <p class="mt-5 mb-4 text-2xl">Вподобані пісні</p>
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let song of likedSongs">
-                <img [src]="'http://localhost:8080/api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
+                <img [src]="config.hostName + 'api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ song.name }}</p>
                 <p class="text-sm text-gray-400">{{ song.username }}</p>
             </div>
-            <div *ngIf="likedSongs.length <= 0">
-                <p class="text-lg text-gray-500">Nothing to show</p>
-            </div>
+        </div>
+        <div *ngIf="likedSongs.length <= 0">
+            <p class="text-lg text-gray-500">Немає даних для відображення</p>
         </div>
     </div>
 
     <hr>
     <div class="mb-5">
-        <p class="mt-5 mb-4 text-2xl">Playlists</p>
+        <p class="mt-5 mb-4 text-2xl">Плейлисти</p>
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let playlist of playlists">
                 <a [routerLink]="'/playlist/' + playlist.id">
-                    <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
+                    <img [src]="config.hostName + 'api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
                     <p class="text-lg">{{ playlist.title }}</p>
                 </a>
             </div>
-            <div *ngIf="playlists.length <= 0">
-                <p class="text-lg text-gray-500">Nothing to show</p>
-            </div>
+        </div>
+        <div *ngIf="playlists.length <= 0">
+            <p class="text-lg text-gray-500">Немає даних для відображення</p>
         </div>
     </div>
 
     <hr>
     <div class="mb-5">
-        <p class="mt-5 mb-4 text-2xl">Following</p>
+        <p class="mt-5 mb-4 text-2xl">Підписки</p>
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let user of subscriptions">
-                <img [src]="'http://localhost:8080/api/user/avatar/' + user.avatar" class="h-40 w-40 inline" alt="">
+                <img [src]="config.hostName + 'api/user/avatar/' + user.avatar" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ user.username }}</p>
             </div>
-            <div *ngIf="subscriptions.length <= 0">
-                <p class="text-lg text-gray-500">Nothing to show</p>
-            </div>
+        </div>
+        <div *ngIf="subscriptions.length <= 0">
+            <p class="text-lg text-gray-500">Немає даних для відображення</p>
         </div>
     </div>
 </div>

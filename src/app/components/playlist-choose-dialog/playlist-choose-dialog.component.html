@@ -8,7 +8,10 @@
         </p>
     </div>
 </div>
+<div *ngIf="data.playlists.length <= 0" class="text-sm">
+    Немає плейлистів для відображення
+</div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onNoClick()">Скасувати</button>
     <button mat-button [mat-dialog-close]="playlistId" [disabled]="!playlistId" cdkFocusInitial>Ok</button>
 </div>

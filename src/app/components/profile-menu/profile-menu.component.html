@@ -9,7 +9,7 @@
             <img
                 class="h-8 w-8 rounded-full"
                 (click)="onMenuClick()"
-                [src]="'http://localhost:8080/api/user/avatar/' + user?.avatar"
+                [src]="config.hostName + 'api/user/avatar/' + user?.avatar"
                 alt=""
             />
         </button>
@@ -29,7 +29,7 @@
                 role="menuitem"
                 (click)="onMenuClick()"
             >
-                Your profile
+                Ваш профіль
             </a>
 
             <a
@@ -39,7 +39,7 @@
                 *ngIf="user.role === 'ADMIN'"
                 (click)="onMenuClick()"
             >
-                Admin page
+                Сторінка адміністратора
             </a>
 
             <a
@@ -48,7 +48,7 @@
                 role="menuitem"
                 (click)="onMenuClick()"
             >
-                Settings
+                Налаштування
             </a>
             <a
                 routerLink="/signout"
@@ -56,7 +56,7 @@
                 role="menuitem"
                 (click)="onMenuClick()"
             >
-                Sign out
+                Вихід
             </a>
         </div>
     </div>

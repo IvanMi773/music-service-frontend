@@ -9,7 +9,7 @@
                 rounded-full
                 hover:bg-gray-100
                 rounded-md
-                px-4
+                px-2
                 py-2
                 bg-white
                 text-sm
@@ -43,7 +43,7 @@
                 (click)="addToQueue()"
                 *ngIf="displayAddToQueue"
             >
-                Add to queue
+                Додати до черги
             </span>
 
             <span
@@ -51,7 +51,7 @@
                 role="menuitem"
                 (click)="openDialog()"
             >
-                Add to playlist
+                Додати в плейлист
             </span>
 
             <span
@@ -60,7 +60,7 @@
                 (click)="deleteSong()"
                 *ngIf="displayDelete"
             >
-                Delete
+                Видалити
             </span>
         </div>
     </div>
