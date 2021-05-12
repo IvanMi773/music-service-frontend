@@ -13,6 +13,7 @@ export class CreatePlaylistComponent implements OnInit {
 
     public playlistForm;
     public fileToUpload: File
+    private _serverErrorResponse: any;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -35,8 +36,12 @@ export class CreatePlaylistComponent implements OnInit {
         formData.append('photo', this.fileToUpload, this.fileToUpload.name)
         formData.append('state', '0')
 
-        this.playlistService.createPlaylist(formData).subscribe(data => console.log(data))
-        this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername())
+        this.playlistService.createPlaylist(formData).subscribe(data => {
+            this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername())
+        }, err => {
+            this._serverErrorResponse = err
+            console.log(err)
+        })
     }
 
     onFileChange(event) {
@@ -49,5 +54,11 @@ export class CreatePlaylistComponent implements OnInit {
 
     public get files () {
         return this.playlistForm.get('files')
+    }
+    public get serverErrorResponse(): any {
+        return this._serverErrorResponse;
+    }
+    public set serverErrorResponse(value: any) {
+        this._serverErrorResponse = value;
     }
 }

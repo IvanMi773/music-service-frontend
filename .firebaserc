@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "music-service-123123"
+  },
+  "targets": {
+    "music-service-123123": {
+      "hosting": {
+        "music-service-frontend": [
+          "music-service-123123"
+        ]
+      }
+    }
+  }
+}

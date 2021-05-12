@@ -30,7 +30,7 @@ export class ProfileMenuComponent implements OnInit {
         this.isVisible = !this.isVisible
     }
 
-    get config () {
-        return config
+    get hostName () {
+        return config.hostName
     }
 }

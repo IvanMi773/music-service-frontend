@@ -54,7 +54,7 @@ export class UserViewComponent implements OnInit {
         return this.tokenStorage.getUsername()
     }
 
-    get config () {
-        return config
+    get hostName () {
+        return config.hostName
     }
 }

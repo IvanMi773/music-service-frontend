@@ -20,11 +20,7 @@ export class HomeComponent implements OnInit {
         this.updateSongList()
     }
 
-    public onDeletedSong () {
-        this.updateSongList()
-    }
-
-    private updateSongList () {
+    public updateSongList () {
         this.songService.getAllSongs().subscribe((data: Array<Song>) => { this._songs = data }, err => console.log(err))
     }
 

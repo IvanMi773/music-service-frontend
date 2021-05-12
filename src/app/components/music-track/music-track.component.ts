@@ -24,7 +24,11 @@ export class MusicTrackComponent implements OnInit {
     private _meLiked: boolean = false
     private _playlists: Array<Playlist> = new Array<Playlist>();
     public playlistForm
-    private currentPlaylistToSaveId: number
+    private _lengthInMinutes: number;
+    private _lengthInSeconds: number | string;
+
+    //TODO: change color of search tabs
+    //TODO: songs duration in playlist in admin page
 
     constructor(
         private playerService: PlayerService,
@@ -36,7 +40,6 @@ export class MusicTrackComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        //TODO: display duration like this 3:03 (now 3:3)
         this.userService.getProfileByUsername(this.song.username).subscribe((data: User) => this._avatar = data.avatar)
         this.updateMeLiked()
 
@@ -47,12 +50,28 @@ export class MusicTrackComponent implements OnInit {
                 }
             })
         })
+
+        this.lengthInMinutes = (this.song.duration - (this.song.duration % 60)) / 60
+        this.lengthInSeconds = this.song.duration % 60
+        this.lengthInSeconds = this.lengthInSeconds < 10 ? '0' + this.lengthInSeconds : this.lengthInSeconds
     }
 
     public check (): boolean {
         return !this.queueService?.queue?.some(item => item.file === this.song.file)
     }
 
+    public get lengthInMinutes(): number {
+        return this._lengthInMinutes;
+    }
+    public set lengthInMinutes(value: number) {
+        this._lengthInMinutes = value;
+    }
+    public get lengthInSeconds(): number | string {
+        return this._lengthInSeconds;
+    }
+    public set lengthInSeconds(value: number | string) {
+        this._lengthInSeconds = value;
+    }
     get avatar () {
         return this._avatar
     }
@@ -61,8 +80,8 @@ export class MusicTrackComponent implements OnInit {
         return this._meLiked
     }
 
-    get config () {
-        return this.config
+    get hostName () {
+        return config.hostName
     }
 
     get currentUsername () {
@@ -73,10 +92,6 @@ export class MusicTrackComponent implements OnInit {
     }
     public set playlists(value: Array<Playlist>) {
         this._playlists = value;
-    }
-
-    public playlistSelectChanged (value: any) {
-        this.currentPlaylistToSaveId = value
     }
 
     public deleteSong () {
@@ -91,6 +106,8 @@ export class MusicTrackComponent implements OnInit {
     }
 
     public like () {
+        this._meLiked = !this._meLiked
+
         this.songService.updateLikes(this.song.id, this.tokenStorage.getUsername()).subscribe(
             (data: SongLikes) => {
                 this.song.likes = data.likes

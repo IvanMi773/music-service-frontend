@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import config from '../../configuration';
 import { Playlist } from 'src/app/models/Playlist';
 import { Song } from 'src/app/models/song';
 import { User } from 'src/app/models/User';
@@ -29,6 +30,11 @@ export class LibraryComponent implements OnInit {
         let historyPlaylistId: number
         let likedPlaylistId: number
 
+        this._resentlyPlayedSongs = new Array<Song>()
+        this._likedSongs = new Array<Song>()
+        this._playlists = new Array<Playlist>()
+        this._subscriptions = new Array<User>()
+
         this.playlistService.getPlaylistsByUsername(this.tokenStorage.getUsername()).subscribe((data: Array<Playlist>) => {
             this._playlists = data
 
@@ -41,8 +47,13 @@ export class LibraryComponent implements OnInit {
                 }
             })
 
-            this.playlistService.getPlaylistById(historyPlaylistId).subscribe((data: Playlist) => this._resentlyPlayedSongs = data.songs)
-            this.playlistService.getPlaylistById(likedPlaylistId).subscribe((data: Playlist) => this._likedSongs = data.songs)
+            this.playlistService.getPlaylistById(historyPlaylistId).subscribe((data: Playlist) => {
+                this._resentlyPlayedSongs = data.songs
+            })
+
+            this.playlistService.getPlaylistById(likedPlaylistId).subscribe((data: Playlist) => {
+                this._likedSongs = data.songs
+            })
         })
 
         this.userService.getProfileByUsername(this.tokenStorage.getUsername()).subscribe((data: User) => {
@@ -64,5 +75,9 @@ export class LibraryComponent implements OnInit {
 
     get subscriptions () {
         return this._subscriptions
+    }
+
+    get hostName () {
+        return config.hostName
     }
 }

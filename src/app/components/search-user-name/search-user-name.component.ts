@@ -19,6 +19,7 @@ export class SearchUserNameComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.searchRes = new Array<User>()
         this.route.params.subscribe(params => {
             this.searchQuery = params['searchQuery']
             this.searchService.searchUsersByUsername(this.searchQuery).subscribe((data: Array<User>) => this.searchRes = data)

@@ -24,7 +24,6 @@ import { SearchSongTitleComponent } from './components/search-song-title/search-
 import { SearchSongGenreComponent } from './components/search-song-genre/search-song-genre.component';
 import { SearchUserNameComponent } from './components/search-user-name/search-user-name.component';
 
-//TODO: check for correct username in profile
 //TODO: change http://localhost to config.hostname in img src and player list
 
 const ADMIN_ROLE = 'ADMIN'

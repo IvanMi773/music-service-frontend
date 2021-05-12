@@ -12,6 +12,7 @@ import { AuthResponse } from 'src/app/models/AuthResponse';
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+    
     public loginForm
 	@Output() onLoggedIn = new EventEmitter<boolean>();
     private _serverErrorResponse: any;

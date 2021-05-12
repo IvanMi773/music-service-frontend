@@ -45,6 +45,4 @@ export class SongService {
 }
 
 //TODO: form for upload songs [ drag & drop ]
-//TODO: create button component
 //TODO: loader for uploading songs
-//TODO:

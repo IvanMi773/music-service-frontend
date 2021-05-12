@@ -19,6 +19,8 @@ export class UploadComponent implements OnInit {
     private _genres: any
     private genreId: string
     private _serverSongErrorResponse: any;
+    private _genreNotSelectedError: boolean;
+    private selectedValue: number = -1;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -49,44 +51,52 @@ export class UploadComponent implements OnInit {
     }
 
     selectValueChangedEvent (value: string) {
+        this.selectedValue = parseInt(value)
         if (value === "-2") {
             this.isCustomGenre = true
-            this.songForm = this.formBuilder.group({
-                title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
-                genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
-                files: ['', [Validators.required]],
-                cover: ['', [Validators.required]],
-            });
+
+            this.reinitializeForm()
         } else {
             this.isCustomGenre = false
             this.genreId = value
+
+            this.reinitializeForm()
         }
     }
 
+    private reinitializeForm () {
+        this.songForm = this.formBuilder.group({
+            title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
+            genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
+            files: [this.songFileToUpload.name, [Validators.required]],
+            cover: [this.coverFileToUpload.name, [Validators.required]],
+        });
+    }
+
 	async onSubmit() {
-        //TODO: show exceptions
-        //TODO: check if genre "none" selected
-        //TODO: коли ми вибираємо кастомну категорію і вводимо назву категорії,
-        // а потім вибираємо визначену категорію, то станеться помилка валідації
 
-        if (this.isCustomGenre) {
-            let promice: any = await this.genreService.createGenre(this.genre.value)
-            this.genreId = promice.genreId
+        if (this.selectedValue !== -1) {
+            if (this.isCustomGenre) {
+                let promice: any = await this.genreService.createGenre(this.genre.value)
+                this.genreId = promice.genreId
+            }
+
+            const formData: FormData = new FormData()
+            formData.append('title', this.title.value)
+            formData.append('file', this.songFileToUpload, this.songFileToUpload.name)
+            formData.append('cover', this.coverFileToUpload, this.coverFileToUpload.name)
+            formData.append('genre', this.genreId)
+
+            this.songService.upload(formData).subscribe(data => {
+                console.log(data)
+                this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername());
+            }, err => {
+                console.log(err)
+                this.serverSongErrorResponse = err
+            })
+        } else {
+            this._genreNotSelectedError = true
         }
-
-        const formData: FormData = new FormData()
-        formData.append('title', this.title.value)
-        formData.append('file', this.songFileToUpload, this.songFileToUpload.name)
-        formData.append('cover', this.coverFileToUpload, this.coverFileToUpload.name)
-        formData.append('genre', this.genreId)
-
-        this.songService.upload(formData).subscribe(data => {
-            console.log(data)
-            this.router.navigateByUrl('/profile/' + this.tokenStorage.getUsername());
-        }, err => {
-            console.log(err)
-            this.serverSongErrorResponse = err
-        })
     }
 
     get title () {
@@ -107,6 +117,10 @@ export class UploadComponent implements OnInit {
 
     get customGenre () {
         return this.isCustomGenre
+    }
+
+    get genreNotSelectedError () {
+        return this._genreNotSelectedError
     }
 
     get genres () {

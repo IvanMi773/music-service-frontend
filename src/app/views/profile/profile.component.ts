@@ -31,21 +31,22 @@ export class ProfileComponent implements OnInit {
     ) {}
 
     //TODO: don't show [username] post a track on profile pages
-    //TODO: when user don't have uploaded songs or playlists, show offer to create it
-    //TODO: перевірка на те, чи існує юзернейм
     //TODO: якщо користувач переходить з профіля іншого користувача на свій профіль, то дані не оновлюються
 
     ngOnInit(): void {
         this.getProfile()
-
-        this.songService.getSongsByUsername(this.username).subscribe((data: Array<Song>) =>
-            this._songs = data,
-            err => console.log(err)
-        )
+        this.updateList()
     }
 
     toggleTabs($tabNumber: number){
         this.openTab = $tabNumber;
+    }
+
+    public updateList () {
+        this.songService.getSongsByUsername(this.username).subscribe((data: Array<Song>) =>
+            this._songs = data,
+            err => console.log(err)
+        )
     }
 
     private getProfile () {

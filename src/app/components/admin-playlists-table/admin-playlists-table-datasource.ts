@@ -18,10 +18,11 @@ export class AdminPlaylistsTableDataSource extends DataSource<Playlist> {
 
     constructor(private playlistService: PlaylistService) {
         super();
-        this.playlistService
-            .getAllPlaylists()
-            .subscribe((data: Array<Playlist>) => {
-                this.data = data;
+        this.playlistService.getAllPlaylists().subscribe((result: Array<Playlist>) => {
+                // result.forEach((playlist: Playlist) => {
+                //     playlist.songs.forEach(song => playlist.duration += song.duration)
+                // })
+                this.data = result;
             });
     }
 

@@ -4,7 +4,7 @@
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let song of resentlyPlayedSongs">
-                <img [src]="config.hostName + 'api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
+                <img [src]="hostName + 'api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ song.name }}</p>
                 <p class="text-sm text-gray-400">{{ song.username }}</p>
             </div>
@@ -20,7 +20,7 @@
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let song of likedSongs">
-                <img [src]="config.hostName + 'api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
+                <img [src]="hostName + 'api/song/cover/' + song?.cover" class="h-40 w-40 inline" alt="">
                 <p class="text-lg">{{ song.name }}</p>
                 <p class="text-sm text-gray-400">{{ song.username }}</p>
             </div>
@@ -37,7 +37,7 @@
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let playlist of playlists">
                 <a [routerLink]="'/playlist/' + playlist.id">
-                    <img [src]="config.hostName + 'api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
+                    <img [src]="hostName + 'api/playlist/photo/' + playlist.photo" class="h-40 w-40 inline" alt="">
                     <p class="text-lg">{{ playlist.title }}</p>
                 </a>
             </div>
@@ -53,8 +53,10 @@
 
         <div class="grid xl:grid-cols-5 md:grid-cols-5 sm:grid-cols-4 gap-4">
             <div *ngFor="let user of subscriptions">
-                <img [src]="config.hostName + 'api/user/avatar/' + user.avatar" class="h-40 w-40 inline" alt="">
-                <p class="text-lg">{{ user.username }}</p>
+                <a [routerLink]="'/profile/' + user.username">
+                    <img [src]="hostName + 'api/user/avatar/' + user.avatar" class="rounded-full h-40 w-40 inline" alt="">
+                    <p class="text-lg">{{ user.username }}</p>
+                </a>
             </div>
         </div>
         <div *ngIf="subscriptions.length <= 0">

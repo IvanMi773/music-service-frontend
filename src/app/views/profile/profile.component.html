@@ -8,7 +8,7 @@
             />
             <img
                 [src]="'http://localhost:8080/api/user/avatar/' + user?.avatar"
-                class="rounded-full top w-52"
+                class="rounded-full top w-52 h-52"
                 alt=""
             />
             <p class="username">{{ username }}</p>
@@ -93,7 +93,10 @@
                                             <app-button text="Завантажити нову пісню"></app-button>
                                         </a>
                                         <div *ngFor="let song of songs">
-                                            <app-music-track [song]="song"></app-music-track>
+                                            <app-music-track
+                                                [song]="song"
+                                                (onDeletedSong)="updateList()"
+                                            ></app-music-track>
                                         </div>
                                     </div>
 
@@ -113,7 +116,7 @@
                                                     <img
                                                         [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo"
                                                         alt="Playlist photo"
-                                                        class="w-56"
+                                                        class="w-56 h-40"
                                                     >
 
                                                     <p class="text-2xl mt-3">{{ playlist.title }}</p>

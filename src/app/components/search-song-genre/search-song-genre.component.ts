@@ -19,6 +19,7 @@ export class SearchSongGenreComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.searchRes = new Array<Song>()
         this.route.params.subscribe(params => {
             this.searchQuery = params['searchQuery']
             this.searchService.searchSongsByGenre(this.searchQuery).subscribe((data: Array<Song>) => this.searchRes = data)

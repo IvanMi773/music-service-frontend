@@ -1,7 +1,8 @@
 let config;
 
 export default config = {
-	hostName: 'https://music-service-123123.herokuapp.com/',
+	hostName: 'http://localhost:8080/',
+    // hostName: 'https://music-service-123123.herokuapp.com/',
 	validators: {
 		usernameMinLength: 3,
 		passwordMinLength: 8,

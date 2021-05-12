@@ -2,7 +2,7 @@
     <div *ngFor="let song of songs">
         <app-music-track
             [song]="song"
-            (onDeletedSong)="onDeletedSong()"
+            (onDeletedSong)="updateSongList()"
         ></app-music-track>
     </div>
 </div>

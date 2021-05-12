@@ -23,57 +23,35 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 flex items-center">
-
-        <!-- <div class="flex flex-wrap content-start"> -->
-            <div class="flex items-center">
+    <div class="grid grid-cols-1">
+        <div class="flex items-center">
+            <img
+                [src]="hostName + 'api/song/cover/' + song.cover"
+                class="h-40 w-40 inline"
+                alt=""
+            />
+            <button class="ml-5" (click)="play()">
                 <img
-                    [src]="config.hostName + 'api/song/cover/' + song.cover"
-                    class="h-40 w-40 inline"
-                    alt=""
-                />
-                <button class="ml-5" (click)="play()">
-                    <img
-                        src="../../../assets/images/play1.svg"
-                        alt="Play"
-                        *ngIf="check()"
-                    />
-                </button>
-                <p class="inline ml-5 mr-5">{{ song.name }}</p>
-                <a [routerLink]="'/search/song-genre/' + song.genre">
-                    <p>#{{ song.genre }}</p>
-                </a>
-            </div>
-        <!-- </div> -->
-
-        <div class="text-right">
-            <p>
-                {{
-                    (song.duration - (song.duration % 60)) / 60 +
-                        ":" +
-                        (song.duration % 60)
-                }}
-            </p>
-        </div>
-
-        <div class="flex mt-2">
-            <button>
-                <img
-                    src="../../../assets/images/like.png"
-                    (click)="like()"
-                    *ngIf="!meLiked"
-                    class="w-7 h-7"
-                    alt=""
-                />
-                <img
-                    src="../../../assets/images/liked.png"
-                    (click)="like()"
-                    *ngIf="meLiked"
-                    class="w-7 h-7"
-                    alt=""
+                    src="../../../assets/images/play1.svg"
+                    alt="Play"
+                    *ngIf="check()"
                 />
             </button>
-            <p class="ml-3">{{ song.likes.length }}</p>
+
+            <p class="inline ml-5 mr-5">{{ song.name }}</p>
+            <a [routerLink]="'/search/song-genre/' + song.genre">
+                <p>#{{ song.genre }}</p>
+            </a>
+
+            <p class="ml-auto">
+                {{ lengthInMinutes + ":" + lengthInSeconds }}
+            </p>
         </div>
+    </div>
+
+    <div class="flex mt-2 cursor-pointer w-7 h-7" (click)="like()">
+        <img src="../../../assets/images/like.png" *ngIf="!meLiked" alt="" />
+        <img src="../../../assets/images/liked.png" *ngIf="meLiked" alt="" />
+        <p class="ml-3">{{ song.likes.length }}</p>
     </div>
 </div>

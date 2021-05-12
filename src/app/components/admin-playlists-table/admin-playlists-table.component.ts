@@ -24,7 +24,7 @@ export class AdminPlaylistsTableComponent implements AfterViewInit, OnInit {
         'position',
         'title',
         'photo',
-        'duration',
+        // 'duration',
         'songs',
         'user'
     ];

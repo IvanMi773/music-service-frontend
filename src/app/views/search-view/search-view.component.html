@@ -35,8 +35,8 @@
                             (click)="toggleTabs(3)"
                             [routerLink]="'/search/song-genre/' + searchService.searchQuery"
                             [ngClass]="{
-                                'text-indigo-600 bg-white': router.url !== '/search/song-genre/' + searchService.searchQuery,
-                                'text-white bg-indigo-600': router.url === '/search/song-genre/' + searchService.searchQuery
+                                'text-indigo-600 bg-white': router.url !== '/search/song-genre/' + searchService?.searchQuery,
+                                'text-white bg-indigo-600': router.url === '/search/song-genre/' + searchService?.searchQuery
                             }"
                         >
                             Пісні по жанру

@@ -9,7 +9,12 @@
                 <p>{{ song.name }}</p>
             </ng-template>
         </div>
-        <p>{{ ((song.duration - (song.duration % 60)) / 60) + ":" + (song.duration % 60) }}</p>
+        <div *ngIf="song.duration % 60 < 10; else elseBlock1">
+            <p>{{ ((song.duration - (song.duration % 60)) / 60) + ":0" + (song.duration % 60) }}</p>
+        </div>
+        <ng-template #elseBlock1>
+            <p>{{ ((song.duration - (song.duration % 60)) / 60) + ":" + (song.duration % 60) }}</p>
+        </ng-template>
     </div>
     <hr>
 </div>
