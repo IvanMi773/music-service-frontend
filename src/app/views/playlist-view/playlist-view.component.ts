@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Playlist } from 'src/app/models/Playlist';
+import { Song } from 'src/app/models/song';
 import { PlayerService } from 'src/app/services/player.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
+import { QueueService } from 'src/app/services/queue.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -21,6 +23,7 @@ export class PlaylistViewComponent implements OnInit {
         private playlistService: PlaylistService,
         private route: ActivatedRoute,
         private playerService: PlayerService,
+        private queueService: QueueService,
         private tokenStorage: TokenStorageService,
         private router: Router
     ) {}
@@ -35,12 +38,16 @@ export class PlaylistViewComponent implements OnInit {
             },
             err => console.log(err)
         )
-
     }
 
     public play () {
         this.isPlaying = !this.isPlaying
-        this.playerService.queue.next(this.playlist.songs)
+
+        this.playlist.songs.forEach(song => {
+            if (this.queueService.queue.find(s => s.id === song.id) === undefined) {
+                this.playerService.queue.next(new Array<Song>(song))
+            }
+        })
     }
 
     public deletePlaylist () {

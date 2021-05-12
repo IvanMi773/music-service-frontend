@@ -17,7 +17,9 @@ export class PlaylistSongComponent implements OnInit {
     ) {}
 
     // TODO: paint in blue active song (song name already, need number and duration)
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        console.log(this.queueService.queue)
+    }
 
     get playlist () {
         return this._playlist
