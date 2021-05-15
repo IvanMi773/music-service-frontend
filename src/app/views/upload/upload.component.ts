@@ -20,6 +20,7 @@ export class UploadComponent implements OnInit {
     private genreId: string
     private _serverSongErrorResponse: any;
     private _genreNotSelectedError: boolean;
+    private _genreAlreadyExcistsError: boolean;
     private selectedValue: number = -1;
 
     constructor(
@@ -55,29 +56,41 @@ export class UploadComponent implements OnInit {
         if (value === "-2") {
             this.isCustomGenre = true
 
-            this.reinitializeForm()
+            this.songForm = this.formBuilder.group({
+                title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
+                genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
+                files: [this.songFileToUpload.name, [Validators.required]],
+                cover: [this.coverFileToUpload.name, [Validators.required]],
+            });
         } else {
             this.isCustomGenre = false
             this.genreId = value
 
-            this.reinitializeForm()
+            this.songForm = this.formBuilder.group({
+                title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
+                genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
+                files: [this.songFileToUpload.name, [Validators.required]],
+                cover: [this.coverFileToUpload.name, [Validators.required]],
+            });
         }
     }
 
-    private reinitializeForm () {
-        this.songForm = this.formBuilder.group({
-            title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
-            genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
-            files: [this.songFileToUpload.name, [Validators.required]],
-            cover: [this.coverFileToUpload.name, [Validators.required]],
-        });
-    }
+    // private reinitializeForm () {
+    //     this.songForm = this.formBuilder.group({
+    //         title: [this.title.value, [ Validators.required, Validators.minLength(2) ]],
+    //         genre: [this.genre.value, this.customGenre ? [ Validators.required ] : null],
+    //         files: [this.songFileToUpload.name, [Validators.required]],
+    //         cover: [this.coverFileToUpload.name, [Validators.required]],
+    //     });
+    // }
 
 	async onSubmit() {
 
         if (this.selectedValue !== -1) {
             if (this.isCustomGenre) {
-                let promice: any = await this.genreService.createGenre(this.genre.value)
+                let promice: any = await this.genreService.createGenre(this.genre.value).catch(err => {
+                    this.genreAlreadyExcistsError = true
+                })
                 this.genreId = promice.genreId
             }
 
@@ -97,6 +110,13 @@ export class UploadComponent implements OnInit {
         } else {
             this._genreNotSelectedError = true
         }
+    }
+
+    public get genreAlreadyExcistsError(): boolean {
+        return this._genreAlreadyExcistsError;
+    }
+    public set genreAlreadyExcistsError(value: boolean) {
+        this._genreAlreadyExcistsError = value;
     }
 
     get title () {
@@ -121,6 +141,9 @@ export class UploadComponent implements OnInit {
 
     get genreNotSelectedError () {
         return this._genreNotSelectedError
+    }
+    set genreNotSelectedError (value: any) {
+        this._genreNotSelectedError = value
     }
 
     get genres () {

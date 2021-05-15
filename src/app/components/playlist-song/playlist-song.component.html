@@ -2,7 +2,7 @@
     <div class="flex justify-between my-4">
         <div class="flex justify-start">
             <p class="mr-5 text-gray-600">{{ i + 1 }}</p>
-            <div *ngIf="queueService.queue; else elseBlock">
+            <div *ngIf="queueService?.queue[0]; else elseBlock">
                 <p [ngClass]="{'text-indigo-600': queueService.queue[0].id === song.id }">{{ song.name }}</p>
             </div>
             <ng-template #elseBlock>
