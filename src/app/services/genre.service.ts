@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import config from '../configuration'
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
@@ -9,7 +9,7 @@ export class GenreService {
     constructor(private http: HttpClient) {}
 
     public getAllGenres() {
-        return this.http.get(config.hostName + 'api/genre');
+        return this.http.get(environment.apiUrl + 'api/genre');
     }
 
     public createGenre(genreName: string) {
@@ -20,7 +20,7 @@ export class GenreService {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
         return this.http
-            .post(config.hostName + 'api/genre', body, { headers: headers })
+            .post(environment.apiUrl + 'api/genre', body, { headers: headers })
             .toPromise();
     }
 }

@@ -7,6 +7,7 @@ import { PlaylistService } from 'src/app/services/playlist.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/User';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-profile',
@@ -123,5 +124,9 @@ export class ProfileComponent implements OnInit {
     }
     public set err(value: any) {
         this._err = value;
+    }
+
+    public get apiUrl (): string {
+        return environment.apiUrl;
     }
 }

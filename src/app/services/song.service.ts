@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import config from '../configuration'
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
@@ -12,35 +12,35 @@ export class SongService {
     ) {}
 
     public upload (formData: FormData) {
-        return this.http.post(config.hostName + 'api/song', formData)
+        return this.http.post(environment.apiUrl + 'api/song', formData)
     }
 
     public getAllSongs () {
-        return this.http.get(config.hostName + "api/song")
+        return this.http.get(environment.apiUrl + "api/song")
     }
 
     public getSongsByUsername (username: string) {
-        return this.http.get(config.hostName + 'api/song/user/' + username)
+        return this.http.get(environment.apiUrl + 'api/song/user/' + username)
     }
 
     public updateLikes (songId: number, username: string) {
-        return this.http.put(config.hostName + 'api/song/updateLikes/' + songId, username)
+        return this.http.put(environment.apiUrl + 'api/song/updateLikes/' + songId, username)
     }
 
     public getLikes (songId: number, username: string) {
-        return this.http.get(config.hostName + 'api/song/likes/' + songId + '/' + username)
+        return this.http.get(environment.apiUrl + 'api/song/likes/' + songId + '/' + username)
     }
 
     public getSubscriptionsSongs () {
-        return this.http.get(config.hostName + 'api/song/s')
+        return this.http.get(environment.apiUrl + 'api/song/s')
     }
 
     public saveSongToPlaylist (songId: number, playlistId: number) {
-        return this.http.post(config.hostName + 'api/song/' + songId + '/p/' + playlistId, '')
+        return this.http.post(environment.apiUrl + 'api/song/' + songId + '/p/' + playlistId, '')
     }
 
     public deleteSong (songId: number) {
-        return this.http.delete(config.hostName + 'api/song/' + songId)
+        return this.http.delete(environment.apiUrl + 'api/song/' + songId)
     }
 }
 

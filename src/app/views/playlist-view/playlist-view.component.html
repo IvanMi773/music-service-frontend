@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <div *ngIf="playlist">
         <div class="flex flex-wrap content-start mt-5">
-            <img [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo" class="playlist-image">
+            <img [src]="apiUrl + 'api/playlist/photo/' + playlist.photo" class="playlist-image" alt="playlist photo">
 
             <div>
                 <p class="text-4xl mt-9 ml-4 capitalize font-bold">{{ playlist.title }}</p>

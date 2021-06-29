@@ -7,7 +7,7 @@
                 alt=""
             />
             <img
-                [src]="'http://localhost:8080/api/user/avatar/' + user?.avatar"
+                [src]="apiUrl + 'api/user/avatar/' + user?.avatar"
                 class="rounded-full top w-52 h-52"
                 alt=""
             />
@@ -55,8 +55,7 @@
                             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
                                 <a
                                     class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
-                                    (click)="toggleTabs(1)"
-                                    (click)="loadSongs()"
+                                    (click)="toggleTabs(1); updateList()"
                                     [ngClass]="{
                                         'text-indigo-600 bg-white': openTab !== 1,
                                         'text-white bg-indigo-600': openTab === 1
@@ -68,8 +67,7 @@
                             <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
                                 <a
                                     class="text-xs font-bold uppercase px-5 py-3 rounded block leading-normal"
-                                    (click)="toggleTabs(2)"
-                                    (click)="loadPlaylists()"
+                                    (click)="toggleTabs(2); loadPlaylists()"
                                     [ngClass]="{
                                         'text-indigo-600 bg-white': openTab !== 2,
                                         'text-white bg-indigo-600': openTab === 2
@@ -114,7 +112,7 @@
                                             <div *ngFor="let playlist of playlists" class="border-2 p-3 mr-4 mt-4">
                                                 <a [routerLink]="'/playlist/' + playlist.id">
                                                     <img
-                                                        [src]="'http://localhost:8080/api/playlist/photo/' + playlist.photo"
+                                                        [src]="apiUrl + 'api/playlist/photo/' + playlist.photo"
                                                         alt="Playlist photo"
                                                         class="w-56 h-40"
                                                     >

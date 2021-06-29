@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
-import config from '../../configuration'
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-profile-menu',
@@ -31,6 +31,6 @@ export class ProfileMenuComponent implements OnInit {
     }
 
     get hostName () {
-        return config.hostName
+        return environment.apiUrl
     }
 }

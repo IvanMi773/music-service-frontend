@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import config from '../../configuration';
 import { Playlist } from 'src/app/models/Playlist';
 import { Song } from 'src/app/models/song';
 import { User } from 'src/app/models/User';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-library',
@@ -78,6 +78,6 @@ export class LibraryComponent implements OnInit {
     }
 
     get hostName () {
-        return config.hostName
+        return environment.apiUrl
     }
 }

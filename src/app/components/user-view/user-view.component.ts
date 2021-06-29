@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
-import config from '../../configuration'
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-user-view',
@@ -55,6 +55,6 @@ export class UserViewComponent implements OnInit {
     }
 
     get hostName () {
-        return config.hostName
+        return environment.apiUrl
     }
 }

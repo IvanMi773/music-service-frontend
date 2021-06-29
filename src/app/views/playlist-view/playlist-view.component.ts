@@ -6,6 +6,7 @@ import { PlayerService } from 'src/app/services/player.service';
 import { PlaylistService } from 'src/app/services/playlist.service';
 import { QueueService } from 'src/app/services/queue.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-playlist-view',
@@ -51,9 +52,9 @@ export class PlaylistViewComponent implements OnInit {
     }
 
     public deletePlaylist () {
-        if (confirm('Are you shure you want to delete playlist?')) {
+        if (confirm('Are you sure you want to delete playlist?')) {
             this.playlistService.deleteById(this.playlist.id).subscribe(
-                data => this.router.navigateByUrl('/profile/' + this.playlist.username)
+                () => this.router.navigateByUrl('/profile/' + this.playlist.username)
             )
         }
     }
@@ -74,10 +75,6 @@ export class PlaylistViewComponent implements OnInit {
         return this._playlistDuration
     }
 
-    set playlistDuration (playlistDuration: number) {
-        this._playlistDuration = playlistDuration
-    }
-
     get playlist () {
         return this._playlist
     }
@@ -92,5 +89,9 @@ export class PlaylistViewComponent implements OnInit {
 
     set isPlaying (isPlaying: boolean) {
         this._isPlaying = isPlaying
+    }
+
+    public get apiUrl (): string {
+        return environment.apiUrl;
     }
 }

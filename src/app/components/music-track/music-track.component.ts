@@ -9,7 +9,7 @@ import { QueueService } from 'src/app/services/queue.service';
 import { SongService } from 'src/app/services/song.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
-import config from '../../configuration'
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-music-track',
@@ -81,7 +81,7 @@ export class MusicTrackComponent implements OnInit {
     }
 
     get hostName () {
-        return config.hostName
+        return environment.apiUrl
     }
 
     get currentUsername () {
@@ -96,7 +96,7 @@ export class MusicTrackComponent implements OnInit {
 
     public deleteSong () {
         if (confirm('Are you shure you want to delete song?')) {
-            this.songService.deleteSong(this.song.id).subscribe(data => this.onDeletedSong.emit(true))
+            this.songService.deleteSong(this.song.id).subscribe(() => this.onDeletedSong.emit(true))
         }
     }
 

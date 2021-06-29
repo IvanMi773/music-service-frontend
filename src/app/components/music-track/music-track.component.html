@@ -3,8 +3,9 @@
         <div class="">
             <a [routerLink]="'/profile/' + song.username">
                 <img
-                    [src]="'http://localhost:8080/api/user/avatar/' + avatar"
+                    [src]="hostName + 'api/user/avatar/' + avatar"
                     class="w-8 h-8 inline rounded-full mr-2"
+                    alt="user avatar"
                 />
                 <p class="font-bold inline text-sm">{{ song.username }}</p>
             </a>

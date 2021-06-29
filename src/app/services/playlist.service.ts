@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import config from '../configuration'
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
@@ -12,22 +12,22 @@ export class PlaylistService {
     ) {}
 
     public createPlaylist (formData: FormData) {
-        return this.http.post(config.hostName + 'api/playlist', formData)
+        return this.http.post(environment.apiUrl + 'api/playlist', formData)
     }
 
     public getPlaylistsByUsername (username: string) {
-        return this.http.get(config.hostName + 'api/playlist/user/' + username)
+        return this.http.get(environment.apiUrl + 'api/playlist/user/' + username)
     }
 
     public getPlaylistById (playlistId: number) {
-        return this.http.get(config.hostName + 'api/playlist/' + playlistId)
+        return this.http.get(environment.apiUrl + 'api/playlist/' + playlistId)
     }
 
     public getAllPlaylists () {
-        return this.http.get(config.hostName + 'api/playlist')
+        return this.http.get(environment.apiUrl + 'api/playlist')
     }
 
     public deleteById (id: number) {
-        return this.http.delete(config.hostName + 'api/playlist/' + id)
+        return this.http.delete(environment.apiUrl + 'api/playlist/' + id)
     }
 }
