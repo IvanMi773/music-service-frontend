@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="uk" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="34aa21752c30822b6466530dd2ac00cee7cc4c5e" datatype="html">
+        <source> Домівка </source>
+        <target> Home </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
+        <note priority="1" from="description">This text is used to display home</note>
+        <note priority="1" from="meaning">home</note>
+      </trans-unit>
+      <trans-unit id="123162765eb972f494cfd5f59461c4d2ee78c122" datatype="html">
+        <source> Підписки </source>
+        <target> Subscription </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">84,85</context>
+        </context-group>
+        <note priority="1" from="description">This text is used to display subscriptions</note>
+        <note priority="1" from="meaning">subscriptions</note>
+      </trans-unit>
+      <trans-unit id="12f50181356fac30bb9bcf6936dfcb3a9546482f" datatype="html">
+        <source> Бібліотека </source>
+        <target> Library </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+        <note priority="1" from="description">This text is used to display library</note>
+        <note priority="1" from="meaning">library</note>
+      </trans-unit>
+      <trans-unit id="e9604b793dfb2b4ea07e1bdcaf3615281b4714de" datatype="html">
+        <source>Завантажити</source>
+        <target>Upload</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+        <note priority="1" from="description">This text is used to display upload link</note>
+        <note priority="1" from="meaning">upload</note>
+      </trans-unit>
+      <trans-unit id="1f17763d33430958e9eed89ccb5e85a36855641c" datatype="html">
+        <source> Увійти </source>
+        <target> Login </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">140,141</context>
+        </context-group>
+        <note priority="1" from="description">This text is used to display login link</note>
+        <note priority="1" from="meaning">login</note>
+      </trans-unit>
+      <trans-unit id="273029548778310c12e5affecc297dc8163d6ff3" datatype="html">
+        <source> Зареєструватися </source>
+        <target> Register </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">149,150</context>
+        </context-group>
+        <note priority="1" from="description">This text is used to display register link</note>
+        <note priority="1" from="meaning">register</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

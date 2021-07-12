@@ -68,6 +68,7 @@
                                 'text-gray-300 hover:bg-gray-700 hover:text-white': currentRoute !== '/home'
                             }"
                             class="px-3 py-2 rounded-md text-sm font-medium"
+                            i18n="home|This text is used to display home"
                         >
                             Домівка
                         </a>
@@ -78,6 +79,7 @@
                                 'bg-gray-900 text-white': currentRoute === '/stream',
                                 'text-gray-300 hover:bg-gray-700 hover:text-white': currentRoute !== '/stream'
                             }"
+                            i18n="subscriptions|This text is used to display subscriptions"
                         >
                             Підписки
                         </a>
@@ -88,6 +90,7 @@
                                 'bg-gray-900 text-white': currentRoute === '/library',
                                 'text-gray-300 hover:bg-gray-700 hover:text-white': currentRoute !== '/library'
                             }"
+                            i18n="library|This text is used to display library"
                         >
                             Бібліотека
                         </a>
@@ -116,7 +119,7 @@
                         focus:ring-white
                     "
                 >
-                    <span routerLink="/upload">Завантажити</span>
+                    <span routerLink="/upload" i18n="upload|This text is used to display upload link">Завантажити</span>
 
                 </button>
 
@@ -131,14 +134,18 @@
                     <a
                         routerLink="/login"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                        role="menuitem">
+                        role="menuitem"
+                        i18n="login|This text is used to display login link"
+                    >
                         Увійти
                     </a>
 
                     <a
                         routerLink="/signup"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                        role="menuitem">
+                        role="menuitem"
+                        i18n="register|This text is used to display register link"
+                    >
                         Зареєструватися
                     </a>
                 </div>
